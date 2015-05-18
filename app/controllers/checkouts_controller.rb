@@ -19,7 +19,7 @@ class CheckoutsController < ApplicationController
   end
 
   def confirmation
-    @items = @cart.find_valid_items
+    @items           = @cart.find_valid_items
     @item_quantities = @cart.contents
     if @items.empty?
       flash[:errors] = "Reality Check! Cart can't be empty!"

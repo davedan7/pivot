@@ -4,18 +4,18 @@ class SessionsController < ApplicationController
 
   def create
     if request.env['omniauth.auth']
-      @user = User.find_or_create_by_auth(request.env['omniauth.auth'])
-        flash[:notice] = "Succsessfully Logged In As #{@user.username}"
-        session[:user_id] = @user.id
-        redirect_to user_path
+      @user             = User.find_or_create_by_auth(request.env['omniauth.auth'])
+      flash[:notice]    = "Succsessfully Logged In As #{@user.username}"
+      session[:user_id] = @user.id
+      redirect_to user_path
     else
       @user = User.find_by(email: params[:session][:email])
       if @user && @user.admin? && @user.authenticate(params[:session][:password])
-        flash[:notice] = "Succsessfully Logged In As #{@user.username}"
+        flash[:notice]    = "Succsessfully Logged In As #{@user.username}"
         session[:user_id] = @user.id
         redirect_to admin_dashboard_path
       elsif @user && @user.authenticate(params[:session][:password])
-        flash[:notice] = "Succsessfully Logged In As #{@user.username}"
+        flash[:notice]    = "Succsessfully Logged In As #{@user.username}"
         session[:user_id] = @user.id
         redirect_to user_path
       else
