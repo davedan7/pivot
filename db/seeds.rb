@@ -19,11 +19,11 @@ User.create(name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", username: "
 User.create(name: "Admin Admin", email: "admin@example.com", username: "ADMIN", password: "password", role: 1)
 
 
-Category.create(name: "Small Plates", description: "Itty bitty, but not too small plates of delicousness. Try not to use these plates as your new guages.")
-Category.create(name: "Medium Plates", description: "Sharable, if you can bring yourself to...")
-Category.create(name: "Large Plates", description: "Ginormous plates that will fill your hipster pie hole to the brim.")
-Category.create(name: "Dessert Plates", description: "Sweets, treats but no meats")
-Category.create(name: "Hipster Drinks", description: "Craftsy Cocktails and Beer galore")
+Category.create(name: "Ruby", description: "The mother of all languages")
+Category.create(name: "Javascript", description: "The coolest kid around")
+Category.create(name: "Front-end", description: "Make stuff pretty")
+Category.create(name: "Back-end", description: "Make stuff work")
+Category.create(name: "Administrative", description: "Someone's gotta run shit")
 
 Item.create(title: "Give Me a Beat", description: "You will get one beet", price: 2000).categories << Category.find(1)
 Item.create(title: "Bearded Prawns", description: "Panko crusted - Head On - Deep fried prawns.", price: 2000).categories << Category.find(1)
