@@ -9,7 +9,7 @@ class Admin::ItemsController < Admin::BaseController
 
   def new
     @categories = Category.all
-    @item = Item.new
+    @item       = Item.new
   end
 
   def create
@@ -28,7 +28,7 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item       = Item.find(params[:id])
     @categories = Category.all
   end
 

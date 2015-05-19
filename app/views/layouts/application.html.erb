@@ -13,18 +13,18 @@
 </head>
 <body>
 
-<%= render :partial => 'layouts/nav' %>
+  <%= render :partial => 'layouts/nav' %>
 
-<div class="container">
-<div class="flashes">
-  <% flash.each do |name, msg| %>
-<%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
-</div>
+  <div class="container">
+    <div class="flashes">
+      <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+    </div>
 
-<%= yield %>
+    <%= yield %>
 
-</div>
-<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  </div>
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 </body>
 </html>

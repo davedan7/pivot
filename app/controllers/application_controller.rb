@@ -32,4 +32,5 @@ class ApplicationController < ActionController::Base
   def categories
     Category.all
   end
+  
 end
