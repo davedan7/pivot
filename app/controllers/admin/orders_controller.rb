@@ -1,6 +1,6 @@
 class Admin::OrdersController < Admin::BaseController
   def dashboard
-    @orders = Order.all
+    @orders   = Order.all
     @statuses = ["all", "ordered", "completed", "paid", "cancelled"]
     render :dashboard
   end

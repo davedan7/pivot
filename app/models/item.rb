@@ -7,14 +7,14 @@ class Item < ActiveRecord::Base
 
   validates_attachment_content_type :image, content_type: ["image/jpg", "image/jpeg", "image/png"]
 
-  validates :title, presence: true, uniqueness: true
+  validates :title,       presence: true, uniqueness: true
   validates :description, presence: true
-  validates :price, presence: true, numericality: { greater_than: 0 }
+  validates :price,       presence: true, numericality: { greater_than: 0 }
 
   has_many :item_categories
   has_many :categories, through: :item_categories
   has_many :order_items
-  has_many :orders, through: :order_items
+  has_many :orders,     through: :order_items
 
   scope :active, -> { where(status: true) }
 

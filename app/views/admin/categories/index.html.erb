@@ -1,8 +1,10 @@
 <div class="admin_categories_index">
   <h1>Categories List</h1>
+
   <% @categories.each do |category| %>
     <p><strong><%= link_to(category.name, admin_category_path(category)) %></strong><br>
     <%= category.description %></p>
   <% end %>
+  
   <%= button_to "Create Category", new_admin_category_path, method: 'get' %>
 </div>

@@ -1,5 +1,6 @@
 <div class="index-container">
 <h2>Items List</h2>
+
   <% @items.each do |item| %>
     <div class="col-lg-3 col-md-4 col-sm-6">
       <%= image_tag item.image.url(:thumb) %>
@@ -7,4 +8,5 @@
       <h4><%= link_to "#{item.title}", admin_item_path(item) %></h4>
     </div>
   <% end %>
+  
 </div>
