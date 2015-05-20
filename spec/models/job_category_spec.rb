@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ItemCategory do
+describe JobCategory do
   it { should validate_presence_of :category_id}
-  it { should validate_presence_of :item_id}
+  it { should validate_presence_of :job_id}
 end
