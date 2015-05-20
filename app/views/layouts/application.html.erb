@@ -18,7 +18,6 @@
 
   <%= render :partial => 'layouts/nav' %>
 
-  <!-- <div class="container"> -->
     <div class="flashes">
       <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
@@ -26,8 +25,6 @@
     </div>
 
     <%= yield %>
-
-  <!-- </div> -->
 
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 

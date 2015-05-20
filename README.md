@@ -1,11 +1,11 @@
-#Hipster Bytes
+#Jo.bs
 
-## Dinner Dash
+## The Pivot
 ### A Project for Turing School of Software and Design
 
 
 Collaborator:
-Tom Leskin, Mihir Parikh, Kenny Chen, and Andrew Carmer
+David Daniel, Fred Block, Michelle Golle and Andrew Carmer
 
 Check it out at:
-http://HipsterBytes.herokuapp.com
+https://cryptic-depths-4125.herokuapp.com/

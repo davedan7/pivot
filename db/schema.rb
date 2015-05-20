@@ -11,20 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520003617) do
+ActiveRecord::Schema.define(version: 20150520031151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "applications", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "status",     default: 0
-    t.integer  "jobs_id"
-  end
-
-  add_index "applications", ["user_id"], name: "index_applications_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +25,16 @@ ActiveRecord::Schema.define(version: 20150520003617) do
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", using: :btree
+
+  create_table "job_applications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "status",     default: 0
+    t.integer  "jobs_id"
+  end
+
+  add_index "job_applications", ["user_id"], name: "index_job_applications_on_user_id", using: :btree
 
   create_table "job_categories", force: :cascade do |t|
     t.integer  "category_id"
@@ -83,9 +83,9 @@ ActiveRecord::Schema.define(version: 20150520003617) do
     t.datetime "picture_updated_at"
   end
 
-  add_foreign_key "applications", "users"
+  add_foreign_key "job_applications", "users"
   add_foreign_key "job_categories", "categories"
   add_foreign_key "job_categories", "jobs"
-  add_foreign_key "order_items", "applications", column: "order_id"
+  add_foreign_key "order_items", "job_applications", column: "order_id"
   add_foreign_key "order_items", "jobs", column: "item_id"
 end
