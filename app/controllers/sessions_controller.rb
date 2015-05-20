@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       @user             = User.find_or_create_by_auth(request.env['omniauth.auth'])
       flash[:success]    = "Succsessfully Logged In As #{@user.username}"
       session[:user_id] = @user.id
-      redirect_to user_path
+      redirect_to @user
     else
       @user = User.find_by(email: params[:session][:email])
       if @user && @user.admin? && @user.authenticate(params[:session][:password])
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       elsif @user && @user.authenticate(params[:session][:password])
         flash[:success]    = "Succsessfully Logged In As #{@user.username}"
         session[:user_id] = @user.id
-        redirect_to user_path
+        redirect_to @user
       else
         flash[:danger] = "Invalid Credentials. Please Try Again."
         render :new
