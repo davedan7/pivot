@@ -1,0 +1,12 @@
+<div class="index-container">
+<h2>Jobs List</h2>
+
+  <% @jobs.each do |job| %>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <%= image_tag User.find(job.users_id).picture.url(:thumb) %>
+      <h5><%= link_to "Edit", edit_admin_job_path(job) %></h5>
+      <h4><%= link_to "#{job.title}", admin_job_path(job) %></h4>
+    </div>
+  <% end %>
+
+</div>

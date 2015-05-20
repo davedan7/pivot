@@ -1,0 +1,16 @@
+<h1>Job Applications</h1>
+
+<table id="first_table">
+    <tr>
+      <th>Job Application</th>
+      <th>Applied</th>
+      <th>Status</th>
+    </tr>
+  <% @job_applications.each do |application| %>
+    <tr>
+      <td><%= link_to "#{application.id}", user_job_application_path(application) %></td>
+      <td><%= application.date_applied(application.created_at) %></td>
+      <td><%= application.status %></td>
+    </tr>
+  <% end %>
+</table>
