@@ -1,4 +1,4 @@
-class Application < ActiveRecord::Base
+class JobApplication < ActiveRecord::Base
   belongs_to :user
   belongs_to :job
 
@@ -7,7 +7,7 @@ class Application < ActiveRecord::Base
 
   enum status: %w(received processing processed )
 
-  default_scope { application(created_at: :desc)}
+  default_scope { ordered(created_at: :desc)}
 
   def self.number_currently_received
     received.count

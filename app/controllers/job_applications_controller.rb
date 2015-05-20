@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class JobApplicationsController < ApplicationController
   def create
     order = Order.new(order_params)
     if order.save
@@ -17,7 +17,6 @@ class OrdersController < ApplicationController
   end
 
   def payment
-
   end
 
   private
