@@ -1,0 +1,54 @@
+<h1>Job Application Dashboard</h1>
+<div class="application-dashboard-page" >
+
+  <div class="admin_status_list">
+    <h3>Job Application Summary</h3>
+    <table>
+      <tr>
+        <th>Applied</th>
+        <th>Processing</th>
+        <th>Processed</th>
+      </tr>
+      <tr>
+        <td><%= @job_applications.number_currently_applied %></td>
+        <td><%= @job_applications.number_currently_processing %></td>
+        <td><%= @job_applications.number_currently_processed %></td>
+      </tr>
+    </table>
+    <p><%= render "admin/job_applications/filter" %></p>
+  </div><br>
+
+  <div class="admin_applications_list">
+    <div class="center_div">
+      <h3>All Job Applications</h3>
+      <table id="first_table">
+        <tr>
+          <th>Job Application</th>
+          <th>User_id</th>
+          <th>Created_At</th>
+          <th>Last_Updated_At</th>
+          <th>Status</th>
+          <th>update Status</th>
+        </tr>
+
+        <div class="job_applications">
+          <% @job_applications.each do |job_application| %>
+            <tr class="job_application" data-status="<%= job_application.status %>">
+              <td><%= link_to "#{job_application.id}", admin_job_application_path({job_application_id: job_application.id}) %></td>
+              <td><%= job_application.user_id %></td>
+              <td><%= job_application.date_created %></td>
+              <td><%= job_application.date_updated %></td>
+              <td class="order_status"><%= job_application.status %></td>
+              <td><%= link_to "Paid", admin_job_application_update_path({job_application_id: job_application.id, status: "applied"}), method: :post %>
+                  <%= link_to "Processing", admin_job_application_update_path({job_application_id: job_application.id, status: "processing"}), method: "post" %>
+                  <%= link_to "Processed", admin_job_application_update_path({job_application_id: job_application.id, status: "processed"}), method: "post" %>
+                </td>
+            </tr>
+          <% end %>
+        </div>
+
+      </table>
+    </div>
+  </div>
+
+</div>

@@ -1,12 +1,12 @@
 class Job < ActiveRecord::Base
 
-  validates :title,       presence: true, uniqueness: true
-  validates :description, presence: true
-  validates :posting_price,       presence: true, numericality: { greater_than: 0 }
+  validates :title,        presence: true, uniqueness: true
+  validates :description,  presence: true
+  validates :posting_cost, presence: true, numericality: { greater_than: 0 }
 
   has_many :job_categories
   has_many :categories, through: :job_categories
-  has_many :applications
+  has_many :job_applications
 
   scope :active, -> { where(status: true) }
 

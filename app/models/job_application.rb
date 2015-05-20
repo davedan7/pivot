@@ -7,7 +7,7 @@ class JobApplication < ActiveRecord::Base
 
   enum status: %w(received processing processed )
 
-  default_scope { ordered(created_at: :desc)}
+  default_scope { order(created_at: :desc)}
 
   def self.number_currently_received
     received.count
