@@ -1,16 +1,16 @@
 class JobApplicationsController < ApplicationController
   def create
-    order = Order.new(order_params)
-    if order.save
-      @cart.contents.each_pair do |item_id, quantity|
-        order.order_items.create(item_id: item_id.to_i, quantity: quantity)
+    job_application = JobApplication.new(job_application_params)
+    if job_application.save
+      @cart.contents.each_pair do |job_id, q|
+        job_application.create(job_id: job_id.to_i)
       end
-      order.order_items.create()
-      UserNotifier.order_confirmation(Order.find(order.id)).deliver_now
-      flash[:notice] = "Order Successfully Placed"
+      job_application.create()
+      UserNotifier.order_confirmation(JobApplication.find(job_application.id)).deliver_now
+      flash[:success] = "JobApplication Successfully Placed"
       redirect_to orders_payment_path
     else
-      flash[:error] = "Grow your beard, try again"
+      flash[:danger] = "Grow your beard, try again"
       redirect_to checkout_path
     end
     @cart.clear
@@ -21,7 +21,7 @@ class JobApplicationsController < ApplicationController
 
   private
 
-  def order_params
-    params.require(:order).permit(:user_id, :subtotal, :item_id)
+  def job_application_params
+    params.require(:job_application).permit(:user_id, :job_id)
   end
 end

@@ -1,0 +1,2 @@
+module Businesses::JobsHelper
+end

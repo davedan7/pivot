@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true,
             format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates :location, presence: true
+  validates :slug, uniqueness: true
+
+  before_validation :generate_slug
 
   enum role: %w(applicant business admin)
 
@@ -28,5 +31,9 @@ class User < ActiveRecord::Base
       user.save
     end
     user
+  end
+
+  def generate_slug
+    self.slug = username.parameterize
   end
 end
