@@ -42,7 +42,9 @@ body {
    background-color: black;
    background: black;
    opacity: 1;
-   color: #777;
+   // color: #337ab7;
+   // color: #777;
+   color: #AFAFAF;
    border-radius: 0px;
    z-index: 0000;
    margin-bottom: 0px;
@@ -68,11 +70,17 @@ nav.navbar{
 }
 
 .nav.navbar-nav.navbar-right li a {
-    color: #777;
+  // color: #777;
+  color: #AFAFAF;
 }
 
 .nav.navbar-nav.navbar-left li a {
-    color: #777;
+  // color: #777;
+  color: #AFAFAF;
+}
+
+.nav-category {
+  color: #AFAFAF;
 }
 
 

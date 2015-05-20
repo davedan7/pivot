@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :applications, dependent: :destroy
   validates :name, length: { in: 2..32 }
-  validates :username, uniqueness: true
+  validates :username, uniqueness: true, presence: true
   validates :email, presence: true, uniqueness: true,
             format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates :location, presence: true
@@ -36,4 +36,6 @@ class User < ActiveRecord::Base
   def generate_slug
     self.slug = username.parameterize
   end
+
+  scope :business, -> { where(role: "business")}
 end
