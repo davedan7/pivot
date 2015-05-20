@@ -7,11 +7,11 @@ Rails.application.routes.draw do
 
   resource :checkout, only: [:create, :update]
 
-  resources :orders,     only: [:create]
+  resources :job_applications,     only: [:create]
   resources :categories, only: [:show, :index]
 
-  resources :items, only: [:show, :index]
-  resource :user, except: [:update]
+  resources :jobs, only: [:show, :index]
+  resources :users, except: [:update]
 
   match '/404', to: 'errors#file_not_found', via: :all
   root to: "home#index"
@@ -21,8 +21,12 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-  namespace :user do
-    resources :orders, only: [:index, :show]
+  namespace :users do
+    resources :job_applications, only: [:index, :show]
+  end
+
+  namespace :businesses, as: :business, path: '/:business' do
+    resources :jobs, only: [:index]
   end
 
   get "/login/twitter", to: "sessions#twitter"
