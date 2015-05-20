@@ -1,0 +1,31 @@
+<div class="form">
+  <%= form_for([:admin, @job]) do |f| %>
+    <div>
+      <%= f.text_field :title, placeholder: "Job title"  %><br>
+    </div><br>
+
+    <div>
+      <%= f.text_field :description, placeholder: "Job description" %><br>
+    </div><br>
+
+    <div class="collection">
+      <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) %><br>
+    </div><br>
+
+    <div>
+      <%= f.label :status %><br>
+    </div><br>
+
+    <div>
+      Unavailable <%= f.radio_button :status, false  %><br>
+    </div><br>
+
+    <div>
+      Available <%= f.radio_button :status, true  %><br>
+    </div><br>
+
+    <div>
+      <%= f.submit "Submit Job" %>
+    </div><br>
+  <% end %>
+</div>
