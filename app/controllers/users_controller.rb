@@ -12,10 +12,10 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       UserNotifier.send_signup_email(@user).deliver_now
-      flash[:message] = "User has been successfully created!"
+      flash[:success] = "User has been successfully created!"
       redirect_to user_path
     else
-      flash[:errors] = @user.errors.full_messages.join(", ")
+      flash[:danger] = @user.errors.full_messages.join(", ")
       render :new
     end
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
-      flash[:error] = @user.errors.full_messages
+      flash[:danger] = @user.errors.full_messages
       render :edit
     end
   end
@@ -37,10 +37,10 @@ class UsersController < ApplicationController
   def destroy
     @user = current_user
     if @user.destroy
-      flash[:message] = "Account has been removed"
+      flash[:success] = "Account has been removed"
       redirect_to root_path
     else
-      flash[:error] = @user.errors.full_messages
+      flash[:danger] = @user.errors.full_messages
       render @user
     end
   end
