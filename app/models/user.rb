@@ -9,13 +9,14 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :picture, content_type: ["image/jpg", "image/jpeg", "image/png"]
 
 
-  has_many :orders, dependent: :destroy
+  has_many :applications, dependent: :destroy
   validates :name, length: { in: 2..32 }
   validates :username, uniqueness: true
   validates :email, presence: true, uniqueness: true,
             format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates :location, presence: true
 
-  enum role: %w(default admin)
+  enum role: %w(applicant business admin)
 
   def self.find_or_create_by_auth(auth_data)
     user = User.find_or_create_by(id: auth_data['uid'][1..3])

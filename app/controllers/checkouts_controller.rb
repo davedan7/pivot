@@ -1,20 +1,20 @@
 class CheckoutsController < ApplicationController
 
   def create
-    item = Item.find(params[:item_id])
-    if item.retired
-      flash[:errors] = "Retired item cannot be added to cart"
+    job = Job.find(params[:item_id])
+    if job.retired
+      flash[:errors] = "Retired job cannot be added to cart"
       redirect_to categories_path
     else
-      @cart.add_item(item.id)
+      @cart.add_job(job.id)
       session[:cart] = @cart.contents
-      flash[:notice] = "You now have #{pluralize(@cart.count_of(item.id), item.title)} in your cart.  "
+      flash[:notice] = "You now have #{pluralize(@cart.count_of(job.id), job.title)} in your basket.  "
       redirect_to categories_path
     end
   end
 
   def show
-    @items = @cart.find_items
+    @items = @cart.find_jobs
     @item_quantities = @cart.contents
   end
 
@@ -28,17 +28,17 @@ class CheckoutsController < ApplicationController
   end
 
   def increase
-    @cart.increase_quantity(params[:item_id])
+    @cart.increase_quantity(params[:job_id])
     redirect_to checkout_path
   end
 
   def decrease
-    @cart.decrease_quantity(params[:item_id])
+    @cart.decrease_quantity(params[:job_id])
     redirect_to checkout_path
   end
 
   def remove
-    item = @cart.remove_item(params[:item_id])
+    job = @cart.remove_job(params[:job_id])
     redirect_to checkout_path
   end
 end
