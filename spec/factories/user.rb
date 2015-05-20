@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :default_user, class: User do
+  factory :applicant_user, class: User do
     name      "John Doe"
     username  "JDoe"
     email     "johndoe@example.com"
@@ -7,11 +7,20 @@ FactoryGirl.define do
     role      0
   end
 
-  factory :admin_user, class: User do
+  factory :businessr_user, class: User do
+    name      "Janet Does"
+    username  "JanetDoes"
+    email     "janetdoes@example.com"
+    password  "password"
+    role      1
+  end
+
+  factory :super_user, class: User do
     name      "Jane Doe"
     username  "JaneDoe"
     email     "janedoe@example.com"
     password  "password"
-    role      1
+    role      2
   end
+  
 end
