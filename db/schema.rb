@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504171317) do
+ActiveRecord::Schema.define(version: 20150520003617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "status",     default: 0
+    t.integer  "jobs_id"
+  end
+
+  add_index "applications", ["user_id"], name: "index_applications_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -26,28 +36,27 @@ ActiveRecord::Schema.define(version: 20150504171317) do
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", using: :btree
 
-  create_table "item_categories", force: :cascade do |t|
+  create_table "job_categories", force: :cascade do |t|
     t.integer  "category_id"
-    t.integer  "item_id"
+    t.integer  "job_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "item_categories", ["category_id"], name: "index_item_categories_on_category_id", using: :btree
-  add_index "item_categories", ["item_id"], name: "index_item_categories_on_item_id", using: :btree
+  add_index "job_categories", ["category_id"], name: "index_job_categories_on_category_id", using: :btree
+  add_index "job_categories", ["job_id"], name: "index_job_categories_on_job_id", using: :btree
 
-  create_table "items", force: :cascade do |t|
+  create_table "jobs", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.integer  "price"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.boolean  "status",             default: true
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "status",       default: true
+    t.integer  "posting_cost"
+    t.integer  "users_id"
   end
+
+  add_index "jobs", ["users_id"], name: "index_jobs_on_users_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "item_id"
@@ -59,16 +68,6 @@ ActiveRecord::Schema.define(version: 20150504171317) do
 
   add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
-
-  create_table "orders", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "subtotal"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "status",     default: 0
-  end
-
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -84,9 +83,9 @@ ActiveRecord::Schema.define(version: 20150504171317) do
     t.datetime "picture_updated_at"
   end
 
-  add_foreign_key "item_categories", "categories"
-  add_foreign_key "item_categories", "items"
-  add_foreign_key "order_items", "items"
-  add_foreign_key "order_items", "orders"
-  add_foreign_key "orders", "users"
+  add_foreign_key "applications", "users"
+  add_foreign_key "job_categories", "categories"
+  add_foreign_key "job_categories", "jobs"
+  add_foreign_key "order_items", "applications", column: "order_id"
+  add_foreign_key "order_items", "jobs", column: "item_id"
 end
