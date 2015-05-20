@@ -2,6 +2,7 @@
 @import "bootstrap";
 @import url('//fonts.googleapis.com/css?family=Playfair Display');
 
+ // NEWWWWWWWWWWWW
 /*colors*/
 
 $light-grey: rgba(0,0,0,0.7);
@@ -11,46 +12,8 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  font-family: monospace;
+  font-family: sans-serif;
 }
-
-// h1 {
-//   font-family: 'Playfair Display', cursive !important;
-//   color: black;
-// }
-
-// .navbar-brand{
-//   font-family: 'Playfair Display', cursive !important;
-//   font-size: 30px !important;
-//   color: black;
-// }
-
-.navbar{
-   background-color: black;
-   background: black;
-   opacity: 1;
-   color: #777;
-   border-radius: 0px;
-   z-index: 10000;
-   margin-bottom: 0px;
-}
-
-nav.navbar{
-  margin-bottom: 0px;
-  border-radius: 0px
-}
-
-// .navbar li {
-//   color: #000;
-// }
-
-// .nav.navbar-nav.navbar-right li a {
-//     color: #777;
-// }
-
-// .nav.navbar-nav.navbar-left li a {
-//     color: #777;
-// }
 
 .jumbotron{
   background: url("mactable.jpg") no-repeat center center ;
@@ -73,12 +36,51 @@ nav.navbar{
       text-align: left;
     }
  }
+}
+
+.navbar{
+   background-color: black;
+   background: black;
+   opacity: 1;
+   color: #777;
+   border-radius: 0px;
+   z-index: 0000;
+   margin-bottom: 0px;
+}
+
+nav.navbar{
+  margin-bottom: 0px;
+  border-radius: 0px
+}
+
+// OLD
+
+
+.navbar-brand{
+  font-family: 'Playfair Display', cursive !important;
+  font-size: 30px !important;
+  color: lightgreen;
+}
+
+
+.navbar li {
+  color: #000;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: #777;
+}
+
+.nav.navbar-nav.navbar-left li a {
+    color: #777;
+}
+
+
   // .container{
   //   background-color: black;
   //   opacity: .7;
   //   border-radius: 10px;
   // }
-}
 
 // .jumbotron1{
 //   opacity: .5;
@@ -110,321 +112,249 @@ nav.navbar{
 //     width:100%;
 // }
 
-// #flash_notice {
-//   font-family: monospace;
-//   text-style: bold;
-//   opacity: .8;
+
+table td {
+  font-family: sans-serif;
+  border: 2px solid black;
+  padding: 10px;
+  align: center;
+}
+
+.admin_orders_list {
+  font-family: sans-serif;
+  width: 65%;
+  padding: 5px;
+  border: 1px solid;
+  height: 500px;
+  overflow: auto;
+}
+
+.user-orders-list {
+  font-family: sans-serif;
+  width: 65%;
+  padding: 5px;
+  border: 1px solid;
+  height: 500px;
+  overflow: auto;
+  margin-left: 18%;
+}
+.center_div {
+  font-family: sans-serif;
+  padding: 3px;
+  margin-right: 10px;
+}
+
+.dropdown-menu li:hover .sub-menu {
+  font-family: sans-serif;
+    visibility: visible;
+}
+
+.dropdown:hover .dropdown-menu {
+  font-family: sans-serif;
+    display: block;
+}
+
+.account{
+    float:left
+}
+
+.admin_orders_list h3 {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.dashboard {
+  float: left;
+  margin-left: 5%;
+}
+
+.index {
+  text-align: center;
+}
+
+.index {
+  float: left;
+  align: center;
+  list-style: none;
+  margin-left: 37%;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+.container h3 {
+  text-align: center;
+}
+
+
+
+.container .index{
+  text-align: center;
+  float: left;
+  list-style: none;
+  width: 200px;
+}
+
+.field {
+  align: center;
+  float: left;
+  margin-left: 43%;
+  width: 75%
+}
+
+.collection {
+  padding: 3px;
+}
+
+.submit {
+  align: center;
+  float: left;
+  margin-left: 43%;
+  width: 75%
+}
+
+.form {
+  align: center;
+  float: left;
+  margin-left: 43%;
+  width: 75%
+}
+
+.order-dashboard-page {
+  align: center;
+  float: left;
+  margin-left: 23%;
+  width: 85%
+}
+
+.admin-links p {
+  border: 2px solid black;
+  border-radius: 5px;
+  align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
+  padding: 2px;
+}
+
+.admin-links p:hover {
+  background-color: grey;
+  font-color: white;
+}
+
+.twitter-login {
+  align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
+  padding: 10px;
+}
+
+.collection {
+  margin-left: -100px;
+  list-style: vertical;
+}
+
+.filter {
+  padding: 1em;
+  label {
+    font-size: 0.8em;
+    &:after {
+      content: ': ';
+    }
+  }
+  select, input {
+    margin-right: 1em;
+  }
+}
+
+.index-container img {
 //   text-align: center;
-//   margin-right: 60%;
-//   padding:4px;
-//   border-radius: 100px;
-//   color: #fff8dc;
-//   background-color: darkgrey;
-// }
+  padding-top: 4px;
+}
 
-// #flash_errors{
-//   font-family: monospace;
-//   text-style: bold;
-//   opacity: .8;
-//   text-align: center;
-//   margin-right: 60%;
-//   padding:4px;
-//   border-radius: 100px;
-//   color: #fff8dc;
-//   background-color: darkgrey;
-// }
+.index-container h4 {
+  min-height: 50px;
+}
 
-// #flash_messages{
-//   font-family: monospace;
-//   text-style: bold;
-//   opacity: .8;
-//   text-align: center;
-//   margin-right: 60%;
-//   padding:4px;
-//   border-radius: 100px;
-//   color: #fff8dc;
-//   background-color: darkgrey;
-// }
-// #flash_message{
-//   font-family: monospace;
-//   text-style: bold;
-//   opacity: .8;
-//   text-align: center;
-//   margin-right: 60%;
-//   padding:4px;
-//   border-radius: 100px;
-//   color: #fff8dc;
-//   background-color: darkgrey;
-// }
-// #flash_error{
-//   font-family: monospace;
-//   text-style: bold;
-//   opacity: .8;
-//   text-align: center;
-//   margin-right: 60%;
-//   padding:4px;
-//   border-radius: 100px;
-//   color: #fff8dc;
-//   background-color: darkgrey;
-// }
+.index-container h2 {
+  text-align: center;
+}
 
-// #flash_twitter {
-//   font-family: monospace;
-//   text-style: bold;
-//   opacity: .8;
-//   text-align: center;
-//   margin-right: 60%;
-//   padding:4px;
-//   border-radius: 100px;
-//   color: #fff8dc;
-//   background-color: red;
-// }
+.description {
+  text-align: center;
+  font-size: 20px;
+}
 
-// table td {
-//   font-family: monospace;
-//   border: 2px solid black;
-//   padding: 10px;
-//   align: center;
-// }
+.thumbnail {
+  width: 300px;
+  margin-left: 33%;
+  opacity: 0.7;
+  background-color: cornsilk;
+  text-align: center;
+}
 
-// .admin_orders_list {
-//   font-family: monospace;
-//   width: 65%;
-//   padding: 5px;
-//   border: 1px solid;
-//   height: 500px;
-//   overflow: auto;
-// }
+.checkouts-page  {
+  margin-left: 25%;
+}
 
-// .user-orders-list {
-//   font-family: monospace;
-//   width: 65%;
-//   padding: 5px;
-//   border: 1px solid;
-//   height: 500px;
-//   overflow: auto;
-//   margin-left: 18%;
-// }
-// .center_div {
-//   font-family: monospace;
-//   padding: 3px;
-//   margin-right: 10px;
-// }
+.checkouts-page h2 {
+  text-align: center;
+  margin-left: -375px;
+}
 
-// .dropdown-menu li:hover .sub-menu {
-//   font-family: monospace;
-//     visibility: visible;
-// }
+.confirmation  {
+  margin-left: 25%;
+}
 
-// .dropdown:hover .dropdown-menu {
-//   font-family: monospace;
-//     display: block;
-// }
+.confirmation h2 {
+  text-align: center;
+  margin-left: -375px;
+}
 
-// .account{
-//     float:left
-// }
+.flashes {
+  margin-left: 35%;
+}
 
-// .admin_orders_list h3 {
-//   font-family: monospace;
-//   text-align: center;
-// }
+.user-show {
+  width: 300px;
+  margin-left: 33%;
+  opacity: 0.7;
+  background-color: white;
+  text-align: center;
+}
 
-// .dashboard {
-//   float: left;
-//   margin-left: 5%;
-// }
+.user-order-list {
+  font-family: sans-serif;
+  width: 45%;
+  padding: 5px;
+  height: 500px;
+  overflow: auto;
+  margin-left: 28%;
+}
 
-// .index {
-//   text-align: center;
-// }
+.payment {
+  font-family: sans-serif;
+  width: 45%;
+  padding: 5px;
+  height: 500px;
+  overflow: auto;
+  margin-left: 28%;
+}
 
-// .index {
-//   float: left;
-//   align: center;
-//   list-style: none;
-//   margin-left: 37%;
-// }
+.admin_status_list h3 {
+  margin-left: -350px;
+}
 
-// .container h1 {
-//   text-align: center;
-// }
+.admin_status_list table {
+  margin-left: 210px;
+}
 
-// .container h3 {
-//   text-align: center;
-// }
+.filter {
+  margin-left: 180px;
+}
 
-
-// .container {
-//   font-family: monospace;
-// }
-
-// .container .index{
-//   text-align: center;
-//   float: left;
-//   list-style: none;
-//   width: 200px;
-// }
-
-// .field {
-//   align: center;
-//   float: left;
-//   margin-left: 43%;
-//   width: 75%
-// }
-
-// .collection {
-//   padding: 3px;
-// }
-
-// .submit {
-//   align: center;
-//   float: left;
-//   margin-left: 43%;
-//   width: 75%
-// }
-
-// .form {
-//   align: center;
-//   float: left;
-//   margin-left: 43%;
-//   width: 75%
-// }
-
-// .order-dashboard-page {
-//   align: center;
-//   float: left;
-//   margin-left: 23%;
-//   width: 85%
-// }
-
-// .admin-links p {
-//   border: 2px solid black;
-//   border-radius: 5px;
-//   align: center;
-//   margin-left: 25%;
-//   margin-right: 25%;
-//   text-align: center;
-//   padding: 2px;
-// }
-
-// .admin-links p:hover {
-//   background-color: grey;
-//   font-color: white;
-// }
-
-// .twitter-login {
-//   align: center;
-//   margin-left: 25%;
-//   margin-right: 25%;
-//   text-align: center;
-//   padding: 10px;
-// }
-
-// .collection {
-//   margin-left: -100px;
-//   list-style: vertical;
-// }
-
-// .filter {
-//   padding: 1em;
-//   label {
-//     font-size: 0.8em;
-//     &:after {
-//       content: ': ';
-//     }
-//   }
-//   select, input {
-//     margin-right: 1em;
-//   }
-// }
-
-// .index-container img {
-//   text-align: center;
-//   padding-top: 4px;
-// }
-
-// .index-container h4 {
-//   min-height: 50px;
-// }
-
-// .index-container h2 {
-//   text-align: center;
-// }
-
-// .description {
-//   text-align: center;
-//   font-size: 20px;
-// }
-
-// .thumbnail {
-//   width: 300px;
-//   margin-left: 33%;
-//   opacity: 0.7;
-//   background-color: cornsilk;
-//   text-align: center;
-// }
-
-// .checkouts-page  {
-//   margin-left: 25%;
-// }
-
-// .checkouts-page h2 {
-//   text-align: center;
-//   margin-left: -375px;
-// }
-
-// .confirmation  {
-//   margin-left: 25%;
-// }
-
-// .confirmation h2 {
-//   text-align: center;
-//   margin-left: -375px;
-// }
-
-// .flashes {
-//   margin-left: 35%;
-// }
-
-// .user-show {
-//   width: 300px;
-//   margin-left: 33%;
-//   opacity: 0.7;
-//   background-color: white;
-//   text-align: center;
-// }
-
-// .user-order-list {
-//   font-family: monospace;
-//   width: 45%;
-//   padding: 5px;
-//   height: 500px;
-//   overflow: auto;
-//   margin-left: 28%;
-// }
-
-// .payment {
-//   font-family: monospace;
-//   width: 45%;
-//   padding: 5px;
-//   height: 500px;
-//   overflow: auto;
-//   margin-left: 28%;
-// }
-
-// .admin_status_list h3 {
-//   margin-left: -350px;
-// }
-
-// .admin_status_list table {
-//   margin-left: 210px;
-// }
-
-// .filter {
-//   margin-left: 180px;
-// }
-
-// .businesses {
-//   background-color: black;
-// }
+.businesses {
+  background-color: black;
+}
