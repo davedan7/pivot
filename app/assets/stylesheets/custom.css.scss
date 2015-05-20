@@ -57,8 +57,9 @@ nav.navbar{
   background-size: cover;
   text-align: center;
   .container{
-    background-color: black;
-    opacity: .7;
+    background: rgba(0, 0, 0, 0.5);
+    // background-color: rgba:  black;
+    // opacity: .7;
     border-radius: 10px;
     padding-bottom: 30px;
     h1 {
