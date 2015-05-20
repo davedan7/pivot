@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :jobs, only: [:show, :index]
   resources :users, except: [:update]
 
+  resources :businesses, only: [:index]
+
   match '/404', to: 'errors#file_not_found', via: :all
   root to: "home#index"
 

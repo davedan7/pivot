@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       UserNotifier.send_signup_email(@user).deliver_now
       flash[:success] = "User has been successfully created!"
-      redirect_to user_path
+      redirect_to current_user
     else
       flash[:danger] = @user.errors.full_messages.join(", ")
       render :new
