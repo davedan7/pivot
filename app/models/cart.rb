@@ -5,43 +5,43 @@ class Cart
     @contents = initial_contents || {}
   end
 
-  def add_item(item_id)
-    contents[item_id.to_s] ||= 0
-    contents[item_id.to_s] += 1
+  def add_job(job_id)
+    contents[job_id.to_s] ||= 0
+    contents[job_id.to_s] += 1
   end
 
-  def count_of(item_id)
-    contents[item_id.to_s]
+  def count_of(job_id)
+    contents[job_id.to_s]
   end
 
   def count_all
     contents.values.sum
   end
 
-  def quantity(item_id)
-    contents[item_id]
+  def quantity(job_id)
+    contents[job_id]
   end
 
-  def increase_quantity(item_id)
-    contents[item_id] += 1
+  def increase_quantity(job_id)
+    contents[job_id] += 1
   end
 
-  def decrease_quantity(item_id)
-    contents[item_id] -= 1 if contents[item_id] > 0
+  def decrease_quantity(job_id)
+    contents[job_id] -= 1 if contents[job_id] > 0
   end
 
-  def find_items
-    contents.keys.map { |item_id| Item.find(item_id)}
+  def find_jobs
+    contents.keys.map { |job_id| job.find(job_id)}
   end
 
-  def find_valid_items
-    items = subtotal.reject { |_id, total| total == 0}
-    items.keys.map { |item_id| Item.find(item_id)}
+  def find_valid_jobs
+    jobs = subtotal.reject { |_id, total| total == 0}
+    jobs.keys.map { |job_id| job.find(job_id)}
   end
 
   def subtotal
-    find_items.each_with_object({}) do |item, hash|
-      hash[item.id] = quantity(item.id.to_s) * item.price
+    find_jobs.each_with_object({}) do |job, hash|
+      hash[job.id] = quantity(job.id.to_s) * job.price
     end
   end
 
@@ -49,13 +49,13 @@ class Cart
     subtotal.values.sum
   end
 
-  def remove_item(item_id)
-    contents.delete(item_id)
+  def remove_job(job_id)
+    contents.delete(job_id)
   end
 
-  def create_order_items(order_id)
-    contents.find_items.each do
-      OrderItems.new()
+  def create_order_jobs(order_id)
+    contents.find_jobs.each do
+      OrderJobs.new()
     end
   end
 
