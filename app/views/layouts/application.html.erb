@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Jo.bs</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag 'custom' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <script src="dist/js/bootstrap.min.js"></script>
-  <%= csrf_meta_tags %>
-</head>
+
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic|Six+Caps' rel='stylesheet' type='text/css'>
+    <title>Jo.bs</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
 
 
+  <body>
 
-<body>
-
-  <%= render :partial => 'layouts/nav' %>
+    <%= render 'layouts/nav' %>
 
     <div class="flashes">
       <% flash.each do |name, msg| %>
@@ -26,9 +23,8 @@
 
     <%= yield %>
 
-  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <%= render 'layouts/footer' %>
 
-</body>
-
+  </body>
 
 </html>
