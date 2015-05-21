@@ -1,0 +1,6 @@
+<h1><%= @job.title %></h1><br>
+<p><strong>DESCRIPTION</strong></p><%= @job.description %>
+<p><strong>COMPANY</strong>
+<p><%= @job.user.name %>: <%= @job.user.description %></p>
+
+<%= button_to "Apply to Job", checkout_path(job_id: @job.id) %>

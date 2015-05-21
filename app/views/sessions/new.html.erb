@@ -1,12 +1,13 @@
+<div class="container">
+  <h1>Login to JO.bs</h1>
 
-<h1>Login to JO.bs</h1>
-
-  <%= form_for(:session, url: login_path) do |f| %>
-  <%= f.text_field :email, placeholder: 'Email' %><br>
-  <%= f.password_field :password, placeholder: 'Password' %><br>
-  <%= f.submit 'Submit'%>
-  <% end %>
+    <%= form_for(:session, url: login_path) do |f| %>
+    <%= f.text_field :email, placeholder: 'Email' %><br>
+    <%= f.password_field :password, placeholder: 'Password' %><br>
+    <%= f.submit 'Submit'%>
+    <% end %>
 
 
 
-    <%= link_to "Login with Twitter", login_twitter_path %>
+      <%= link_to "Sign In with Twitter", login_twitter_path %>
+</div>
