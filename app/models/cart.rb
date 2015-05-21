@@ -39,25 +39,26 @@ class Cart
   #   jobs.keys.map { |job_id| job.find(job_id)}
   # end
 
-  def subtotal
-    find_jobs.each_with_object({}) do |job, hash|
-      hash[job.id] = quantity(job.id.to_s) * job.price
-    end
-  end
+  #
+  # def subtotal
+  #   find_jobs.each_with_object({}) do |job, hash|
+  #     hash[job.id] = quantity(job.id.to_s) * job.price
+  #   end
+  # end
 
-  def total
-    subtotal.values.sum
-  end
+  # def total
+  #   subtotal.values.sum
+  # end
 
   def remove_job(job_id)
     contents.delete(job_id)
   end
 
-  def create_order_jobs(order_id)
-    contents.find_jobs.each do
-      OrderJobs.new()
-    end
-  end
+  # def create_order_jobs(order_id)
+  #   contents.find_jobs.each do
+  #     OrderJobs.new()
+  #   end
+  # end
 
   def clear
     contents.clear
