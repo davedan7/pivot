@@ -15,7 +15,6 @@ class CheckoutsController < ApplicationController
 
   def show
     @jobs = @cart.find_jobs
-    @job_quantities = @cart.contents
   end
 
   def confirmation
