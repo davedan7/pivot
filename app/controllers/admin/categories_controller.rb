@@ -18,7 +18,7 @@ class Admin::CategoriesController < Admin::BaseController
   def update
     @category = Category.friendly.find(params[:id])
     if @category.update(category_params)
-      flash[:message] = "Category has been updated!"
+      flash[:success] = "Category has been updated!"
       redirect_to admin_categories_path
     else
       flash[:error] = @category.errors.full_messages.join(", ")
@@ -29,7 +29,7 @@ class Admin::CategoriesController < Admin::BaseController
   def create
     @category = Category.new(category_params)
     if @category.save
-      flash[:message] = "Category was successfully created!"
+      flash[:success] = "Category was successfully created!"
       redirect_to admin_categories_path
     else
       flash[:error] = @category.errors.full_messages.join(", ")
@@ -40,7 +40,7 @@ class Admin::CategoriesController < Admin::BaseController
   def destroy
     @category = Category.friendly.find(params[:id])
     if @category.can_destroy? && @category.destroy
-      flash[:message] = "Category successfully deleted!"
+      flash[:success] = "Category successfully deleted!"
       redirect_to admin_categories_path(id: @category.id)
     else
       flash[:error] = @category.errors.full_messages.join(", ")

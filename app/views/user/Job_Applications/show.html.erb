@@ -1,28 +1,4 @@
-<h1>Order Details</h1>
-
-<div class="user-order-list">
-  <div class="center_div">
-
-    <h4>ordered: <%= @order.date_of_order(@order.created_at) %></h4>
-    <h4>Current Status: <%= @order.show_status %></h4>
-
-    <table id="first_table">
-      <tr>
-        <th>Item</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Subtotal</th>
-      </tr>
-      <% @order.order_items.each do |order_item| %>
-      <tr>
-        <td><%= link_to  "#{order_item.item.title}", item_path(order_item.item.id) %></td>
-        <td><%= order_item.quantity %></td>
-        <td><%= number_to_currency(order_item.item.price/100.00) %></td>
-        <td><%= number_to_currency(order_item.subtotal/100.00) %></td>
-      </tr>
-      <% end %>
-      <td>total</td>
-      <td><%= number_to_currency(@order.subtotal.to_f / 100.00) %></td>
-    </table>
-  </div>
-</div>
+<h1>Application Details</h1>
+    <h3><%= @job_application.job_title %></h3>
+    <h4>Applied: <%= @job_application.date_applied(@job_application.created_at) %></h4>
+    <h4>Current Status: <%= @job_application.show_status %></h4>

@@ -1,11 +1,13 @@
 <div class="index-container">
 <h2> <%= @business.username.capitalize %> Jobs List</h2>
+<h3> <%= @business.description %></h3>
 
   <% @jobs.each do |job| %>
     <div class="col-lg-3 col-md-4 col-sm-6">
       <!-- <%= image_tag User.find(job.user_id).picture.url(:thumb) %> -->
       <%= job.title %>
       <%= job.description %>
+      <%= button_to "Add Job", checkout_path(job_id: job.id) %>
 
     </div>
   <% end %>

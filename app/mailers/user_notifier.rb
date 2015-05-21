@@ -7,8 +7,8 @@ class UserNotifier < ApplicationMailer
          subject: "Thanks for signing up for with Hipster Bytes")
   end
 
-  def order_confirmation(order)
-    @order = order
-    mail(to: @order.user.email, subject: 'Order has been received')
+  def order_confirmation(job_application)
+    @job_application = job_application
+    mail(to: @job_application.user.email, subject: 'Application has been received')
   end
 end

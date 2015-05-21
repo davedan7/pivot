@@ -1,7 +1,7 @@
 class CheckoutsController < ApplicationController
 
   def create
-    job = Job.find(params[:item_id])
+    job = Job.find(params[:job_id])
     if job.retired
       flash[:danger] = "Retired job cannot be added to cart"
       redirect_to categories_path
@@ -18,12 +18,16 @@ class CheckoutsController < ApplicationController
   end
 
   def confirmation
-    @jobs           = @cart.find_valid_jobs
+    @jobs           = @cart.find_jobs
     @job_quantities = @cart.contents
     if @jobs.empty?
       flash[:danger] = "Your basket can't be empty!"
       redirect_to categories_path
     end
+  end
+
+  def summary
+    @jobs = params[:jobs].map { |id| Job.find(id.to_i)}
   end
 
   # def increase

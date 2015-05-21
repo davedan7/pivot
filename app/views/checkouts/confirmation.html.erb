@@ -1,0 +1,10 @@
+<h1>Are you sure you want to complete this transation?</h1>
+
+  <ul>
+  <% @jobs.each do |job| %>
+    <li><%= job.title %></li>
+    <% end %>
+  </ul>
+
+<%= button_to "YES", job_applications_path(job_application: { user_id: current_user.id}) %>
+<%= button_to "NO", checkout_path, method: 'get' %>

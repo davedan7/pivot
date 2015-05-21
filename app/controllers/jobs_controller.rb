@@ -1,9 +1,9 @@
 class JobsController < ApplicationController
   def index
-    @items = Job.active
+    @jobs = Job.active
   end
 
   def show
-    @item = Job.find(params[:id])
+    @job = Job.find(params[:id])
   end
 end

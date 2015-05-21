@@ -4,6 +4,7 @@ class JobApplication < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :status, presence: true
+  validates :job_id, presence: true
 
   enum status: %w(received processing processed )
 
@@ -21,7 +22,7 @@ class JobApplication < ActiveRecord::Base
     processed.count
   end
 
-  def date_applied(order_created_at)
+  def date_applied(application_created_at)
     application_created_at.strftime("%A, %d %b %Y %l:%M %p")
   end
 
@@ -39,5 +40,9 @@ class JobApplication < ActiveRecord::Base
     else
       "#{status} -  updated on: #{self.updated_at.strftime("%A, %d %b %Y %l:%M %p")}"
     end
+  end
+
+  def job_title
+    Job.find_by(id: self.job_id).title
   end
 end
