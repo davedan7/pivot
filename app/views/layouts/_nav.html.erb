@@ -24,7 +24,7 @@
             </ul>
           </ul>
         </li>
-        <li><%= link_to "Businesses", "#", class: 'nav-category' %></li>
+        <li><%= link_to "Businesses", businesses_path, class: 'nav-category' %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Cart (#{@cart.count_all})", checkout_path %></li>

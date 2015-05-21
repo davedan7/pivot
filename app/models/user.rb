@@ -37,5 +37,5 @@ class User < ActiveRecord::Base
     self.slug = username.parameterize
   end
 
-  scope :business, -> { where(role: "business")}
+  scope :business, -> { where(role: 1)}
 end
