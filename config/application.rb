@@ -10,6 +10,9 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
 
+
+config.serve_static_assets = true
+
 Bundler.require(*Rails.groups)
 
 module HipsterBytes

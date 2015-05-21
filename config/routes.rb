@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get "admin/order", to:            "admin/orders#show"
   post "admin/order/update", to:    "admin/orders#update"
 
-  get "checkout/summary", to:  "checkouts#summary"
+  get "checkout/summary", to:       "checkouts#summary"
   get "checkout/confirmation", to:  "checkouts#confirmation"
   post "checkout/increase", to:     "checkouts#increase"
   post "checkout/decrease", to:     "checkouts#decrease"
