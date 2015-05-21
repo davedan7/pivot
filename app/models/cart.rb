@@ -22,22 +22,22 @@ class Cart
     contents[job_id]
   end
 
-  def increase_quantity(job_id)
-    contents[job_id] += 1
-  end
-
-  def decrease_quantity(job_id)
-    contents[job_id] -= 1 if contents[job_id] > 0
-  end
+  # def increase_quantity(job_id)
+  #   contents[job_id] += 1
+  # end
+  #
+  # def decrease_quantity(job_id)
+  #   contents[job_id] -= 1 if contents[job_id] > 0
+  # end
 
   def find_jobs
-    contents.keys.map { |job_id| job.find(job_id)}
+    contents.keys.map { |job_id| Job.find(job_id)}
   end
 
-  def find_valid_jobs
-    jobs = subtotal.reject { |_id, total| total == 0}
-    jobs.keys.map { |job_id| job.find(job_id)}
-  end
+  # def find_valid_jobs
+  #   jobs = subtotal.reject { |job_id, total| total == 0}
+  #   jobs.keys.map { |job_id| job.find(job_id)}
+  # end
 
   def subtotal
     find_jobs.each_with_object({}) do |job, hash|

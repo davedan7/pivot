@@ -1,16 +1,16 @@
 class JobApplicationsController < ApplicationController
   def create
-    job_application = JobApplication.new(job_application_params)
-    if job_application.save
-      @cart.contents.each_pair do |job_id, q|
-        job_application.create(job_id: job_id.to_i)
-      end
-      job_application.create()
-      UserNotifier.order_confirmation(JobApplication.find(job_application.id)).deliver_now
-      flash[:success] = "JobApplication Successfully Placed"
-      redirect_to orders_payment_path
+    job_applications = @cart.contents.keys.map do |job_id|
+    job_application = JobApplication.new(user_id: params[:job_application][:user_id], job_id: job_id)
+      job_application.save
+    end
+    if job_applications.all?
+      ##not ready
+      # UserNotifier.order_confirmation(JobApplication.find(job_application.id)).deliver_now
+      flash[:success] = "Job Application Successfully Placed"
+      redirect_to checkout_summary_path(jobs: @cart.contents.keys)
     else
-      flash[:danger] = "Grow your beard, try again"
+      flash[:danger] = "Please try again"
       redirect_to checkout_path
     end
     @cart.clear
@@ -22,6 +22,6 @@ class JobApplicationsController < ApplicationController
   private
 
   def job_application_params
-    params.require(:job_application).permit(:user_id, :job_id)
+    params.require(:job_application).permit(:user_id)
   end
 end

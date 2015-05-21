@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150521004503) do
+ActiveRecord::Schema.define(version: 20150521043633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150521004503) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "status",     default: 0
-    t.integer  "jobs_id"
+    t.integer  "job_id"
   end
 
   add_index "job_applications", ["user_id"], name: "index_job_applications_on_user_id", using: :btree
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20150521004503) do
     t.datetime "picture_updated_at"
     t.string   "slug"
     t.string   "location"
+    t.string   "description"
   end
 
   add_foreign_key "job_applications", "users"

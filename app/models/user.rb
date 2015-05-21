@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   validates_attachment_content_type :picture, content_type: ["image/jpg", "image/jpeg", "image/png"]
 
-  has_many :applications, dependent: :destroy
+  has_many :job_applications, dependent: :destroy
   has_many :jobs
 
   validates :name, length: { in: 2..32 }

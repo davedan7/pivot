@@ -23,7 +23,6 @@ RSpec.describe("user applying to a job") do
 
       expect(current_path).to eq(checkout_path)
 
-      save_and_open_page
 
 
 
