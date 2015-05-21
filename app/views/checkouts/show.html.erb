@@ -1,0 +1,22 @@
+<div class="checkouts-page">
+  <h2>Your Basket</h2>
+  <table border = 2px >
+    <tr>
+      <td>Company</td>
+      <td>Position</td>
+      <td>Remove</td>
+    </tr>
+    <tr>
+  <% @jobs.each do |job| %>
+      <td><%= job.title %></td>
+      <td><%= button_to "Remove", checkout_remove_path(job_id: job.id)%></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <% if current_user %>
+  <%= button_to "Checkout", checkout_confirmation_path, method: :get %>
+  <% else %>
+  <%= button_to "Checkout", new_user_path(origin: {destination: "checkout"}), method: :get %>
+  <% end %>
+</div>
