@@ -1,9 +1,3 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import url('//fonts.googleapis.com/css?family=Source+Sans+Pro:300,700|Oswald');
-// @import url('//fonts.googleapis.com/css?family=Playfair Display');
-
-
 // colors /////////////////////////////////////////
 
 $white: rgba(255,255,255,1);
@@ -20,12 +14,23 @@ $gray-medium-light: #eaeaea;
 $blue-med:  #337ab7;
 $blue-dark: #2e6da4;
 
+$green-light: #B7C68B;
+$beige-light: #F4F0CB;
+$beige-med: #DED29E;
+$brown-light: #B3A580;
+$brown-dark: #685642;
+
 // colors /////////////////////////////////////////
 
 
 
 
-// fonts /////////////////////////////////////////
+
+// typography /////////////////////////////////////////
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url('//fonts.googleapis.com/css?family=Source+Sans+Pro:300,700|Oswald');
+
 $heading-font-family: 'Oswald', Arial, serif;
 $base-font-family: 'Source Sans', Arial, serif;
 
@@ -64,7 +69,7 @@ ul  {
 a, a:focus, a:hover  {
   color: $black;
 }
-// fonts /////////////////////////////////////////
+// typography /////////////////////////////////////////
 
 
 
@@ -75,12 +80,18 @@ a, a:focus, a:hover  {
 // navbar ///////////////////////////////////////////
 .navbar{
    background-color: $black;
-   background: $black;
    opacity: 1;
-   color: $gray-medium;
    border-radius: 0px;
-   z-index: 0000;
+   z-index: 999;
    margin-bottom: 0px;
+
+   a {
+     color: $white;
+   }
+
+   a:hover {
+     background-color: $gray-medium;
+   }
 }
 
 nav.navbar{
@@ -94,18 +105,19 @@ nav.navbar{
   color: $white;
 }
 
-.navbar li {
-  color: $gray-medium;
-}
+// .navbar li {
+//   color: $gray-medium;
+// }
 
-.nav.navbar-nav.navbar-right li a {
-    color: $gray-medium;
-}
+// .nav.navbar-nav.navbar-right li a {
+//     color: $gray-medium;
+// }
 
-.nav.navbar-nav.navbar-left li a {
-    color: $gray-medium;
-}
+// .nav.navbar-nav.navbar-left li a {
+//     color: $white;
+// }
 // navbar ///////////////////////////////////////////
+
 
 
 
@@ -121,7 +133,6 @@ body {
   font-family: sans-serif;
 }
 // body /////////////////////////////////////////
-
 
 
 
@@ -152,7 +163,6 @@ body {
  }
 }
 // jumbotron ///////////////////////////////////////////
-
 
 
 
@@ -193,11 +203,8 @@ body {
 
 // business ///////////////////////////////////////////
   .individual-business  {
-    min-height: 300px;
+    min-height: 400px;
   }
-
-
-
 // business ///////////////////////////////////////////
 
 
@@ -447,9 +454,10 @@ table td {
 
 .thumbnail {
   width: 300px;
-  margin-left: 33%;
+  // margin-left: 33%;
+  margin: 30px;
   opacity: 0.7;
-  background-color: cornsilk;
+  // background-color: cornsilk;
   text-align: center;
 }
 
