@@ -24,3 +24,10 @@ Apply to create company if asccepted buy credits to post jobs/manage postings
 
 
 Bootstrap js
+
+
+
+===============================================================
+checkin 2
+
+Business admin manage other business admins?

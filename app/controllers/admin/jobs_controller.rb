@@ -44,7 +44,7 @@ class Admin::JobsController < Admin::BaseController
       flash[:success] = "#{@job.title} Updated"
       redirect_to admin_job_path(@job)
     else
-      flash[:error] = @job.errors.full_messages.join(", ")
+      flash[:danger] = @job.errors.full_messages.join(", ")
       render :edit
     end
   end

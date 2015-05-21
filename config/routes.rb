@@ -47,10 +47,12 @@ Rails.application.routes.draw do
   get "checkout", to:               "checkouts#show"
   get 'checkout', to:               "checkouts#edit"
 
+
   patch "/user", to:                "users#update", as: :update_user
   get "login", to:                  "sessions#new"
   post "login", to:                 "sessions#create"
   delete '/logout', to:             'sessions#destroy'
   get "admin/dashboard", to:        "admin/dashboard#show"
   get "/home", to:                  "home#index"
+  get '/about', to:                  "home#about"
 end

@@ -21,7 +21,7 @@ class Admin::CategoriesController < Admin::BaseController
       flash[:success] = "Category has been updated!"
       redirect_to admin_categories_path
     else
-      flash[:error] = @category.errors.full_messages.join(", ")
+      flash[:danger] = @category.errors.full_messages.join(", ")
       render :edit
     end
   end
@@ -32,7 +32,7 @@ class Admin::CategoriesController < Admin::BaseController
       flash[:success] = "Category was successfully created!"
       redirect_to admin_categories_path
     else
-      flash[:error] = @category.errors.full_messages.join(", ")
+      flash[:danger] = @category.errors.full_messages.join(", ")
       render :new
     end
   end
@@ -43,7 +43,7 @@ class Admin::CategoriesController < Admin::BaseController
       flash[:success] = "Category successfully deleted!"
       redirect_to admin_categories_path(id: @category.id)
     else
-      flash[:error] = @category.errors.full_messages.join(", ")
+      flash[:danger] = @category.errors.full_messages.join(", ")
       redirect_to admin_categories_path(id: @category.id)
     end
   end
