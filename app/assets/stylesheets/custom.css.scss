@@ -1,9 +1,3 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import url('//fonts.googleapis.com/css?family=Playfair Display');
-
-
-
 // colors /////////////////////////////////////////
 
 $white: rgba(255,255,255,1);
@@ -11,13 +5,125 @@ $black: rgba(0,0,0,1);
 
 $gray-light: rgba(180,180,180,1);
 $gray-medium: rgba(90,90,90,1);
+$gray-dark: rgba(50,50,50,1);
 
 $gray-dark-transparent: rgba(0,0,0,0.7);
 
 $gray-medium-light: #eaeaea;
 
+$blue-med:  #337ab7;
+$blue-dark: #2e6da4;
+
+$green-light: #B7C68B;
+$beige-light: #F4F0CB;
+$beige-med: #DED29E;
+$brown-light: #B3A580;
+$brown-dark: #685642;
+
+// colors /////////////////////////////////////////
 
 
+
+
+
+// typography /////////////////////////////////////////
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url('//fonts.googleapis.com/css?family=Source+Sans+Pro:300,700|Oswald');
+
+$heading-font-family: 'Oswald', Arial, serif;
+$base-font-family: 'Source Sans', Arial, serif;
+
+h1, h2, h3 {
+  font-family: $heading-font-family;
+  text-align: center;
+}
+
+h1  {
+  font-size: 4em;
+}
+
+h2  {
+  font-size: 3.5em;
+  color: $gray-dark;
+  margin: 20px 0 10px 0;
+}
+
+h3  {
+  font-size: 2.5em;
+  color: $gray-dark;
+  margin: 0 0 20px 0;
+}
+
+p, ul  {
+  font-family: $base-font-family;
+  font-size: 1.4em;
+  color: $gray-dark;
+  margin: 1em 0 1em 0;
+}
+
+ul  {
+  list-style-type: square;
+}
+
+a, a:focus, a:hover  {
+  color: $black;
+}
+// typography /////////////////////////////////////////
+
+
+
+
+
+
+
+// navbar ///////////////////////////////////////////
+.navbar{
+   background-color: $black;
+   opacity: 1;
+   border-radius: 0px;
+   z-index: 999;
+   margin-bottom: 0px;
+
+   a {
+     color: $white;
+   }
+
+   a:hover {
+     background-color: $gray-medium;
+   }
+}
+
+nav.navbar{
+  margin-bottom: 0px;
+  border-radius: 0px
+}
+
+.navbar-brand{
+  font-family: $heading-font-family, Arial, serif;
+  font-size: 30px !important;
+  color: $white;
+}
+
+// .navbar li {
+//   color: $gray-medium;
+// }
+
+// .nav.navbar-nav.navbar-right li a {
+//     color: $gray-medium;
+// }
+
+// .nav.navbar-nav.navbar-left li a {
+//     color: $white;
+// }
+// navbar ///////////////////////////////////////////
+
+
+
+
+
+
+// body /////////////////////////////////////////
 body {
   padding-top: 0px;
   -webkit-background-size: cover;
@@ -26,7 +132,14 @@ body {
   background-size: cover;
   font-family: sans-serif;
 }
+// body /////////////////////////////////////////
 
+
+
+
+
+
+// jumbotron ///////////////////////////////////////////
 .jumbotron{
   background: url("mactable.jpg") no-repeat center center ;
   background-size: cover;
@@ -49,43 +162,101 @@ body {
     }
  }
 }
+// jumbotron ///////////////////////////////////////////
 
-.navbar{
-   background-color: $black;
-   background: $black;
-   opacity: 1;
-   color: $gray-medium;
-   border-radius: 0px;
-   z-index: 0000;
-   margin-bottom: 0px;
+
+
+
+
+
+
+
+// carousel ///////////////////////////////////////////
+.carousel{
+  margin:0 auto 50px;
+  z-index: 2;
+  width:75%;
+  height: auto;
+  overflow:hidden;
+
+  h4 {
+    color: $blue-med;
+    font-family: $heading-font-family, Arial, serif;
+    font-size: 4em;
+    text-align: center;
+    opacity: .7;
+    background-color: $white;
+    text-shadow: -1px 1px 0px rgba(149, 173, 210, 1), -2px 2px 0px rgba(149, 173, 210, 1);
+  }
 }
 
-nav.navbar{
-  margin-bottom: 0px;
-  border-radius: 0px
+// // .carousel-inner > .item > img,
+// .carousel-inner > .item > a > img {
+//     margin: auto;
+//     width:100%;
+// }
+// carousel ///////////////////////////////////////////
+
+
+
+
+
+// business ///////////////////////////////////////////
+  .individual-business  {
+    min-height: 400px;
+  }
+// business ///////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+// footer ///////////////////////////////////////////
+footer {
 }
 
-// OLD
+footer {
+  background-color: $gray-medium;
+  padding: 60px 0px 60px 0px;
+  line-height: 1.7;
+  // margin-top: 45px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  text-align: center;
 
+  a {
+    color: $gray;
 
-.navbar-brand{
-  font-family: 'Playfair Display', cursive !important;
-  font-size: 30px !important;
-  color: $white;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+
+  small {
+    float: left;
+  }
+
+  ul {
+    float: right;
+    list-style: none;
+
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
 }
+// footer ///////////////////////////////////////////
 
 
-.navbar li {
-  color: $gray-medium;
-}
 
-.nav.navbar-nav.navbar-right li a {
-    color: $gray-medium;
-}
-
-.nav.navbar-nav.navbar-left li a {
-    color: $gray-medium;
-}
 
 
   // .container{
@@ -105,24 +276,6 @@ nav.navbar{
 //   vertical-align: center;
 // }
 
-.carousel{
-  margin:0 auto 50px;
-  z-index: 2;
-  width:75%;
-  height: auto;
-  overflow:hidden;
-  h4 {
-    text-align: center;
-    opacity: .7;
-    background-color: $white;
-  }
-}
-
-// // .carousel-inner > .item > img,
-// .carousel-inner > .item > a > img {
-//     margin: auto;
-//     width:100%;
-// }
 
 
 table td {
@@ -301,9 +454,10 @@ table td {
 
 .thumbnail {
   width: 300px;
-  margin-left: 33%;
+  // margin-left: 33%;
+  margin: 30px;
   opacity: 0.7;
-  background-color: cornsilk;
+  // background-color: cornsilk;
   text-align: center;
 }
 
@@ -369,38 +523,4 @@ table td {
 
 .businesses {
   background-color: black;
-}
-
-
-
-
-// footer ///////////////////////////////////////////
-
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
-
-  a {
-    color: $gray;
-
-    &:hover {
-      color: $gray-darker;
-    }
-  }
-
-  small {
-    float: left;
-  }
-
-  ul {
-    float: right;
-    list-style: none;
-
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
 }

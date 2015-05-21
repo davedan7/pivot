@@ -15,15 +15,19 @@
 
     <%= render 'layouts/nav' %>
 
-    <div class="flashes">
-      <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-    </div>
+    <!-- <div class="container"> -->
 
-    <%= yield %>
+      <div class="flashes">
+        <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+      </div>
 
-    <%= render 'layouts/footer' %>
+      <%= yield %>
+
+      <%= render 'layouts/footer' %>
+
+    <!-- </div> -->
 
   </body>
 
