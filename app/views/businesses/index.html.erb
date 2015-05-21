@@ -1,11 +1,11 @@
 
 <div class="row">
   <% @businesses.each do |business| %>
-  <div class="col-sm-6 col-md-4">
+  <div class="col-sm-6 col-md-4 col-lg-4 individual-business">
     <div class="thumbnail">
       <div class="caption">
         <h3><%=link_to "#{business.name}", business_jobs_path(business: business.slug ) %></h3>
-        <p>business description</p>
+        <p><%= business.description %></p><br>
         <p><%= button_to "Open Jobs", business_jobs_path(business: business.slug), method: 'get' %></p>
       </div>
     </div>
