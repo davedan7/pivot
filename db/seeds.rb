@@ -13,10 +13,10 @@ User.create(name: "Admin Admin", email: "admin@example.com", username: "ADMIN", 
 end
 
 ## Businesses
-User.create(name: "Turing School", email: "turing@example.com", username: "turing", password: "password", role: 1, location: "Denver")
-User.create(name: "Pivotuhl", email: "pivotuhl@example.com", username: "pivotal", password: "password", role: 1, location: "Denver")
-User.create(name: "SlowRight", email: "slow@example.com", username: "slowright", password: "password", role: 1, location: "Denver") 
-User.create(name: "Skuukom", email: "skuukom@example.com", username: "skuukom", password: "password", role: 1, location: "Denver") 
+User.create(name: "Turing School", email: "turing@example.com", username: "turing", password: "password", role: 1, location: "Denver", description: "We turn muggles into masters of code.")
+User.create(name: "Pivotuhl", email: "pivotuhl@example.com", username: "pivotal", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart)
+User.create(name: "SlowRight", email: "slow@example.com", username: "slowright", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart) 
+User.create(name: "Skuukom", email: "skuukom@example.com", username: "skuukom", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart) 
 10.times do
   User.create(name: Faker::Name.name, email: Faker::Internet.email, username: Faker::Internet.user_name, password: "password", role: 1, location: Faker::Address.city, description: Faker::Lorem.sentence(4))
 end
