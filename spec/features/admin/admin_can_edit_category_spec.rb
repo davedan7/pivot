@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "admin can update categories" do
   it "can update a category" do
-    admin = create(:admin_user)
+    admin = create(:super_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     category = create(:category)
@@ -21,7 +21,7 @@ RSpec.describe "admin can update categories" do
   end
 
   it "cannot update a category to have a blank field" do
-    admin = create(:admin_user)
+    admin = create(:super_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     category = create(:category)
@@ -39,7 +39,7 @@ RSpec.describe "admin can update categories" do
   end
 
   it "cannot update a category to have a category name of another category" do
-    admin = create(:admin_user)
+    admin = create(:super_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     category = create(:category)

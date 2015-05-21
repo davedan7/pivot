@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Admin login" do
   context "with valid attributes" do
     it "is taken to admin dashboard" do
-      admin = create(:admin_user)
+      admin = create(:super_user)
 
       visit login_path
       fill_in "Email", with: "janedoe@example.com"
@@ -17,15 +17,13 @@ RSpec.describe "Admin login" do
 
   context "with valid default user attributes" do
     it "is not taken to admin dashboard" do
-      user = create(:default_user)
+      user = create(:applicant_user)
 
       visit login_path
       fill_in "Email", with: "JDoe"
       fill_in "Password", with: "password"
 
-      within(".submit") do
-        click_button "Submit"
-      end
+        click_link_or_button "Submit"
 
       expect(current_path).not_to eq(admin_dashboard_path)
       visit admin_dashboard_path
