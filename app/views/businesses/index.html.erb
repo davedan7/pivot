@@ -1,7 +1,7 @@
 
 <div class="row">
   <% @businesses.each do |business| %>
-  <div class="col-sm-6 col-md-4">
+  <div class="col-sm-6 col-md-4 individual-business">
     <div class="thumbnail">
       <div class="caption">
         <h3><%=link_to "#{business.name}", business_jobs_path(business: business.slug ) %></h3>
