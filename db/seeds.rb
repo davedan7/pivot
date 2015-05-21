@@ -1,101 +1,40 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-
-#That Hankerin' for some quinoa crusted kale crowns, or prusciutto packed portobelo pockets? Then ride that fixie for some HipsterBytes and wash it down with a PBR.
-### Do you have the Hipster Hunger?
-
-
 # User.create(name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password")
 # User.create(name: "Jeff Casimir", email: "demo+jeff@jumpstartlab.com", username: "j3", password: "password")
 # User.create(name: "Jorge Talez", email: "demo+jorge@jumpstartlab.com", username: "novohispano", password: "password")
 # User.create(name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", username: "josh", password: "password", role: 1)
-User.create(name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", username: "josh", password: "password", role: 0, location: "Denver")
+
+## Admins
+User.create(name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", username: "josh", password: "password", role: 2, location: "Denver")
 User.create(name: "Admin Admin", email: "admin@example.com", username: "ADMIN", password: "password", role: 2, location: "Denver")
 
+## Users
+20.times do
+  User.create(name: Faker::Name.name, email: Faker::Internet.email, username: Faker::Internet.user_name, password: "password", role: 0, location: Faker::Address.city)
+end
+
 ## Businesses
-User.create(name: "Turing School", email: "turing@example.com", username: "turing", password: "password", role: 1, location: "Denver")
-User.create(name: "Pivotuhl", email: "pivotuhl@example.com", username: "pivotal", password: "password", role: 1, location: "Denver")
-User.create(name: "SlowRight", email: "slow@example.com", username: "slowright", password: "password", role: 1, location: "Denver") 
-User.create(name: "Skuukom", email: "skuukom@example.com", username: "skuukom", password: "password", role: 1, location: "Denver") 
+User.create(name: "Turing School", email: "turing@example.com", username: "turing", password: "password", role: 1, location: "Denver", description: "We turn muggles into masters of code.")
+User.create(name: "Pivotuhl", email: "pivotuhl@example.com", username: "pivotal", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart)
+User.create(name: "SlowRight", email: "slow@example.com", username: "slowright", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart) 
+User.create(name: "Skuukom", email: "skuukom@example.com", username: "skuukom", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart) 
+10.times do
+  User.create(name: Faker::Name.name, email: Faker::Internet.email, username: Faker::Internet.user_name, password: "password", role: 1, location: Faker::Address.city, description: Faker::Lorem.sentence(4))
+end
 
 
+## Categories
 Category.create(name: "Ruby", description: "The mother of all languages")
 Category.create(name: "Javascript", description: "The coolest kid around")
 Category.create(name: "Front-end", description: "Make stuff pretty")
 Category.create(name: "Back-end", description: "Make stuff work")
 Category.create(name: "Administrative", description: "Someone's gotta run shit")
-#
-# Item.create(title: "Give Me a Beat", description: "You will get one beet", price: 2000).categories << Category.find(1)
-# Item.create(title: "Bearded Prawns", description: "Panko crusted - Head On - Deep fried prawns.", price: 2000).categories << Category.find(1)
-# Item.create(title: "Oil-Spill Calamari", description: "Served with spicy soy-sauce and squid ink -O- the day.", price: 2000).categories << Category.find(1)
-# Item.create(title: "Eggplant Quinoa", description: "'Herb'- crusted eggplant, served with that special sauce", price: 2000).categories << Category.find(1)
-# Item.create(title: "Stuffed Beanie", description: "One large, hat-sized, portabelo mushroom stuffed with hipster hummus and local bison-calf-cheese", price: 2000).categories << Category.find(1)
-# Item.create(title: "Tatted Fingers", description: "Large, and in charge, plantains drizzled in style .", price: 2000).categories << Category.find(1)
-# Item.create(title: "Protester-Pie", description: "These beef wellington is so deliscious you will protest for more.", price: 2000).categories << Category.find(2)
-# Item.create(title: "Fixed Gear Fritters", description: "Not yo mammas fritters. Watch your mouth drop like she did when she saw your first tat.", price: 2000).categories << Category.find(2)
-# Item.create(title: "Skinny Jean Spagetti", description: "Spagetti squash lightly dressed with extra-extra-virgin olive oil and baby-back balsamic.", price: 2000).categories << Category.find(2)
-# Item.create(title: "PBR", description: "Wet your whistle with this special prize", price: 500).categories << Category.find(5)
-# Item.create(title: "Skeptic Steak", description: "You don't think you should... But you should. And will", price: 2000).categories << Category.find(3)
-# Item.create(title: "The Questionable Quiche", description: "Eggs probably from my backyard made with spinach, greens and other vetable shit that makes this quiche THE quiche.", price:2000).categories << Category.find(3)
-# Item.create(title: "Insta-Grahmcracker Crusted Vegan Bites", description: "Turnips crusted with sweet delicious ultra vegan grahmcrackers crumbs.", price:2000).categories << Category.find(3)
-# Item.create(title: "Skater Ted's Bread", description: "Grass-fed all soy-free range Breadstick", price: 2000).categories << Category.find(1)
-# Item.create(title: "Vintage Venison Bites", description: "35 year old venison chuncked into ", price: 2000).categories << Category.find(1)
-# Item.create(title: "Da Freshest Seaweed", description: "Local caught seaweed", price:2000).categories << Category.find(1)
-# Item.create(title: "Pierced Pancakes", description: "Fluffy and pierced.", price: 2000).categories << Category.find(4)
-# Item.create(title: "Played out Panini", description: "All you would expect from a panini made by grandma", price: 2000).categories << Category.find(5)
-# Item.create(title: "Mixed Tape Macarroni", description: "Chef put some work on this one, put it on and check it out", price: 2000).categories << Category.find(5)
-# Item.create(title: "Plaid Bass", description: "more hip than the striped bass", price:2000).categories << Category.find(5)
-# Item.create(title: "Anti-Frack-Fries", description: "You think you were pissed with you heard the started a fracking stie in your old home town? Try running out of these fries.", price:2000).categories << Category.find(5)
-# Item.create(title: "Turnt-Up Tiramasu", description: "So creamy, it'll turnt you up.", price:2000).categories << Category.find(5)
-# Item.create(title: "Alternative Artichokes", description: "These grilled artichokes will make you emo", price: 2000).categories << Category.find(5)
-# Item.create(title: "Cofficcino Iced Blended Coffee", description: "We stole this from some tiny coffee chain.", price:500).categories << Category.find(5)
-# Item.create(title: "Left Hand Milk Stout", description: "A great stout from Longmont, CO", price:500).categories << Category.find(5)
-# Item.create(title: "New Belgium Fat Tire", description: "What place in ColoRADo doesn't have this beer?", price:500).categories << Category.find(5)
-# Item.create(title: "Yuengling Lager", description: "Hipsters love America's Oldest Brewery", price:500).categories << Category.find(5)
-# Item.create(title: "Evil Twin Hipster Ale", description: "We endorse this beer.", price:500).categories << Category.find(5)
-# Item.create(title: "Moscow Mule", description: "Vodka. Ginger Beer. Lime. Need we say more?", price:500).categories << Category.find(5)
-#
-# Order.create!(user_id: 1, subtotal: 12000, status: 0).order_items.create(item_id: 1, quantity: 6)
-# Order.create!(user_id: 1, subtotal: 12000, status: 0).order_items.create(item_id: 1, quantity: 6)
-# Order.create(user_id: 1, subtotal: 12000, status: 0).order_items.create(item_id: 1, quantity: 6)
-# Order.create(user_id: 1, subtotal: 12000, status: 0).order_items.create(item_id: 1, quantity: 6)
-# Order.create(user_id: 1, subtotal: 12000, status: 0).order_items.create(item_id: 2, quantity: 6)
-# Order.create(user_id: 2, subtotal: 12000, status: 0).order_items.create(item_id: 2, quantity: 6)
-# Order.create(user_id: 2, subtotal: 12000, status: 1).order_items.create(item_id: 2, quantity: 6)
-# Order.create(user_id: 2, subtotal: 12000, status: 1).order_items.create(item_id: 2, quantity: 6)
-# Order.create(user_id: 2, subtotal: 12000, status: 1).order_items.create(item_id: 3, quantity: 6)
-# Order.create(user_id: 2, subtotal: 12000, status: 1).order_items.create(item_id: 3, quantity: 6)
-# Order.create(user_id: 2, subtotal: 12000, status: 1).order_items.create(item_id: 3, quantity: 6)
-# Order.create(user_id: 2, subtotal: 12000, status: 1).order_items.create(item_id: 3, quantity: 6)
-# Order.create(user_id: 1, subtotal: 12000, status: 0).order_items.create(item_id: 4, quantity: 6)
-# Order.create(user_id: 1, subtotal: 12000, status: 0).order_items.create(item_id: 4, quantity: 6)
-# Order.create(user_id: 1, subtotal: 12000, status: 2).order_items.create(item_id: 4, quantity: 6)
-# Order.create(user_id: 3, subtotal: 12000, status: 2).order_items.create(item_id: 4, quantity: 6)
-# Order.create(user_id: 3, subtotal: 12000, status: 2).order_items.create(item_id: 5, quantity: 6)
-# Order.create(user_id: 3, subtotal: 12000, status: 2).order_items.create(item_id: 5, quantity: 6)
-# Order.create(user_id: 3, subtotal: 12000, status: 2).order_items.create(item_id: 5, quantity: 6)
-# Order.create(user_id: 3, subtotal: 12000, status: 2).order_items.create(item_id: 5, quantity: 6)
-# Order.create(user_id: 3, subtotal: 12000, status: 0).order_items.create(item_id: 6, quantity: 6)
-# Order.create(user_id: 1, subtotal: 12000, status: 0).order_items.create(item_id: 6, quantity: 6)
-# Order.create(user_id: 1, subtotal: 12000, status: 0).order_items.create(item_id: 6, quantity: 6)
-# Order.create(user_id: 4, subtotal: 12000, status: 0).order_items.create(item_id: 6, quantity: 6)
-# Order.create(user_id: 4, subtotal: 12000, status: 3).order_items.create(item_id: 7, quantity: 6)
-# Order.create(user_id: 4, subtotal: 12000, status: 3).order_items.create(item_id: 7, quantity: 6)
-# Order.create(user_id: 4, subtotal: 12000, status: 3).order_items.create(item_id: 7, quantity: 6)
-# Order.create(user_id: 4, subtotal: 12000, status: 3).order_items.create(item_id: 7, quantity: 6)
-# Order.create(user_id: 1, subtotal: 12000, status: 3).order_items.create(item_id: 8, quantity: 6)
-# Order.create(user_id: 1, subtotal: 12000, status: 0).order_items.create(item_id: 8, quantity: 6)
-# Order.create(user_id: 3, subtotal: 12000, status: 2).order_items.create(item_id: 8, quantity: 6)
-# Order.create(user_id: 3, subtotal: 12000, status: 2).order_items.create(item_id: 8, quantity: 6)
-# Order.create(user_id: 3, subtotal: 12000, status: 2).order_items.create(item_id: 11, quantity: 6)
-# Order.create(user_id: 3, subtotal: 12000, status: 2).order_items.create(item_id: 11, quantity: 6)
-# Order.create(user_id: 3, subtotal: 12000, status: 2).order_items.create(item_id: 11, quantity: 6)
-# Order.create(user_id: 3, subtotal: 12000, status: 2).order_items.create(item_id: 11, quantity: 6)
-# Order.create(user_id: 1, subtotal: 12000, status: 0).order_items.create(item_id: 21, quantity: 6)
+
+## Jobs
+50.times do 
+  Job.create(title: Faker::Name.title, description: Faker::Hacker.say_something_smart, posting_cost: rand(4..10), user_id: rand(1..(User.all.count-1)))
+end
+
+## Job-categories
+50.times do
+  JobCategory.create(job_id: rand(1..(Job.all.count-1)), category_id: rand(1..(Category.all.count-1)))
+end

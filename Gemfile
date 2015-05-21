@@ -20,6 +20,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug'

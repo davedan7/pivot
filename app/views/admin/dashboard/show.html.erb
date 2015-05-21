@@ -2,8 +2,6 @@
 <h3><%= image_tag current_user.picture.url(:small) %></h3>
 
 <div class="admin-links">
-  <p><%= link_to "All Items", admin_items_path %><br></p>
-  <p><%= link_to "Add New Item", new_admin_item_path %><br></p>
   <p><%= link_to "All Categories", admin_categories_path %><br></p>
   <p><%= link_to "New Category", new_admin_category_path %><br></p>
 </div>

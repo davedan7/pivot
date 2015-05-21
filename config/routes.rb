@@ -35,8 +35,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
 
   get "orders/payment", to:         "orders#payment"
-  get "admin/orders/dashboard", to: "admin/orders#dashboard"
-  get "admin/order", to:            "admin/orders#show"
+  get "admin/job_applications/dashboard", to: "admin/job_applications#dashboard"
+  get "admin/job_applications", to:            "admin/job_applications#show"
   post "admin/order/update", to:    "admin/orders#update"
 
   get "checkout/summary", to:       "checkouts#summary"
