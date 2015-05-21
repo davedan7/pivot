@@ -1,3 +1,14 @@
-<% @businesses.each do |business| %>
-  <%= link_to "#{business.username}", business_jobs_path(business: business.slug) %>
-<% end %>
+
+<div class="row">
+  <% @businesses.each do |business| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3><%=link_to "#{business.name}", busines_jobs_path(business: business.slug ) %></h3>
+        <p>business description</p>
+        <p><%= button_to "Open Jobs", method: 'get', class: "btn btn-primary" %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

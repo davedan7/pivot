@@ -18,7 +18,12 @@
 # User.create(name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", username: "josh", password: "password", role: 1)
 User.create(name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", username: "josh", password: "password", role: 0, location: "Denver")
 User.create(name: "Admin Admin", email: "admin@example.com", username: "ADMIN", password: "password", role: 2, location: "Denver")
-User.create(name: "Turing School", email: "turing@example.com", username: "turing", password: "password", role: 1, location: "Denver") # This should be a business
+
+## Businesses
+User.create(name: "Turing School", email: "turing@example.com", username: "turing", password: "password", role: 1, location: "Denver")
+User.create(name: "Pivotuhl", email: "pivotuhl@example.com", username: "pivotal", password: "password", role: 1, location: "Denver")
+User.create(name: "SlowRight", email: "slow@example.com", username: "slowright", password: "password", role: 1, location: "Denver") 
+User.create(name: "Skuukom", email: "skuukom@example.com", username: "skuukom", password: "password", role: 1, location: "Denver") 
 
 
 Category.create(name: "Ruby", description: "The mother of all languages")

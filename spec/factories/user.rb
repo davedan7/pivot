@@ -3,14 +3,16 @@ FactoryGirl.define do
     name      "John Doe"
     username  "JDoe"
     email     "johndoe@example.com"
+    location "denver"
     password  "password"
     role      0
   end
 
-  factory :businessr_user, class: User do
+  factory :business_user, class: User do
     name      "Janet Does"
     username  "JanetDoes"
     email     "janetdoes@example.com"
+    location  "denver"
     password  "password"
     role      1
   end
@@ -19,8 +21,9 @@ FactoryGirl.define do
     name      "Jane Doe"
     username  "JaneDoe"
     email     "janedoe@example.com"
+    location "denver"
     password  "password"
     role      2
   end
-  
+
 end
