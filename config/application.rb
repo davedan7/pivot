@@ -11,7 +11,6 @@ require "action_view/railtie"
 require "sprockets/railtie"
 
 
-config.serve_static_assets = true
 
 Bundler.require(*Rails.groups)
 
@@ -21,6 +20,7 @@ module HipsterBytes
     config.exceptions_app = routes
     config.action_mailer.perform_deliveries = true
     config.action_mailer.delivery_method = :smtp
+    config.serve_static_assets = true
 
     ActionMailer::Base.smtp_settings = {
       user_name: ENV["SENDGRID_USERNAME"],
