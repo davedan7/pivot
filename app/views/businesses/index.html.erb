@@ -1,3 +1,14 @@
-<% @businesses.each do |business| %>
-  <%= business.name %>
-<% end %>
+<div class="row">
+  <% @businesses.each do |business| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3><%= business.name %></h3>
+        <p>business description</p>
+        <p><a href="#" class="btn btn-primary" role="button">Open Jobs</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
