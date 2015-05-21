@@ -1,13 +1,25 @@
 <div class="container">
-  <h1>Login to JO.bs</h1>
+
+  <h1>Login to Jo.bs</h1>
 
     <%= form_for(:session, url: login_path) do |f| %>
-    <%= f.text_field :email, placeholder: 'Email' %><br>
-    <%= f.password_field :password, placeholder: 'Password' %><br>
-    <%= f.submit 'Submit'%>
+
+      <div class="field">
+        <%= f.text_field :email, placeholder: 'Email' %>
+      </div><br>
+
+      <div class="field">
+        <%= f.password_field :password, placeholder: 'Password' %>
+      </div><br>
+
+      <div class="field">
+        <%= f.submit 'Submit'%>
+      </div><br>
+
     <% end %>
 
+    <div class="field">
+      <%= link_to "Login with Twitter", login_twitter_path %>
+    </div>
 
-
-      <%= link_to "Sign In with Twitter", login_twitter_path %>
 </div>
