@@ -18,7 +18,7 @@ User.create(name: "Pivotuhl", email: "pivotuhl@example.com", username: "pivotal"
 User.create(name: "SlowRight", email: "slow@example.com", username: "slowright", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart) 
 User.create(name: "Skuukom", email: "skuukom@example.com", username: "skuukom", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart) 
 10.times do
-  User.create(name: Faker::Name.name, email: Faker::Internet.email, username: Faker::Internet.user_name, password: "password", role: 1, location: Faker::Address.city, description: Faker::Lorem.sentence(4))
+  User.create(name: Faker::Company.name, email: Faker::Internet.email, username: Faker::Internet.user_name, password: "password", role: 1, location: Faker::Address.city, description: Faker::Lorem.sentence(4))
 end
 
 
@@ -30,8 +30,12 @@ Category.create(name: "Back-end", description: "Make stuff work")
 Category.create(name: "Administrative", description: "Someone's gotta run shit")
 
 ## Jobs
+def businesses
+  User.business
+end
+
 50.times do 
-  Job.create(title: Faker::Name.title, description: Faker::Hacker.say_something_smart, posting_cost: rand(4..10), user_id: rand(1..(User.all.count-1)))
+  Job.create(title: Faker::Name.title, description: Faker::Hacker.say_something_smart, posting_cost: rand(4..10), user_id: businesses.sample.id)
 end
 
 ## Job-categories
