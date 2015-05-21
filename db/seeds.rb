@@ -18,6 +18,7 @@
 # User.create(name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", username: "josh", password: "password", role: 1)
 User.create(name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", username: "josh", password: "password", role: 0, location: "Denver")
 User.create(name: "Admin Admin", email: "admin@example.com", username: "ADMIN", password: "password", role: 2, location: "Denver")
+User.create(name: "Turing School", email: "turing@example.com", username: "turing", password: "password", role: 1, location: "Denver") # This should be a business
 
 
 Category.create(name: "Ruby", description: "The mother of all languages")
