@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   namespace :admin do
-    resources :items, except: [:destroy]
+    # resources :items, except: [:destroy]
     resources :categories
   end
 
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   end
 
   namespace :businesses, as: :business, path: '/:business' do
-    resources :jobs, only: [:index]
+    resources :jobs, only: [:index, :edit, :update]
   end
 
   get "/login/twitter", to: "sessions#twitter"
