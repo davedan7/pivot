@@ -7,7 +7,8 @@ class Job < ActiveRecord::Base
   has_many :job_categories
   has_many :categories, through: :job_categories
   has_many :job_applications
-
+  belongs_to :user
+  
   scope :active, -> { where(status: true) }
 
 
