@@ -6,6 +6,7 @@
       <!-- <%= image_tag User.find(job.user_id).picture.url(:thumb) %> -->
       <%= job.title %>
       <%= job.description %>
+      <%= button_to "Add Job", checkout_path(job_id: job.id), method: 'get' %>
 
     </div>
   <% end %>
