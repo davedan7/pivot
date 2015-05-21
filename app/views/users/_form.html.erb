@@ -1,45 +1,52 @@
-<%= form_for(@user, url: users_path, html: {multipart: true}) do |f| %>
-  <div class="field">
-    <p><%= f.text_field :name, placeholder: "Name" %></p>
-  </div><br>
+<div class="container">
 
-  <div class="field">
-    <p><%= f.text_field :username, placeholder: "Username" %></p>
-  </div><br>
+  <%= form_for(@user, url: users_path, html: {multipart: true}) do |f| %>
+    <div class="field">
+      <p><%= f.text_field :name, placeholder: "Name" %></p>
+    </div><br>
 
-  <div class="field">
-    <p><%= f.text_area :description, placeholder: "Write a short bio for yourself" %></p>
-  </div><br>
+    <div class="field">
+      <p><%= f.text_field :username, placeholder: "Username" %></p>
+    </div><br>
 
-  <div class="field">
-    <p><%= f.text_field :email, placeholder: "Email" %></p>
-  </div><br>
+    <div class="field">
+      <p><%= f.text_area :description, placeholder: "Write a short bio for yourself" %></p>
+    </div><br>
 
-  <div class="field">
-    <p><%= f.text_field :location, placeholder: "Location" %></p>
-  </div><br>
+    <div class="field">
+      <p><%= f.text_field :email, placeholder: "Email" %></p>
+    </div><br>
 
-  <div class="field">
-    <p><%= f.password_field :password, placeholder: "Password" %></p>
-  </div><br>
+    <div class="field">
+      <p><%= f.text_field :location, placeholder: "Location" %></p>
+    </div><br>
 
-  <div class="field">
-    <p><%= f.password_field :password_confirmation, placeholder: "Password confirmation" %></p>
-  </div><br>
+    <div class="field">
+      <p><%= f.password_field :password, placeholder: "Password" %></p>
+    </div><br>
 
-  <div class="field">
-    <p><%= f.label :picture, "Attach a Picture" %></p>
-  </div><br>
+    <div class="field">
+      <p><%= f.password_field :password_confirmation, placeholder: "Password confirmation" %></p>
+    </div><br>
 
-  <div class="field">
-    <p><%= f.file_field :picture %></p>
-  </div><br>
+    <div class="field">
+      <p><%= f.label :picture, "Attach a Picture" %></p>
+    </div><br>
 
-  <div class="field">
-    <p><%= f.submit %></p>
-  </div><br>
-<% end %>
+    <div class="field">
+      <p><%= f.file_field :picture %></p>
+    </div><br>
+
+    <div class="field">
+      <p><%= f.submit %></p>
+    </div><br>
+  <% end %>
 
 
-<div class="field">Already a user?
-  <p><%= button_to "Login", login_path, method: :get %><p></div>
+  <div class="field">Already a user?
+    <p><%= button_to "Login", login_path, method: :get %><p></div>
+
+
+
+
+</div>

@@ -1,6 +1,16 @@
-<h1><%= @category.name %></h1>
+<div class="container">
+  <div class="jobs-list row">
+    <div class="col-md-6 col-md-offset-3">
 
-<% @jobs.each do |job| %>
-    <h3><%= link_to job.title, business_jobs_path(job.user_id) %></h3>
-    <%= job.description %>
-<% end %>
+      <h1><%= @category.name %></h1>
+
+        <% @jobs.each do |job| %>
+          <div class="jobs-individual">
+            <h3> <%= link_to job.title, business_jobs_path(job.user_id) %> </h3>
+            <p> <%= job.description %> </p>
+          </div>
+        <% end %>
+
+    </div>
+  </div>
+</div>
