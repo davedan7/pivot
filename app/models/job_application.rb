@@ -41,4 +41,8 @@ class JobApplication < ActiveRecord::Base
       "#{status} -  updated on: #{self.updated_at.strftime("%A, %d %b %Y %l:%M %p")}"
     end
   end
+
+  def job_title
+    Job.find(id: job_id).title
+  end
 end
