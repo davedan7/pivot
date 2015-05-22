@@ -92,6 +92,12 @@ a, a:focus, a:hover  {
    a:hover {
      background-color: $gray-medium;
    }
+
+   li {
+     a:hover{
+     background-color: $gray-medium;
+     }
+   }
 }
 
 nav.navbar{
