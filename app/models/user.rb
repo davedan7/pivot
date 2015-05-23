@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   before_validation :generate_slug
 
-  enum role: %w(applicant business admin)
+  enum role: %w(applicant business admin business_admin)
 
   def self.find_or_create_by_auth(auth_data)
     user = User.find_or_create_by(id: auth_data['uid'][1..3])
@@ -39,4 +39,16 @@ class User < ActiveRecord::Base
   end
 
   scope :business, -> { where(role: 1)}
+
+
+  def self.business_admins(id)
+    User.where(business_id: id)
+  end
+
+  def submit_admin_info(data, bus_id)
+    self.role = 3
+    # self.title = data["title"]
+    self.business_id = bus_id
+  end
+
 end
