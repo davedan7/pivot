@@ -15,11 +15,9 @@
 
     <%= render 'layouts/nav' %>
 
-    <div class="flashes">
       <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "{name}" %>
+      <%= content_tag :div, msg, :class => "alert alert-#{name}" %>
       <% end %>
-    </div>
     <!-- <div class="container"> -->
 
 
