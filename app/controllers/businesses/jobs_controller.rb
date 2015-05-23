@@ -6,8 +6,11 @@ class Businesses::JobsController < ApplicationController
   end
 
   def new
-    @business = User.find_by(slug: params[:business])
-    @job = @business.jobs.new(job_params)
+    @job = Job.new()
+  end
+
+  def create
+    @job = Job.new(job_params)
     if @job.save
       flash[:success] = "Job posting successfully created!"
       redirect_to business_job_path(@job)
