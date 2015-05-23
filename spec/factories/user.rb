@@ -26,4 +26,13 @@ FactoryGirl.define do
     role      2
   end
 
+  factory :business_admin_user, class: User do
+    name      "John Smith"
+    username  "JSmith"
+    email     "johnsmith@example.com"
+    location "denver"
+    password  "password"
+    role      0
+  end
+
 end

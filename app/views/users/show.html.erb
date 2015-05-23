@@ -1,14 +1,5 @@
 <div class="user-show">
 
-  <h1><%= "#{current_user.name} Dashboard" %></h1>
-
-  <%= image_tag current_user.picture.url(:small) %>
-  <p>
-    Your Name: <%= current_user.name %><br>
-    Personal Information: <%= current_user.description %>
-  </p>
-  <%= button_to "Edit Profile", edit_user_path, method: :get %>
-
-  <%= button_to "Application History", user_job_applications_path, method: :get %>
+  <%= render "shared/dashboard" %>
 
 </div>

@@ -29,7 +29,14 @@ Rails.application.routes.draw do
 
   namespace :businesses, as: :business, path: '/:business' do
     resources :jobs, only: [:index, :edit, :update, :new]
+    resources :administrative_management, only: [:index, :show]
   end
+  #
+  # namespace :businesses do
+  #   resources :administrative_management, only: [:index, :show]
+  # end
+
+  get "/business/dashboard", to: "businesses/businesses#dashboard"
 
   get "/login/twitter", to: "sessions#twitter"
   get '/auth/:provider/callback' => 'sessions#create'
