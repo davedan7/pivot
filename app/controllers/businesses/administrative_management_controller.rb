@@ -1,7 +1,5 @@
 class Businesses::AdministrativeManagementController < BusinessesController
 
-  # before_update :change_role
-
   def index
     @business_admins = User.business_admins(current_user.id)
   end
@@ -11,9 +9,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
 
   def submit
     user = User.find_by(email: params[:user][:email])
-    # user.submit_admin_info(user_params, current_user.id)
-    user.update({business_id: current_user.id, role: 3})
-    # byebug
+    user.update(user_params)
     redirect_to business_administrative_management_index_path(business: current_user.slug)
   end
 
@@ -21,7 +17,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
     private
 
       def user_params
-        params.require(:user).permit(:email)
+        params.require(:user).permit(:email, :title).merge(business_id: current_user.id, role: 3)
       end
 
       def change_role

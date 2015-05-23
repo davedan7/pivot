@@ -24,10 +24,10 @@ RSpec.describe "Adding a business administrator" do
       click_link_or_button "Submit"
 
       expect(current_path).to eq(business_administrative_management_index_path(business: business.slug))
-      save_and_open_page
+# save_and_open_page
       expect(page).to have_content("John Smith")
-      # expect(page).to have_content("Business manager")
-      # expect(page).to have_content("johnsmith@example.com")
+      expect(page).to have_content("Business manager")
+      expect(page).to have_content("johnsmith@example.com")
 
     end
   end
