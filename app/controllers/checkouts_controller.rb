@@ -6,7 +6,7 @@ class CheckoutsController < ApplicationController
       flash[:danger] = "Retired job cannot be added to cart"
       redirect_to request.referrer
     else
-      @cart.add_job(job)
+      @cart.add_job(job.id)
       flash[@cart.flash_type.to_sym] = @cart.flash_message
       session[:cart] = @cart.contents
       redirect_to request.referrer
@@ -14,11 +14,11 @@ class CheckoutsController < ApplicationController
   end
 
   def show
-    @jobs = @cart.contents
+    @jobs = @cart.find_jobs
   end
 
   def confirmation
-    @jobs = @cart.contents
+    @jobs = @cart.find_jobs
     if @jobs.empty?
       flash[:danger] = "Your basket can't be empty!"
       redirect_to categories_path

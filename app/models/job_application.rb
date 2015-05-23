@@ -43,6 +43,6 @@ class JobApplication < ActiveRecord::Base
   end
 
   def job_title
-    Job.find(id: job_id).title
+    Job.find_by(id: job_id).title
   end
 end

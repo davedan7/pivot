@@ -7,19 +7,19 @@ class Cart
     @flash_message = ""
   end
 
-  def add_job(job)
-    if contents.include?(job)
+  def add_job(job_id)
+    if contents.include?(job_id)
       flash_type    = "danger"
       flash_message = "This job is already in your basket!"
     else
-      contents << job
+      contents << job_id
       flash_type = "success"
-      flash_message = "You have added the job, #{job.title}, to your basket."
+      flash_message = "You have added the job, #{Job.find(job_id).title}, to your basket."
     end
   end
 
   # def count_of(job_id)
-  #   contents[job_id.to_s]
+  #   contents[job_id.to_s].values.sum
   # end
 
   def count_all
@@ -38,9 +38,9 @@ class Cart
   #   contents[job_id] -= 1 if contents[job_id] > 0
   # end
 
-  # def find_jobs
-  #   contents.keys.map { |job_id| Job.find(job_id)}
-  # end
+  def find_jobs
+    contents.map { |job_id| Job.find(job_id)}
+  end
 
   # def find_valid_jobs
   #   jobs = subtotal.reject { |job_id, total| total == 0}
