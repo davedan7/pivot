@@ -1,26 +1,34 @@
 class Cart
-  attr_reader :contents
+  attr_reader :contents, :flash_type, :flash_message
 
   def initialize(initial_contents)
-    @contents = initial_contents || {}
+    @contents = initial_contents || []
+    @flash_type = ""
+    @flash_message = ""
   end
 
-  def add_job(job_id)
-    contents[job_id.to_s] ||= 0
-    contents[job_id.to_s] += 1
+  def add_job(job)
+    if contents.include?(job)
+      flash_type    = "danger"
+      flash_message = "This job is already in your basket!"
+    else
+      contents << job
+      flash_type = "success"
+      flash_message = "You have added the job, #{job.title}, to your basket."
+    end
   end
 
-  def count_of(job_id)
-    contents[job_id.to_s]
-  end
+  # def count_of(job_id)
+  #   contents[job_id.to_s]
+  # end
 
   def count_all
-    contents.values.sum
+    contents.length
   end
 
-  def quantity(job_id)
-    contents[job_id]
-  end
+  # def quantity(job_id)
+  #   contents[job_id]
+  # end
 
   # def increase_quantity(job_id)
   #   contents[job_id] += 1
@@ -30,9 +38,9 @@ class Cart
   #   contents[job_id] -= 1 if contents[job_id] > 0
   # end
 
-  def find_jobs
-    contents.keys.map { |job_id| Job.find(job_id)}
-  end
+  # def find_jobs
+  #   contents.keys.map { |job_id| Job.find(job_id)}
+  # end
 
   # def find_valid_jobs
   #   jobs = subtotal.reject { |job_id, total| total == 0}

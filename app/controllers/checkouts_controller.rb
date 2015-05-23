@@ -4,22 +4,21 @@ class CheckoutsController < ApplicationController
     job = Job.find(params[:job_id])
     if job.retired
       flash[:danger] = "Retired job cannot be added to cart"
-      redirect_to categories_path
+      redirect_to request.referrer
     else
-      @cart.add_job(job.id)
+      @cart.add_job(job)
+      flash[@cart.flash_type.to_sym] = @cart.flash_message
       session[:cart] = @cart.contents
-      flash[:success] = "You now have #{pluralize(@cart.count_of(job.id), job.title)} in your basket.  "
-      redirect_to categories_path
+      redirect_to request.referrer
     end
   end
 
   def show
-    @jobs = @cart.find_jobs
+    @jobs = @cart.contents
   end
 
   def confirmation
-    @jobs           = @cart.find_jobs
-    @job_quantities = @cart.contents
+    @jobs = @cart.contents
     if @jobs.empty?
       flash[:danger] = "Your basket can't be empty!"
       redirect_to categories_path
