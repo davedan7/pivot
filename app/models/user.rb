@@ -45,10 +45,4 @@ class User < ActiveRecord::Base
     User.where(business_id: id)
   end
 
-  def submit_admin_info(data, bus_id)
-    self.role = 3
-    # self.title = data["title"]
-    self.business_id = bus_id
-  end
-
 end
