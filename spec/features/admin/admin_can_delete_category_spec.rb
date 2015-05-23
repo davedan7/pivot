@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "admin can delete categories" do
   it "can delete a category" do
-    admin = create(:admin_user)
+    admin = create(:super_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     category = create(:category)
@@ -14,7 +14,7 @@ RSpec.describe "admin can delete categories" do
   end
 
   it "can delete a categories" do
-    admin = create(:admin_user)
+    admin = create(:super_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     category = create(:category)

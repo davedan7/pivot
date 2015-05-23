@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "admin categories" do
   context "with admin logged in" do
     it "can create a new category" do
-      admin = create(:admin_user)
+      admin = create(:super_user)
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user)
         .and_return(admin)
@@ -20,7 +20,7 @@ RSpec.describe "admin categories" do
     end
 
     it "can create new categories" do
-      admin = create(:admin_user)
+      admin = create(:super_user)
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user)
         .and_return(admin)
@@ -43,7 +43,7 @@ RSpec.describe "admin categories" do
 
   context "with admin logged in" do
     it "cannot create a category that has already been created" do
-      admin = create(:admin_user)
+      admin = create(:super_user)
       category = create(:category)
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user)
@@ -60,7 +60,7 @@ RSpec.describe "admin categories" do
 
   context "with admin logged in" do
     it "cannot create a category that is blank" do
-      admin = create(:admin_user)
+      admin = create(:super_user)
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user)
         .and_return(admin)
