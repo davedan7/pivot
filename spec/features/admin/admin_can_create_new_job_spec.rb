@@ -3,7 +3,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Admin items" do
+RSpec.describe "Admin jobs" do
 
   context "as an admin" do
     xit "can create a new job" do

@@ -5,10 +5,10 @@ FactoryGirl.define do
     posting_cost 10
 
 
-    # factory :item_with_categories do
-    #    after(:create) do |item, evaluator|
+    # factory :job_with_categories do
+    #    after(:create) do |job, evaluator|
     #     category = create(:category)
-    #     item.item_categories.create(category: category)
+    #     job.job_categories.create(category: category)
     #   end
     # end
   end

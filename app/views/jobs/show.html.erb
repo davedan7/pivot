@@ -1,6 +1,13 @@
-<h1><%= @job.title %></h1><br>
-<p><strong>DESCRIPTION</strong></p><%= @job.description %>
-<p><strong>COMPANY</strong>
-<p><%= @job.user.name %>: <%= @job.user.description %></p>
+<div class="container">
 
-<%= button_to "Apply to Job", checkout_path(job_id: @job.id) %>
+<h2>All Jobs</h2>
+
+  <% @jobs.each do |job| %>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <h4>
+        <%= link_to "#{job.title}",job_path(job) %>
+      </h4>
+    </div>
+  <% end %>
+
+</div>

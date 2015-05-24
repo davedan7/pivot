@@ -52,7 +52,7 @@ RSpec.describe "admin categories" do
       visit admin_categories_path
       click_button "Create Category"
       fill_in "Name", with: "main course"
-      fill_in "Description", with: "for main course items"
+      fill_in "Description", with: "for main course jobs"
       click_button "Create Category"
       expect(page).to have_content("Name has already been taken, Description has already been taken")
     end

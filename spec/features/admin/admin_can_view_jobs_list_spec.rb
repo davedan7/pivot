@@ -18,11 +18,11 @@ RSpec.describe "admin jobs" do
       ###fails because there is no all jobs link###
 
       expect(current_path).to eq(admin_jobs_path)
-      expect(page).to have_content("Item0")
-      expect(page).to have_content("Item4")
-      expect(page).to have_content("Item3")
-      expect(page).to have_content("Item2")
-      expect(page).to have_content("Item1")
+      expect(page).to have_content("job0")
+      expect(page).to have_content("job4")
+      expect(page).to have_content("job3")
+      expect(page).to have_content("job2")
+      expect(page).to have_content("job1")
     end
   end
 end

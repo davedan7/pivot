@@ -5,7 +5,7 @@ RSpec.describe "User view" do
 
 
     it 'can destroy user' do
-      user = create(:default_user)
+      user = create(:applicant_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit user_path(user)

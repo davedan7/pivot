@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :category, class: Category do
     name          "main course"
-    description   "for main course items"
+    description   "for main course jobs"
   end
 
   factory :category1, class: Category do
