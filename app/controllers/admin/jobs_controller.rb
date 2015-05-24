@@ -30,6 +30,7 @@ class Admin::JobsController < Admin::BaseController
 
   def edit
     @job        = Job.find(params[:id])
+    @businesses = User.business
     @categories = Category.all
   end
 

@@ -32,7 +32,7 @@ RSpec.describe "Business User" do
       expect(page).to have_content("received")
 
       click_link("Processing")
-      save_and_open_page
+      
 
       expect(page).to have_content("Current Status: processing")
     end

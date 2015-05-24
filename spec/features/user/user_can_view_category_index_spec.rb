@@ -12,10 +12,10 @@ RSpec.describe "user can view category index" do
 
     visit categories_path
 
-    expect(page).to have_content("main course")
+    expect(page).to have_content("Ruby")
 
     within(".category_name") do
-      click_link_or_button "main course"
+      click_link_or_button "Ruby"
     end
 
     expect(page).to have_content(job.title)
