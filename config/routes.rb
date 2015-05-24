@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show, :index]
 
   resources :jobs, only: [:show, :index]
-  resources :users, except: [:update]
+  resources :users
 
   resources :businesses, only: [:index]
 
@@ -42,8 +42,8 @@ Rails.application.routes.draw do
 
   get "orders/payment", to:         "orders#payment"
   get "admin/job_applications/dashboard", to: "admin/job_applications#dashboard"
-  get "admin/job_applications", to:            "admin/job_applications#show"
-  post "admin/order/update", to:    "admin/orders#update"
+  get "admin/job_application", to:            "admin/job_applications#show"
+  post "admin/job_application/update", to:    "admin/job_applications#update"
 
   get "checkout/summary", to:       "checkouts#summary"
   get "checkout/confirmation", to:  "checkouts#confirmation"
@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   get 'checkout', to:               "checkouts#edit"
 
 
-  patch "/user", to:                "users#update", as: :update_user
+  patch "/users", to:                "users#update", as: :update_user
   get "login", to:                  "sessions#new"
   post "login", to:                 "sessions#create"
   delete '/logout', to:             'sessions#destroy'

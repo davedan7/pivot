@@ -1,13 +1,11 @@
-<div class="container">
+<h1><%= @job.title %></h1>
+<%= image_tag User.find(@job.user_id).picture.url(:medium) %>
+<ul>
+  <li><p>JOB DESCRIPTION:</p><%= @job.description %></li>
 
-<h2>All Jobs</h2>
-
-  <% @jobs.each do |job| %>
-    <div class="col-lg-3 col-md-4 col-sm-6">
-      <h4>
-        <%= link_to "#{job.title}",job_path(job) %>
-      </h4>
-    </div>
+  <% @job.categories.each do |category| %>
+    <li><%= category.name %></li>
   <% end %>
+</ul>
 
-</div>
+<%= button_to "Apply to Job", checkout_path(job_id: @job.id) %>

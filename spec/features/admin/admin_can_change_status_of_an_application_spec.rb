@@ -2,33 +2,37 @@ require "rails_helper"
 
 RSpec.describe "Business User" do
   context "when viewing jobs" do
-    xit "can change status of an individual job" do
+    it "can change status of an individual job" do
 
       admin = create(:super_user)
+      business = create(:business_user)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       5.times do |x|
-        create(:job, title: "job#{x}")
+        create(:job, title: "job#{x}", user_id: business.id)
       end
 
       visit jobs_path
       click_link "job1"
-      first(:button, "Add To Basket").click
+      first(:button, "Apply to Job").click
 
       visit jobs_path
       click_link "job2"
-      first(:button, "Add To Basket").click
+      first(:button, "Apply to Job").click
 
       visit checkout_path
 
       click_button "Checkout"
-      click_button "Yes"
+      click_button "YES"
 
-      visit admin_orders_dashboard_path
+      visit admin_job_applications_dashboard_path
 
       first(:link, 1).click
+      expect(page).to have_content("received")
+
       click_link("Processing")
+      save_and_open_page
 
       expect(page).to have_content("Current Status: processing")
     end

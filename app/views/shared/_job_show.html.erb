@@ -1,5 +1,5 @@
 
-  <h1><%= job.title %></h1>
+  <h1><%= @job.title %></h1>
   <%= image_tag User.find(@job.user_id).picture.url(:medium) %>
   <ul>
     <li><p>JOB DESCRIPTION:</p><%= @job.description %></li>

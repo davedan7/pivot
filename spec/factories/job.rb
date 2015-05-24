@@ -3,6 +3,7 @@ FactoryGirl.define do
     title "engineer"
     description "so hard"
     posting_cost 10
+    user_id 1
 
 
     # factory :job_with_categories do

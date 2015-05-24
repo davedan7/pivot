@@ -9,7 +9,7 @@ RSpec.describe "User view" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit user_path(user)
-      click_link_or_button "Delete"
+      click_button "Delete Account"
 
       expect(page).to have_content("Account has been removed")
     end

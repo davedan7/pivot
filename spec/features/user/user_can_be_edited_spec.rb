@@ -12,6 +12,7 @@ RSpec.describe "User view" do
       fill_in "Name", with: "David"
       fill_in "Username", with: "davy"
       fill_in "Email", with: "david@gmail.com"
+      fill_in "Location", with: "Denver"
       fill_in "Password", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Update User"
@@ -28,6 +29,7 @@ RSpec.describe "User view" do
       fill_in "Name", with: ""
       fill_in "Username", with: "davy"
       fill_in "Email", with: "david@gmail.com"
+      fill_in "Location", with: "Denver"
       fill_in "Password", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Update User"
@@ -38,10 +40,11 @@ RSpec.describe "User view" do
     it 'change user name to name that exist' do
       user = create(:applicant_user)
 
-      visit new_user_path
+      visit 'users/new'
       fill_in "Name", with: "David"
       fill_in "Username", with: "davy"
       fill_in "Email", with: "david@gmail.com"
+      fill_in "Location", with: "Denver"
       fill_in "Password", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Create User"
@@ -52,6 +55,7 @@ RSpec.describe "User view" do
       fill_in "Name", with: "David"
       fill_in "Username", with: "davy"
       fill_in "Email", with: "hi@gmail.com"
+      fill_in "Location", with: "Denver"
       fill_in "Password", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Update User"
@@ -62,10 +66,11 @@ RSpec.describe "User view" do
      it 'change user name to email that exist' do
       user = create(:applicant_user)
 
-      visit new_user_path
+      visit 'users/new'
       fill_in "Name", with: "David"
       fill_in "Username", with: "davy"
       fill_in "Email", with: "david@gmail.com"
+      fill_in "Location", with: "Denver"
       fill_in "Password", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Create User"
@@ -76,6 +81,7 @@ RSpec.describe "User view" do
       fill_in "Name", with: "mike"
       fill_in "Username", with: "boom"
       fill_in "Email", with: "david@gmail.com"
+      fill_in "Location", with: "Denver"
       fill_in "Password", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Update User"

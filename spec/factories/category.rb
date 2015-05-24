@@ -1,21 +1,21 @@
 FactoryGirl.define do
   factory :category, class: Category do
-    name          "main course"
+    name          "Ruby"
     description   "for main course jobs"
   end
 
   factory :category1, class: Category do
-    name          "drinks"
+    name          "Javascript"
     description   "different kinds"
   end
 
   factory :category2, class: Category do
-    name          "curries"
+    name          "Administration"
     description   "spicy"
   end
 
   factory :category3, class: Category do
-    name        "breakfast"
+    name        "C##"
     description "before noon"
   end
 end

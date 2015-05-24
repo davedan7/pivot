@@ -1,0 +1,9 @@
+<h2><%= @job.title %></h2>
+<ul>
+  <li><%= @job.description %></li>
+  <li><%= @job.show_status %></li>
+  <li><%= link_to "Edit", edit_admin_job_path(@job) %></li>
+  <% @job.categories.each do |category| %>
+  <li><%= category.name %></li>
+  <% end %>
+</ul>

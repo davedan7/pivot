@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe "user can view category index" do
   it "user sees category index" do
     default_user = create(:applicant_user)
-    job = create(:job)
-    job1 = job.create(title: "wings", description: "good food", price: 11)
+    business = create(:business_user)
+    job = create(:job, user_id: business.id)
+    job1 = create(:job, title: "wings", description: "good food", posting_cost: 11, user_id: business.id)
     category = create(:category)
     category.jobs << [job, job1]
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(default_user)

@@ -5,12 +5,12 @@
     <h3>Job Application Summary</h3>
     <table>
       <tr>
-        <th>Applied</th>
+        <th>Received</th>
         <th>Processing</th>
         <th>Processed</th>
       </tr>
       <tr>
-        <td><%= @job_applications.number_currently_applied %></td>
+        <td><%= @job_applications.number_currently_received %></td>
         <td><%= @job_applications.number_currently_processing %></td>
         <td><%= @job_applications.number_currently_processed %></td>
       </tr>
@@ -39,7 +39,7 @@
               <td><%= job_application.date_created %></td>
               <td><%= job_application.date_updated %></td>
               <td class="order_status"><%= job_application.status %></td>
-              <td><%= link_to "Paid", admin_job_application_update_path({job_application_id: job_application.id, status: "applied"}), method: :post %>
+              <td><%= link_to "Received", admin_job_application_update_path({job_application_id: job_application.id, status: "applied"}), method: :post %>
                   <%= link_to "Processing", admin_job_application_update_path({job_application_id: job_application.id, status: "processing"}), method: "post" %>
                   <%= link_to "Processed", admin_job_application_update_path({job_application_id: job_application.id, status: "processed"}), method: "post" %>
                 </td>
