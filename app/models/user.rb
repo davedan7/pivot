@@ -23,9 +23,11 @@ class User < ActiveRecord::Base
   validates :slug, uniqueness: true
 
   before_validation :generate_slug
-  before_validation :verify_business_status
 
   enum role: %w(applicant business admin business_admin)
+
+  scope :online_businesses, -> { where(business_status: true) }
+  scope :offline_businesses, -> { where(business_status: false) }
 
   def self.find_or_create_by_auth(auth_data)
     user = User.find_or_create_by(id: auth_data['uid'][1..3])
@@ -43,12 +45,24 @@ class User < ActiveRecord::Base
     self.slug = username.parameterize
   end
 
-  def verify_business_status
-    !business_status.nil? if role == 3
-  end
 
   def self.business_admins(id)
     User.where(business_id: id)
   end
 
+  def online?
+    business_status == true
+  end
+
+  def offline?
+    business_status == false
+  end
+
+  def show_status
+    if business_status == true
+      "Online"
+    else
+      "Offline"
+    end
+  end
 end

@@ -1,22 +1,19 @@
 Rails.application.routes.draw do
+  root to: "home#index"
+
   get 'errors/file_not_found'
   get 'errors/unprocessable'
   get 'errors/internal_server_error'
 
   resources :charges
-
-  resource :checkout, only: [:create, :update]
-
   resources :job_applications,     only: [:create]
   resources :categories, only: [:show, :index]
-
   resources :jobs, only: [:show, :index]
   resources :users
-
   resources :businesses, only: [:index]
+  resource  :checkout, only: [:create, :update]
 
   match '/404', to: 'errors#file_not_found', via: :all
-  root to: "home#index"
 
   namespace :admin do
     resources :jobs, except: [:destroy]
@@ -36,6 +33,9 @@ Rails.application.routes.draw do
   # end
 
   get "/business/dashboard", to: "businesses/businesses#dashboard"
+  get "/business/new", to: "businesses/businesses#new_account", as: :new_business
+  post "/business/submit", to: "businesses/businesses#create"
+  get "/business/confirmation", to: "businesses/businesses#confirmation", as: :confirm_business_application
 
   get "/login/twitter", to: "sessions#twitter"
   get '/auth/:provider/callback' => 'sessions#create'
