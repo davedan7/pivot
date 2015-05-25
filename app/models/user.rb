@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
 
   has_many :job_applications, dependent: :destroy
   has_many :jobs
+  has_many :business_managers, class_name: "User",
+                               foreign_key: "business_id"
+
+  belongs_to :employer,        class_name: "User"
 
   validates :name, length: { in: 2..32 }
   validates :username, uniqueness: true, presence: true
@@ -19,6 +23,7 @@ class User < ActiveRecord::Base
   validates :slug, uniqueness: true
 
   before_validation :generate_slug
+  before_validation :verify_business_status
 
   enum role: %w(applicant business admin business_admin)
 
@@ -38,8 +43,9 @@ class User < ActiveRecord::Base
     self.slug = username.parameterize
   end
 
-  scope :business, -> { where(role: 1)}
-
+  def verify_business_status
+    !business_status.nil? if role == 3
+  end
 
   def self.business_admins(id)
     User.where(business_id: id)
