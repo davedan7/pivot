@@ -17,7 +17,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
   private
 
     def user_params
-      params.require(:user).permit(:email, :title).merge(business_id: current_user.id, role: 3)
+      params.require(:user).permit(:email, :title).merge(employer_id: current_user.id, role: 3)
     end
 
 end

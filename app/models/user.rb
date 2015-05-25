@@ -11,9 +11,9 @@ class User < ActiveRecord::Base
   has_many :job_applications, dependent: :destroy
   has_many :jobs
   has_many :business_managers, class_name: "User",
-                               foreign_key: "business_id"
+                               foreign_key: "employer_id"
 
-  belongs_to :business,        class_name: "User"
+  belongs_to :employer,        class_name: "User"
 
   validates :name, length: { in: 2..32 }
   validates :username, uniqueness: true, presence: true
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   end
 
   def self.business_admins(id)
-    User.where(business_id: id)
+    User.where(employer_id: id)
   end
 
   def online?

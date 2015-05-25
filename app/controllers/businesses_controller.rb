@@ -1,7 +1,11 @@
 class BusinessesController < ApplicationController
 
   def index
-    @businesses = User.business
+    if current_admin?
+      @businesses = User.business
+    elsif
+      @businesses = User.business.online_businesses
+    end
   end
-  
+
 end
