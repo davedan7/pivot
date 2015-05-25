@@ -9,6 +9,4 @@
       <li><%= category.name %></li>
     <% end %>
   </ul>
-  <p><%= link_to "Edit", edit_business_job_path(@business, @job) %></p>
-<!-- ###I think @business in line 12 needs to be replaced, currently it make the url### -->
-<!-- ###the job id instead of slug### -->
+  <p><%= link_to "Edit", edit_business_job_path(business: current_user.slug, job_id: @job.id) %></p>
