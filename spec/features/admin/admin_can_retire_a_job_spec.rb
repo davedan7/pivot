@@ -2,9 +2,12 @@ require "rails_helper"
 
 RSpec.describe "admin capabilities" do
   context "as admin" do
-    xit "can retire an job" do
+    it "can retire an job" do
+      category = create(:category)
+      business = create(:business_user)
       5.times do |x|
-        create(:job, title: "Job#{x}")
+        job = create(:job, title: "Job#{x}", user_id: business.id)
+        category.jobs << job
       end
 
       admin = create(:super_user)
@@ -15,7 +18,6 @@ RSpec.describe "admin capabilities" do
       within(".admin-links") do
         click_link "All Jobs"
       end
-      ###fails because there isn't an all jobs link###
 
       expect(current_path).to eq(admin_jobs_path)
 

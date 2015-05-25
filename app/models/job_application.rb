@@ -45,4 +45,8 @@ class JobApplication < ActiveRecord::Base
   def job_title
     Job.find_by(id: job_id).title
   end
+
+  def user
+    User.find_by(id: user_id)
+  end
 end

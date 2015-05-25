@@ -1,6 +1,11 @@
-<h1><%= @job.title %></h1><br>
-<p><strong>DESCRIPTION</strong></p><%= @job.description %>
-<p><strong>COMPANY</strong>
-<p><%= @job.user.name %>: <%= @job.user.description %></p>
+<h1><%= @job.title %></h1>
+<%= image_tag User.find(@job.user_id).picture.url(:medium) %>
+<ul>
+  <li><p>JOB DESCRIPTION:</p><%= @job.description %></li>
+
+  <% @job.categories.each do |category| %>
+    <li><%= category.name %></li>
+  <% end %>
+</ul>
 
 <%= button_to "Apply to Job", checkout_path(job_id: @job.id) %>

@@ -9,15 +9,15 @@ RSpec.describe "admin can update categories" do
     visit admin_categories_path
 
     within(".admin_categories_index") do
-    click_link_or_button "main course"
+    click_link_or_button "Ruby"
   end
 
     click_button "Edit Category"
-    fill_in "Name", with: "Appetizer"
-    fill_in "Description", with: "before main course"
+    fill_in "Name", with: "Rubinious"
+    fill_in "Description", with: "master master"
     click_button "Update Category"
 
-    expect(page).to have_content("Appetizer")
+    expect(page).to have_content("Rubinious")
   end
 
   it "cannot update a category to have a blank field" do
@@ -28,7 +28,7 @@ RSpec.describe "admin can update categories" do
     visit admin_categories_path
 
     within(".admin_categories_index") do
-      click_link_or_button "main course"
+      click_link_or_button "Ruby"
     end
 
     click_button "Edit Category"
@@ -47,11 +47,11 @@ RSpec.describe "admin can update categories" do
     visit admin_categories_path
 
     within(".admin_categories_index") do
-      click_link_or_button "main course"
+      click_link_or_button "Ruby"
     end
 
     click_button "Edit Category"
-    fill_in "Name", with: "drinks"
+    fill_in "Name", with: "Javascript"
     fill_in "Description", with: "different kinds"
     click_button "Update Category"
     expect(page).to have_content("Name has already been taken, Description has already been taken")

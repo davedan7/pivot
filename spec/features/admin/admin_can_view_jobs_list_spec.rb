@@ -2,9 +2,10 @@ require "rails_helper"
 
 RSpec.describe "admin jobs" do
   context "when logged in as admin" do
-    xit "can view list of jobs" do
+    it "can view list of jobs" do
+      business = create(:business_user)
       5.times do |x|
-        create(:job, title: "Job#{x}")
+        create(:job, title: "Job#{x}", user_id: business.id)
       end
 
       admin = create(:super_user)
@@ -15,14 +16,13 @@ RSpec.describe "admin jobs" do
       within(".admin-links") do
         click_link "All Jobs"
       end
-      ###fails because there is no all jobs link###
 
       expect(current_path).to eq(admin_jobs_path)
-      expect(page).to have_content("Item0")
-      expect(page).to have_content("Item4")
-      expect(page).to have_content("Item3")
-      expect(page).to have_content("Item2")
-      expect(page).to have_content("Item1")
+      expect(page).to have_content("Job0")
+      expect(page).to have_content("Job4")
+      expect(page).to have_content("Job3")
+      expect(page).to have_content("Job2")
+      expect(page).to have_content("Job1")
     end
   end
 end

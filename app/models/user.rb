@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
 
   has_many :job_applications, dependent: :destroy
   has_many :jobs
+  has_many :business_managers, class_name: "User",
+                               foreign_key: "employer_id"
+
+  belongs_to :employer,        class_name: "User"
 
   validates :name, length: { in: 2..32 }
   validates :username, uniqueness: true, presence: true
@@ -21,6 +25,9 @@ class User < ActiveRecord::Base
   before_validation :generate_slug
 
   enum role: %w(applicant business admin business_admin)
+
+  scope :online_businesses, -> { where(business_status: true) }
+  scope :offline_businesses, -> { where(business_status: false) }
 
   def self.find_or_create_by_auth(auth_data)
     user = User.find_or_create_by(id: auth_data['uid'][1..3])
@@ -38,11 +45,27 @@ class User < ActiveRecord::Base
     self.slug = username.parameterize
   end
 
-  scope :business, -> { where(role: 1)}
-
-
-  def self.business_admins(id)
-    User.where(business_id: id)
+  def date_registered
+    created_at.strftime("%A, %d %b %Y %l:%M %p")
   end
 
+  def self.business_admins(id)
+    User.where(employer_id: id)
+  end
+
+  def online?
+    business_status == true
+  end
+
+  def offline?
+    business_status == false
+  end
+
+  def show_status
+    if business_status == true
+      "Online"
+    else
+      "Offline"
+    end
+  end
 end

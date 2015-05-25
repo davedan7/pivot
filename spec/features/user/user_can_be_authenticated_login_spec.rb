@@ -5,7 +5,8 @@ RSpec.describe 'user authentication' do
     let!(:user) {User.create(name: 'John Doe',
                              username: 'JDoe',
                              email: 'jdoe@example.com',
-                             password: 'password')}
+                             password: 'password',
+                             location: 'denver')}
 
     it 'can login' do
       visit login_path
@@ -13,8 +14,7 @@ RSpec.describe 'user authentication' do
       fill_in "Email", with: user.email
       fill_in "Password", with: user.password
       click_button "Submit"
-
-      expect(current_path).to eq(user_path)
+      expect(current_path).to eq(user_path(user))
       expect(page).to have_content("#{user.name} Dashboard")
     end
   end

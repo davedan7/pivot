@@ -1,25 +1,22 @@
 Rails.application.routes.draw do
+  root to: "home#index"
+
   get 'errors/file_not_found'
   get 'errors/unprocessable'
   get 'errors/internal_server_error'
 
   resources :charges
-
-  resource :checkout, only: [:create, :update]
-
   resources :job_applications,     only: [:create]
   resources :categories, only: [:show, :index]
-
   resources :jobs, only: [:show, :index]
-  resources :users, except: [:update]
-
+  resources :users
   resources :businesses, only: [:index]
+  resource  :checkout, only: [:create, :update]
 
   match '/404', to: 'errors#file_not_found', via: :all
-  root to: "home#index"
 
   namespace :admin do
-    # resources :items, except: [:destroy]
+    resources :jobs, except: [:destroy]
     resources :categories
   end
 
@@ -28,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   namespace :businesses, as: :business, path: '/:business' do
-    resources :jobs 
+    resources :jobs, except: [:destroy]
   end
   #
   # namespace :businesses do
@@ -36,14 +33,17 @@ Rails.application.routes.draw do
   # end
 
   get "/business/dashboard", to: "businesses/businesses#dashboard"
+  get "/business/new", to: "businesses/businesses#new_account", as: :new_business
+  post "/business/submit", to: "businesses/businesses#create"
+  get "/business/confirmation", to: "businesses/businesses#confirmation", as: :confirm_business_application
 
   get "/login/twitter", to: "sessions#twitter"
   get '/auth/:provider/callback' => 'sessions#create'
 
   get "orders/payment", to:         "orders#payment"
   get "admin/job_applications/dashboard", to: "admin/job_applications#dashboard"
-  get "admin/job_applications", to:            "admin/job_applications#show"
-  post "admin/order/update", to:    "admin/orders#update"
+  get "admin/job_application", to:            "admin/job_applications#show"
+  post "admin/job_application/update", to:    "admin/job_applications#update"
 
   get "checkout/summary", to:       "checkouts#summary"
   get "checkout/confirmation", to:  "checkouts#confirmation"
@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   get 'checkout', to:               "checkouts#edit"
 
 
-  patch "/user", to:                "users#update", as: :update_user
+  patch "/users", to:                "users#update", as: :update_user
   get "login", to:                  "sessions#new"
   post "login", to:                 "sessions#create"
   delete '/logout', to:             'sessions#destroy'

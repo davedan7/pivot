@@ -30,7 +30,7 @@ class Businesses::JobsController < ApplicationController
     @business = User.find_by(slug: params[:business])
     @job = @business.jobs.find(params[:id])
     @categories = Category.all
-end
+  end
 
 def update
   @business = User.find_by(slug: params[:business])
@@ -43,7 +43,6 @@ def update
     render :edit
   end
 end
-
 
   private
 

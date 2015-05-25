@@ -1,0 +1,16 @@
+<h1>Thanks for applying to post your jobs!</h1>
+
+<h4>You should receive an email from us shortly</h4>
+
+<h5>You Registered With the Following Information</h5>
+<ul>
+  <li>Business Name: <%= @business.name %></li>
+  <li>Business' Display Name: <%= @business.username %></li>
+  <li>Business Email: <%= @business.email %></li>
+  <li>Description of Business: <%= @business.description %></li>
+  <li>Business Location: <%= @business.location %></li>
+  <li>Business Status with Jo.bs: <%= @business.show_status %> - *Once approved you will be online.</li>
+</ul>
+
+
+<%= link_to "OK", root_path, class: "btn btn-primary" %>

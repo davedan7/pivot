@@ -9,7 +9,8 @@ class Admin::JobsController < Admin::BaseController
 
   def new
     @categories = Category.all
-    @job       = Job.new
+    @businesses = User.business
+    @job        = Job.new
   end
 
   def create
@@ -23,12 +24,13 @@ class Admin::JobsController < Admin::BaseController
       redirect_to admin_job_path(@job)
     else
       flash[:danger] = @job.errors.full_messages.join(", ")
-      render :new
+      redirect_to request.referrer
     end
   end
 
   def edit
-    @job       = Job.find(params[:id])
+    @job        = Job.find(params[:id])
+    @businesses = User.business
     @categories = Category.all
   end
 
@@ -56,6 +58,7 @@ class Admin::JobsController < Admin::BaseController
                                  :description,
                                  :posting_cost,
                                  :status,
-                                 :category_ids)
+                                 :category_ids,
+                                 :user_id)
   end
 end

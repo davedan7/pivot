@@ -33,6 +33,7 @@ group :development, :test do
   gem 'launchy'
   gem 'pry'
   gem 'simplecov', :require => false
+  gem 'nyan-cat-formatter'
 end
 
 group :production do
