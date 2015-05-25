@@ -9,11 +9,16 @@ class Businesses::JobsController < ApplicationController
     @job = Job.new()
   end
 
+  def show
+    @business = User.find_by(slug: params[:business])
+    @job = @business.jobs.find(params[:id])
+  end
+
   def create
     @job = Job.new(job_params)
     if @job.save
       flash[:success] = "Job posting successfully created!"
-      redirect_to business_job_path(@job)
+      redirect_to business_job_path(job_id: @job.id)
     else
       flash[:danger] = @job.errors.full_messages.join(", ")
       render :new
@@ -21,19 +26,23 @@ class Businesses::JobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find(params[:id])
+    @business = User.find_by(slug: params[:business])
+    @job = @business.jobs.find(params[:id])
     @categories = Category.all
-  end
+end
 
-  def update
-    @job = Job.find(params[:id])
-    if @job.update(job_params)
-      redirect_to business_jobs_path
-    else
-      flash[:danger] = "Invalid fields"
-      render :edit
-    end
+def update
+  @business = User.find_by(slug: params[:business])
+  @job = @business.jobs.find(params[:id])
+  if @job.update(job_params)
+    flash[:sucess] = "#{@job.title} was updated"
+    redirect_to business_job_path(job_id: @job.id)
+  else
+    flash[:danger] = @job.errors.full_messages.join(", ")
+    render :edit
   end
+end
+
 
   private
 

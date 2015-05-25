@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   namespace :businesses, as: :business, path: '/:business' do
-    resources :jobs, only: [:index, :edit, :update, :new]
+    resources :jobs 
   end
   #
   # namespace :businesses do
