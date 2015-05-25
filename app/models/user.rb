@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :business_managers, class_name: "User",
                                foreign_key: "business_id"
 
-  belongs_to :employer,        class_name: "User"
+  belongs_to :business,        class_name: "User"
 
   validates :name, length: { in: 2..32 }
   validates :username, uniqueness: true, presence: true
@@ -45,6 +45,9 @@ class User < ActiveRecord::Base
     self.slug = username.parameterize
   end
 
+  def date_registered
+    created_at.strftime("%A, %d %b %Y %l:%M %p")
+  end
 
   def self.business_admins(id)
     User.where(business_id: id)

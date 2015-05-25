@@ -7,8 +7,13 @@ class UserNotifier < ApplicationMailer
          subject: "Thanks for signing up for with JobbyJobs")
   end
 
-  def order_confirmation(job_application)
+  def job_application_confirmation(job_application)
     @job_application = job_application
     mail(to: @job_application.user.email, subject: 'Application has been received')
+  end
+
+  def business_registration_confirmation(business)
+    @business = business
+    mail(to: admin.jo.bs@gmail.com, subject: "Business Application from: #{@business.name}")
   end
 end
