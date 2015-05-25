@@ -9,12 +9,12 @@ class Cart
 
   def add_job(job_id)
     if contents.include?(job_id)
-      flash_type    = "danger"
-      flash_message = "This job is already in your basket!"
+      @flash_type    = "danger"
+      @flash_message = "This job is already in your basket!"
     else
       contents << job_id
-      flash_type = "success"
-      flash_message = "You have added the job, #{Job.find(job_id).title}, to your basket."
+      @flash_type = "success"
+      @flash_message = "You have added the job, #{Job.find(job_id).title}, to your basket."
     end
   end
 
