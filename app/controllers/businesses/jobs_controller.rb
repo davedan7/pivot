@@ -20,10 +20,24 @@ class Businesses::JobsController < ApplicationController
     end
   end
 
+  def edit
+    @job = Job.find(params[:id])
+    @categories = Category.all
+  end
+
+  def update
+    @job = Job.find(params[:id])
+    if @job.update(job_params)
+      redirect_to business_jobs_path
+    else
+      flash[:danger] = "Invalid fields"
+      render :edit
+    end
+  end
 
   private
 
-    def job_params  #Error message job cannot be empty
+    def job_params
       params.require(:job).permit(:title,
                                   :description,
                                   :posting_cost)
