@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
 
   before_validation :generate_slug
 
-  enum role: %w(applicant business admin business_admin)
+  enum role: %w(applicant business admin business_admin) #Admin = customer service of the site (the highest level of admin). Business = login for owner of the business. business_admin = login for manager of the business
+  # Heirarchy: admin => business => business_admin => applicant
 
   def self.find_or_create_by_auth(auth_data)
     user = User.find_or_create_by(id: auth_data['uid'][1..3])
