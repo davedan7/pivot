@@ -8,3 +8,6 @@
 <%= button_to "Edit Profile", edit_user_path(current_user), method: :get %>
 
 <%= button_to "Application History", user_job_applications_path, method: :get %>
+<% if current_business_admin? %>
+  <%= button_to "Business Admin Management", business_administrative_management_index_path(business: current_user.slug ) %>
+<% end %>

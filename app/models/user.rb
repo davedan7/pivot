@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
     created_at.strftime("%A, %d %b %Y %l:%M %p")
   end
 
-  def self.business_admins(id)
+  def self.business_admins(id) # can this be refactored?
     User.where(employer_id: id)
   end
 
