@@ -22,7 +22,7 @@ User.create(name: "Skuukom", email: "skuukom@example.com", username: "skuukom", 
 end
 
 # Business Admins
-User.create(name: "Turing School Admin", email: "admin@turing.com", username: "j3", password: "password", role: 3, location: "Denver", description: "Admin for Turing School")
+User.create(name: "Turing School Admin", email: "admin@turing.com", username: "j3", password: "password", role: 3, location: "Denver", description: "Admin for Turing School", employer: User.find_by(username:'turing'))
 User.create(name: "Pivotuhl Admin", email: "admin@example.com", username: "padmin", password: "password", role: 3, location: "Denver", description: "Admin for Pivotuhl")
 
 
