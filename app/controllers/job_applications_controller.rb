@@ -5,8 +5,9 @@ class JobApplicationsController < ApplicationController
       job_application.save
     end
     if job_applications.all?
-      ##not ready
-      # UserNotifier.order_confirmation(JobApplication.find(job_application.id)).deliver_now
+      job_applications.each do |application|
+        UserNotifier.job_application_confirmation(JobApplication.find(application.id)).deliver_now
+      end
       flash[:success] = "Job Application Successfully Placed"
       redirect_to checkout_summary_path(jobs: @cart.contents)
     else
