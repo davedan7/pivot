@@ -10,6 +10,6 @@
   </ul>
 
 
-  <% if current_user || current_user.admin? %>
+  <% if current_admin? || current_business_admin? %>
     <p><%= link_to "Edit", edit_business_job_path(business: @job.user.slug) %></p>
   <% end %>
