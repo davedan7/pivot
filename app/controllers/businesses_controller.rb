@@ -3,7 +3,7 @@ class BusinessesController < ApplicationController
   def index
     if current_admin?
       @businesses = User.business
-    elsif
+    else
       @businesses = User.business.online_businesses
     end
   end

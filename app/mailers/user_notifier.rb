@@ -1,5 +1,5 @@
 class UserNotifier < ApplicationMailer
-  default from: "jobbyjobs@gmail.com"
+  default from: "turing.pivot.group@gmail.com"
 
   def send_signup_email(user)
     @user = user

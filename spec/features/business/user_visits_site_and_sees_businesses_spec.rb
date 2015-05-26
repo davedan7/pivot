@@ -9,6 +9,7 @@ RSpec.feature 'user authentication' do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
       visit businesses_path
+      expect(current_path).to eq(businesses_path)
       expect(page).to have_content("JanetDoes")
 
     end

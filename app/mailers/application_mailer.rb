@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "JobbyJobs@gmail.com"
+  default from: "turing.pivot.group@gmail.com"
   layout "mailer"
 end

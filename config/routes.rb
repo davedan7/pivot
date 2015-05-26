@@ -47,8 +47,6 @@ Rails.application.routes.draw do
 
   get "checkout/summary", to:       "checkouts#summary"
   get "checkout/confirmation", to:  "checkouts#confirmation"
-  post "checkout/increase", to:     "checkouts#increase"
-  post "checkout/decrease", to:     "checkouts#decrease"
   post "checkout/remove", to:       "checkouts#remove"
   get "checkout", to:               "checkouts#show"
   get 'checkout', to:               "checkouts#edit"
