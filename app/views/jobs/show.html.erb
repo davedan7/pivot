@@ -10,6 +10,6 @@
 
 <%= button_to "Apply to Job", checkout_path(job_id: @job.id) %>
 
-<% if current_admin? || current_business_admin? %>
+<% if current_admin? || current_business_admin? || current_business? %>
   <p><%= link_to "Edit", edit_business_job_path(business: @job.user.slug) %></p>
 <% end %>
