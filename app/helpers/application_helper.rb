@@ -1,6 +1,11 @@
 module ApplicationHelper
 
-  # def title_name(type_title = "")
-  #   "#{type_title} Name"
-  # end
+  def current_admin?
+    current_user && current_user.admin?
+  end
+
+  def current_business_admin?
+    current_user && current_user.business_admin?
+  end
+  
 end
