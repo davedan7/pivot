@@ -5,9 +5,9 @@ require File.expand_path('../application', __FILE__)
 Rails.application.initialize!
 
 ActionMailer::Base.smtp_settings = {
-  :user_name => 'carmer.andrew@gmail.com',
+  :user_name => Figaro.env.sendgrid_username,
   :password => Figaro.env.sendgrid_password,
-  :domain => 'jo.bs.herokuapp.com',
+  :domain => 'heroku.com',
   :address => 'smtp.sendgrid.net',
   :port => 587,
   :authentication => :plain,
