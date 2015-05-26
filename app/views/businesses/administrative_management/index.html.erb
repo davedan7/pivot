@@ -1,7 +1,7 @@
 <%= link_to "Add New Administrator", add_business_admin_path(business: current_user.slug) %>
 
 <% @business_admins.each do |admin| %>
-  <%= admin.name %>
-  <%= admin.title %>
-  <%= admin.email %>
+  <%= admin.name %><br>
+  <%= admin.title %><br>
+  <%= admin.email %><br>
 <% end %>
