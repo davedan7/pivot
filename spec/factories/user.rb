@@ -15,6 +15,7 @@ FactoryGirl.define do
     location  "denver"
     password  "password"
     role      1
+    business_status true
   end
 
   factory :super_user, class: User do
