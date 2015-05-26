@@ -14,7 +14,7 @@ require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
 
-module HipsterBytes
+module Jobs
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
     config.exceptions_app = routes
@@ -22,9 +22,9 @@ module HipsterBytes
     config.action_mailer.delivery_method = :smtp
 
     ActionMailer::Base.smtp_settings = {
-      user_name: ENV["SENDGRID_USERNAME"],
-      password: ENV["SENDGRID_PASSWORD"],
-      domain: "hipsterbytes.herokuapp.com",
+      user_name: ENV["sendgrid_username"],
+      password: ENV["sendgrid_password"],
+      domain: "jo-bs.herokuapp.com",
       address: "smtp.sendgrid.net",
       port: 587,
       authentication: :plain,

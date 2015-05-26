@@ -21,6 +21,10 @@ User.create(name: "Skuukom", email: "skuukom@example.com", username: "skuukom", 
   User.create(name: Faker::Company.name, email: Faker::Internet.email, username: Faker::Internet.user_name, password: "password", role: 1, location: Faker::Address.city, description: Faker::Lorem.sentence(4))
 end
 
+# Business Admins
+User.create(name: "Turing School Admin", email: "admin@turing.com", username: "j3", password: "password", role: 3, location: "Denver", description: "Admin for Turing School", employer: User.find_by(username:'turing'))
+User.create(name: "Pivotuhl Admin", email: "admin@example.com", username: "padmin", password: "password", role: 3, location: "Denver", description: "Admin for Pivotuhl")
+
 
 ## Categories
 Category.create(name: "Ruby", description: "The mother of all languages")
