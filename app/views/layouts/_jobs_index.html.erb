@@ -1,16 +1,25 @@
 <div class="container">
 
-<h2>All Jobs</h2>
+<h2>All Jobby Jobs</h2>
 
   <% @jobs.each do |job| %>
 
     <div class="col-lg-3 col-md-4 col-sm-6">
 
-      <% if current_user.admin?%>
-        <h5> <%= link_to "Edit", edit_admin_job_path(job) %> </h5>
-        <h4> <%= link_to "#{job.title}",job_path(job) %> </h4>
-      <% elsif current_user %>
-        <h4> <%= link_to "#{job.title}",job_path(job) %> </h4>
+      <% if logged_in? %>
+
+        <% if current_user.admin?%>
+          <h5> <%= link_to "Edit", edit_admin_job_path(job) %> </h5>
+
+          <% render "layout/job_show", locals {job: job} %>
+          
+          <h4> <%= link_to "#{job.title}",job_path(job) %> </h4>
+        <% else %>
+          <h4> <%= link_to "#{job.title}",job_path(job) %> </h4>
+        <% end %>
+        <% else %>
+          <h4> <%= link_to "#{job.title}",job_path(job) %> </h4>
+
       <% end %>
 
     </div>
