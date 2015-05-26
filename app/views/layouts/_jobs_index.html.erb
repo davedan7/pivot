@@ -8,11 +8,8 @@
 
       <% if logged_in? %>
 
-        <% if current_user.admin?%>
+        <% if current_user.admin? %>
           <h5> <%= link_to "Edit", edit_admin_job_path(job) %> </h5>
-
-          <% render "layout/job_show", locals {job: job} %>
-          
           <h4> <%= link_to "#{job.title}",job_path(job) %> </h4>
         <% else %>
           <h4> <%= link_to "#{job.title}",job_path(job) %> </h4>
