@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
         flash[:success]    = "Succsessfully Logged In As #{@user.username}"
         session[:user_id] = @user.id
         if @cart.contents.empty?
-          if @user.role == "business" # This is ugly, but before it was redirecting to the user show page when logged in as a business - and we want it o go to dashboard path
+          if @user.role == "business" 
             redirect_to business_dashboard_path
           else
             redirect_to @user
