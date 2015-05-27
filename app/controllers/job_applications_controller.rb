@@ -1,13 +1,16 @@
 class JobApplicationsController < ApplicationController
   def create
-    job_applications = @cart.contents.map do |job_id|
+    job_applications = @cart.contents.keys.map do |job_id|
     job_application = JobApplication.new(user_id: params[:job_application][:user_id], job_id: job_id.to_i)
-      job_application.save
-    end
-    if job_applications.all?
-      job_applications.each do |application|
-        UserNotifier.job_application_confirmation(JobApplication.find(application.id)).deliver_now
+      if job_application.save
+        UserNotifier.job_application_confirmation(job_application).deliver_now
+         true
+      else
+         false
       end
+    end
+
+    if job_applications.all?
       flash[:success] = "Job Application Successfully Placed"
       redirect_to checkout_summary_path(jobs: @cart.contents)
     else
