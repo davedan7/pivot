@@ -1,0 +1,57 @@
+<div class="container">
+
+  <%= form_for(@business_admin, url: business_administrative_management_path(@business_admin, business: @business_admin.employer.slug)) do |f| %>
+    <div class="field">
+      <p><%= f.label :name %></p>
+      <p><%= f.text_field :name, placeholder: "Name" %></p>
+    </div><br>
+
+    <div class="field">
+      <p><%= f.label :username %></p>
+      <p><%= f.text_field :username, placeholder: "Username" %></p>
+    </div><br>
+
+    <div class="field">
+      <p><%= f.label :description %></p>
+      <p><%= f.text_area :description, placeholder: "Write a short bio for yourself" %></p>
+    </div><br>
+
+    <div class="field">
+      <p><%= f.label :title %></p>
+      <p><%= f.text_field :title, placeholder: "Title" %></p>
+    </div><br>
+
+    <div class="field">
+      <p><%= f.label :email %></p>
+      <p><%= f.text_field :email, placeholder: "Email" %></p>
+    </div><br>
+
+    <div class="field">
+      <p><%= f.label :location %></p>
+      <p><%= f.text_field :location, placeholder: "Location" %></p>
+    </div><br>
+
+    <div class="field">
+      <p><%= f.label :password %></p>
+      <p><%= f.password_field :password, placeholder: "Password" %></p>
+    </div><br>
+
+    <div class="field">
+      <p><%= f.label :password_confirmation %></p>
+      <p><%= f.password_field :password_confirmation, placeholder: "Password confirmation" %></p>
+    </div><br>
+
+    <div class="field">
+      <p><%= f.label :picture, "Attach a Picture" %></p>
+    </div><br>
+
+    <div class="field">
+      <p><%= f.file_field :picture %></p>
+    </div><br>
+
+    <div class="field">
+      <p><%= f.submit %></p>
+    </div><br>
+  <% end %>
+
+</div>

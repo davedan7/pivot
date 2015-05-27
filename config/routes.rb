@@ -26,8 +26,9 @@ Rails.application.routes.draw do
 
   namespace :businesses, as: :business, path: '/:business' do
     resources :jobs, except: [:destroy]
+    resources :administrative_management #, only: [:index, :show]
   end
-  #
+  
   # namespace :businesses do
   #   resources :administrative_management, only: [:index, :show]
   # end
@@ -60,8 +61,10 @@ Rails.application.routes.draw do
   get "/home", to:                  "home#index"
   get '/about', to:                  "home#about"
 
-  get "/:business/admin_management", to: "businesses/administrative_management#index",   as: :business_administrative_management_index
-  get "/:business/admin_management/add", to: "businesses/administrative_management#add", as: :add_business_admin
-  post "/:business/admin_management/add", to: "businesses/administrative_management#submit", as: :submit_business_admin
+  # get "/:business/admin_management", to: "businesses/administrative_management#index",   as: :business_administrative_management_index
+  # post "/:business/admin_management", to: "businesses/administrative_management#index",   as: :business_administrative_management
+
+  # get "/:business/admin_management/add", to: "businesses/administrative_management#add", as: :add_business_admin
+  # post "/:business/admin_management/add", to: "businesses/administrative_management#submit", as: :submit_business_admi
 
 end
