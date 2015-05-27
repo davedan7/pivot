@@ -17,8 +17,8 @@ class Businesses::JobsController < ApplicationController
   def create
     @business = User.find_by(slug: params[:business])
     @job = Job.new(job_params)
-    @job.employer_id = current_user.employer_id
     if @job.save
+      @business.jobs << @job
       flash[:success] = "Job posting successfully created!"
       redirect_to business_jobs_path
     else
