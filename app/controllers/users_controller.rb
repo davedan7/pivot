@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      flash.now[:success] = "#{@user.username} successfully updated"
       redirect_to @user
     else
       flash[:danger] = @user.errors.full_messages
