@@ -2,29 +2,33 @@
   <div class="jobs-list row">
     <div class="col-md-6 col-md-offset-3">
 
-      <h1><%= @category.name %> Jobs</h1>
-      <!-- <h2>All Jobby Jobs</h2> -->
 
       <% @jobs.each do |job| %>
 
         <div class="jobs-individual">
 
           <% if logged_in? %>
-
             <% if current_user.admin? %>
-              <h5> <%= link_to "Edit", edit_admin_job_path(job) %> </h5>
-              <h4> <%= link_to "#{job.title}",job_path(job) %> </h4>
-            <% else %>
-              <h4> <%= link_to "#{job.title}",job_path(job) %> </h4>
-            <% end %>
-            <% else %>
-              <h4> <%= link_to "#{job.title}",job_path(job) %> </h4>
+              <h3> <%= link_to "#{job.title}",job_path(job) %> </h4>
+              <p> <%= job.description %> </p>
+              <div class="btn center-block">
+                <%= link_to "Edit", edit_admin_job_path(job), class: 'btn btn-md btn-primary' %>
+              </div>
 
+            <% else %>
+              <h3> <%= link_to "#{job.title}",job_path(job) %> </h4>
+              <p> <%= job.description %> </p>
           <% end %>
+
+            <% else %>
+              <h3> <%= link_to "#{job.title}",job_path(job) %> </h4>
+              <p> <%= job.description %> </p>
+            <% end %>
 
         </div>
 
       <% end %>
+
 
     </div>
   </div>
