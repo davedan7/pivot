@@ -5,10 +5,6 @@ class Businesses::AdministrativeManagementController < BusinessesController
     redirect_to "/errors/file_not_found" unless correct_priveleges
   end
 
-  # def index
-  #   @business_admins = User.business_admins(current_user.id)
-  # end
-
   def index
     @business_admins = current_user.employer.business_managers
   end

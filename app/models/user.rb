@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
                                      }, default_url: "Handshake_icon.jpg"
 
 
-  validates_attachment_content_type :picture, content_type: ["image/jpg", "image/jpeg", "image/png"]
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
   has_many :job_applications, dependent: :destroy
   has_many :jobs
@@ -25,8 +25,7 @@ class User < ActiveRecord::Base
 
   before_validation :generate_slug
 
-  enum role: %w(applicant business admin business_admin) #Admin = customer service of the site (the highest level of admin). Business = login for owner of the business. business_admin = login for manager of the business
-  # Heirarchy: admin => business => business_admin => applicant
+  enum role: %w(applicant business admin business_admin)
 
   scope :online_businesses, -> { where(business_status: true) }
   scope :offline_businesses, -> { where(business_status: false) }

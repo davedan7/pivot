@@ -30,18 +30,9 @@ class CheckoutsController < ApplicationController
     @jobs = params[:jobs].keys.map { |id| Job.find(id.to_i)}
   end
 
-  # def increase
-  #   @cart.increase_quantity(params[:job_id])
-  #   redirect_to checkout_path
-  # end
-  #
-  # def decrease
-  #   @cart.decrease_quantity(params[:job_id])
-  #   redirect_to checkout_path
-  # end
-
   def remove
     job = @cart.remove_job(params[:job_id])
     redirect_to checkout_path
   end
+  
 end
