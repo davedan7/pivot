@@ -1,14 +1,20 @@
 <h1><%= "#{current_user.name} Dashboard" %></h1>
 
-<%= image_tag current_user.picture.url(:small) %>
-<p>
-  Your Name: <%= current_user.name %><br>
-  Personal Information: <%= current_user.description %>
-</p>
-<%= button_to "Edit Profile", edit_user_path(current_user), method: :get %>
+<%= image_tag current_user.picture.url(:small), class: 'center-block' %>
+<div class="container user-show">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <p>
+        Your Name: <%= current_user.name %><br>
+        Personal Information: <%= current_user.description %>
+      </p>
+      <%= button_to "Edit Profile", edit_user_path(current_user), method: :get %>
 
-<%= button_to "Application History", user_job_applications_path, method: :get %>
-<% if current_business_admin? %>
-  <%= button_to "Business Admin Management", business_administrative_management_index_path(business: current_user.employer.slug), method: :get  %>
-  <%= button_to "Edit my Business", edit_user_path(current_user.employer), method: :get %>
-<% end %>
+      <%= button_to "Application History", user_job_applications_path, method: :get %>
+      <% if current_business_admin? %>
+        <%= button_to "Business Admin Management", business_administrative_management_index_path(business: current_user.employer.slug), method: :get  %>
+        <%= button_to "Edit my Business", edit_user_path(current_user.employer), method: :get %>
+      <% end %>
+    </div>
+  </div>
+</div>
