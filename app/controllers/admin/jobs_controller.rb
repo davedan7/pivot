@@ -1,6 +1,5 @@
 class Admin::JobsController < Admin::BaseController
   def index
-    # @jobs = Job.all
     @jobs = Job.paginate(page: params[:page])
   end
 

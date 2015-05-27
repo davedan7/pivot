@@ -10,8 +10,9 @@ class Businesses::BusinessesController < ApplicationController
 
   def create
     @business = User.new(business_params)
-    if @business.save && @business.update(business_status: false)
-      @business.update(employer_id: @business.id)
+    if @business.save
+      session[:user_id] = @business.id
+      @business.update({employer_id: @business.id})
       UserNotifier.business_registration_confirmation(@business).deliver_now
       flash[:success] = "You successfully applied for an account"
       redirect_to confirm_business_application_path(id: @business)
@@ -25,6 +26,10 @@ class Businesses::BusinessesController < ApplicationController
     @business = User.find_by(id: params[:id].to_i)
   end
 
+  def update
+    @business = User.find_by
+  end
+
   private
 
 
@@ -34,7 +39,8 @@ class Businesses::BusinessesController < ApplicationController
                                    :email,
                                    :location,
                                    :description,
-                                   :password
+                                   :password,
+                                   :business_status
                                    ).merge(role: 1)
     end
 end

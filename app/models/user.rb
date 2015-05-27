@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
 
   scope :online_businesses, -> { where(business_status: true) }
   scope :offline_businesses, -> { where(business_status: false) }
+  scope :pending_approval, -> { where(pending: true, role: 1) }
 
   before_update :business_status_email?
 
@@ -69,9 +70,17 @@ class User < ActiveRecord::Base
     end
   end
 
+  def change_business_status
+    if self.business_status == true
+      self.business_status = false
+    else
+      self.business_status = true
+    end
+  end
+
   private
 
-  def business_status_changed?
-    UserNotifier.business_status_changed(current_user).deliver_now if business_status_changed?
+  def business_status_email?
+      UserNotifier.business_status_changed(self).deliver_now if business_status_changed?
   end
 end

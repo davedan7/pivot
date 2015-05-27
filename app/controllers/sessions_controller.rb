@@ -4,11 +4,11 @@ class SessionsController < ApplicationController
 
   def create
     if request.env['omniauth.auth']
-      @user             = User.find_or_create_by_auth(request.env['omniauth.auth'])
+      @user              = User.find_or_create_by_auth(request.env['omniauth.auth'])
       flash[:success]    = "Succsessfully Logged In As #{@user.username}"
-      session[:user_id] = @user.id
+      session[:user_id]  = @user.id
       if @cart.contents.empty?
-        redirect_to @user
+        redirect_to current_user
         else
         redirect_to checkout_path
       end
