@@ -34,7 +34,7 @@ FactoryGirl.define do
     email     "johnsmith@example.com"
     location "denver"
     password  "password"
-    role      0
+    role      3
     employer_id 1
   end
 
