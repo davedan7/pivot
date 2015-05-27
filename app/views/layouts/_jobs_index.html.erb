@@ -34,8 +34,9 @@
 
       <% end %>
 
-
-
+      <% if current_admin? || current_business? || current_business_admin? %>
+        <%= link_to "Add New Job", new_business_job_path(business: current_user.slug), class: 'btn btn-md btn-primary' %>
+      <% end %>
 
 
     </div>
