@@ -1,37 +1,49 @@
-<h1>Admin Dashboard - Welcome <%= current_user.name %>!</h1>
-<h3><%= image_tag current_user.picture.url(:small) %></h3>
+<div class="container dashboard-page">
+  <div class="jobs-list row">
+    <div class="col-md-6 col-md-offset-3">
 
-<div class="admin-links">
-  <div class="container">
-    <div class="col-md-8">
-      <p><%= button_to "All Categories", admin_categories_path, method: "get" %>
-      <%= button_to "New Category", new_admin_category_path, method: "get" %></p>
-      <p><%= button_to "All Jobs", admin_jobs_path, method: "get" %>
-      <%= button_to "Add New Job", new_admin_job_path, method: "get" %><br></p>
-      <%= button_to "Manage Businesses Status", admin_business_index_path, method: "get" %><br></p>
+
+      <h1>Admin Dashboard - Welcome <%= current_user.name %>!</h1>
+      <h3><%= image_tag current_user.picture.url(:small) %></h3>
+
+      <div class="admin-links">
+        <!-- <div class="container"> -->
+          <!-- <div class="col-md-8"> -->
+            <%= button_to "All Categories", admin_categories_path, method: "get", class: 'btn btn-md btn-primary' %>
+            <%= button_to "New Category", new_admin_category_path, method: "get", class: 'btn btn-md btn-primary' %>
+            <%= button_to "All Jobs", admin_jobs_path, method: "get", class: 'btn btn-md btn-primary' %>
+            <%= button_to "Add New Job", new_admin_job_path, method: "get", class: 'btn btn-md btn-primary' %>
+            <%= button_to "Manage Businesses Status", admin_business_index_path, method: "get", class: 'btn btn-md btn-primary' %>
+          <!-- </div> -->
+        <!-- </div> -->
+      </div>
+
+
+      <h3>Businesses Pending Approval</h3>
+      <!-- <div class="container"> -->
+        <!-- <div class="col-md-4"> -->
+
+          </div>
+            <table>
+              <tr>
+                 <td>Business</td>
+                 <td>Status</td>
+                 <td>Options</td>
+              </tr>
+              <% @pending_businesses.each do |business| %>
+              <tr>
+                <td> <%= business.name %> </td>
+                <td> <%= business.show_status %> </td>
+                <td> <%= button_to "Approve Business", admin_business_path( business.id, business_status: true), method: 'put', class: "btn btn-sm btn-primary" %>
+                     <%= button_to "Decline  Business", admin_business_path(business, business_status: false), method: 'delete', class: "btn btn-sm btn-danger" %></td>
+              </tr>
+            <% end %>
+            </table>
+          </div>
+        <!-- </div>         -->
+      <!-- </div> -->
+
+
     </div>
   </div>
-</div>
-
-
-<h3>Businesses Pending Approval</h3>
-<div class="container">
-  <div class="col-md-4">
-
-  </div>
-  <table>
-    <tr>
-       <td>Business</td>
-       <td>Status</td>
-       <td>Options</td>
-    </tr>
-    <% @pending_businesses.each do |business| %>
-    <tr>
-      <td><%= business.name %></td>
-      <td><%= business.show_status %></td>
-      <td><%= button_to "Approve Business", admin_business_path( business.id, business_status: true), method: 'put', class: "btn btn-primary" %> <%= button_to "Decline  Business", admin_business_path(business, business_status: false), method: 'delete', class: "btn btn-danger" %></td>
-    </tr>
-  <% end %>
-  </table>
-</div>
 </div>
