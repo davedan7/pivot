@@ -1,5 +1,13 @@
 class Businesses::AdministrativeManagementController < BusinessesController
+  before_action :require_business_status
 
+  def require_business_status
+    redirect_to "/errors/file_not_found" unless correct_priveleges
+  end
+
+  def correct_priveleges
+    current_business? || current_admin? 
+  end
   # def index
   #   @business_admins = User.business_admins(current_user.id)
   # end
