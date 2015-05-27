@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
                                        thumb: '100x100',
                                        small: '200x200',
                                        medium: '300x300'
-                                     }, default_url: "Hipster_with_glasses.jpg"
+                                     }, default_url: "Handshake_icon.jpg"
+
 
   validates_attachment_content_type :picture, content_type: ["image/jpg", "image/jpeg", "image/png"]
 
@@ -30,6 +31,8 @@ class User < ActiveRecord::Base
   scope :online_businesses, -> { where(business_status: true) }
   scope :offline_businesses, -> { where(business_status: false) }
 
+  before_update :business_status_email?
+
   def self.find_or_create_by_auth(auth_data)
     user = User.find_or_create_by(id: auth_data['uid'][1..3])
     if user.name != auth_data["info"]["name"]
@@ -50,10 +53,6 @@ class User < ActiveRecord::Base
     created_at.strftime("%A, %d %b %Y %l:%M %p")
   end
 
-  def self.business_admins(id) # can this be refactored?
-    User.where(employer_id: id)
-  end
-
   def online?
     business_status == true
   end
@@ -68,5 +67,11 @@ class User < ActiveRecord::Base
     else
       "Offline"
     end
+  end
+
+  private
+
+  def business_status_changed?
+    UserNotifier.business_status_changed(current_user).deliver_now if business_status_changed?
   end
 end

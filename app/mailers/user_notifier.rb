@@ -14,6 +14,12 @@ class UserNotifier < ApplicationMailer
 
   def business_registration_confirmation(business)
     @business = business
-    mail(to: "turing.pivot.group@gmail.com", subject: "Business Application from: #{@business.name}")
+    mail(to: @business.email, subject: "Business Application from: #{@business.name}")
+  end
+
+  def business_status_changed(business)
+    @business = business
+    mail(to: @business.email, subject: "Online/Offline Status has been changed")
+
   end
 end
