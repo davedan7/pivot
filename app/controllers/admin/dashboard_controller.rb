@@ -1,5 +1,5 @@
 class Admin::DashboardController < Admin::BaseController
   def show
-    @pending_businesses = User.offline_businesses
+    @pending_businesses = User.pending_approval
   end
 end

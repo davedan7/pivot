@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :jobs, except: [:destroy]
     resources :categories
-    resources :business, only: [:update, :destroy]
+    resources :business, only: [:update, :destroy, :index]
   end
 
   namespace :user do
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   # namespace :businesses do
   #   resources :administrative_management, only: [:index, :show]
   # end
-
+  patch "/admin/business/status/:id", to: "admin/business#change_status", as: :admin_business_change_status
   get "/business/dashboard", to: "businesses/businesses#dashboard"
   get "/business/new", to: "businesses/businesses#new_account", as: :new_business
   post "/business/submit", to: "businesses/businesses#create"
