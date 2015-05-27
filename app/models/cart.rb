@@ -2,7 +2,7 @@ class Cart
   attr_reader :contents, :flash_type, :flash_message
 
   def initialize(initial_contents)
-    @contents = initial_contents || []
+    @contents = initial_contents || {}
     @flash_type = ""
     @flash_message = ""
   end
@@ -12,9 +12,15 @@ class Cart
       @flash_type    = "danger"
       @flash_message = "This job is already in your basket!"
     else
-      contents << job_id
+      contents[job_id] = "none"
       @flash_type = "success"
       @flash_message = "You have added the job, #{Job.find(job_id).title}, to your basket."
+    end
+  end
+
+  def add_resume(resume)
+    contents.keys.each do |job_id|
+      contents[job_id] = resume
     end
   end
 
@@ -23,7 +29,7 @@ class Cart
   # end
 
   def count_all
-    contents.length
+    contents.keys.count
   end
 
   # def quantity(job_id)
@@ -39,7 +45,7 @@ class Cart
   # end
 
   def find_jobs
-    contents.map { |job_id| Job.find(job_id)}
+    contents.keys.map { |job_id| Job.find(job_id)}
   end
 
   # def find_valid_jobs

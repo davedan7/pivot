@@ -46,7 +46,8 @@ Rails.application.routes.draw do
   post "admin/job_application/update", to:    "admin/job_applications#update"
 
   get "checkout/summary", to:       "checkouts#summary"
-  get "checkout/confirmation", to:  "checkouts#confirmation"
+  post "checkout/confirmation", to:  "checkouts#confirmation"
+  get "checkout/resume", to:  "checkouts#resume", as: :checkout_resume
   post "checkout/remove", to:       "checkouts#remove"
   get "checkout", to:               "checkouts#show"
   get 'checkout', to:               "checkouts#edit"
