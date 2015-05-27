@@ -21,7 +21,7 @@ RSpec.describe "admin page" do
 
    visit checkout_path
 
-   click_button "Checkout"
+   click_button "Submit"
    click_button "YES"
 
    visit admin_job_applications_dashboard_path
@@ -29,7 +29,7 @@ RSpec.describe "admin page" do
 
    expect(page).to have_content(2)
    expect(page).to have_css("div.application-dashboard-page")
-   
+
    within(".admin_status_list") do
      expect(page).to have_content("Received")
      expect(page).to have_content(2)

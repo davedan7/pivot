@@ -23,7 +23,7 @@ RSpec.describe "Business User" do
 
       visit checkout_path
 
-      click_button "Checkout"
+      click_button "Submit"
       click_button "YES"
 
       visit admin_job_applications_dashboard_path
@@ -32,7 +32,7 @@ RSpec.describe "Business User" do
       expect(page).to have_content("received")
 
       click_link("Processing")
-      
+
 
       expect(page).to have_content("Current Status: processing")
     end

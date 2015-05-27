@@ -23,7 +23,7 @@ RSpec.describe "Admin" do
 
       visit checkout_path
 
-      click_button "Checkout"
+      click_button "Submit"
       click_button "YES"
 
       visit admin_job_applications_dashboard_path
