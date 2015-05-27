@@ -27,7 +27,6 @@ class CheckoutsController < ApplicationController
   end
 
   def summary
-    # byebug
     @jobs = params[:jobs].keys.map { |id| Job.find(id.to_i)}
   end
 

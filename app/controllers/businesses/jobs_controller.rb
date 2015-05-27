@@ -5,13 +5,9 @@ class Businesses::JobsController < ApplicationController
     redirect_to "/errors/file_not_found" unless correct_priveleges
   end
 
-  def correct_priveleges
-    current_business? || current_admin? || current_business_admin?
-  end
-
   def index
     @business = User.find_by(slug: params[:business])
-    @jobs = @business.jobs
+    @jobs = @business.jobs.paginate(page: params[:page])
   end
 
   def new
@@ -42,17 +38,17 @@ class Businesses::JobsController < ApplicationController
     @categories = Category.all
   end
 
-def update
-  @business = User.find_by(slug: params[:business])
-  @job = @business.jobs.find(params[:id])
-  if @job.update(job_params)
-    flash[:sucess] = "#{@job.title} was updated"
-    redirect_to business_job_path(job_id: @job.id)
-  else
-    flash[:danger] = @job.errors.full_messages.join(", ")
-    render :edit
+  def update
+    @business = User.find_by(slug: params[:business])
+    @job = @business.jobs.find(params[:id])
+    if @job.update(job_params)
+      flash[:sucess] = "#{@job.title} was updated"
+      redirect_to business_job_path(job_id: @job.id)
+    else
+      flash[:danger] = @job.errors.full_messages.join(", ")
+      render :edit
+    end
   end
-end
 
   private
 

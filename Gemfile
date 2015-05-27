@@ -38,6 +38,7 @@ group :development, :test do
   gem 'pry'
   gem 'simplecov', :require => false
   gem 'nyan-cat-formatter'
+  gem 'brakeman'
 end
 
 group :production do

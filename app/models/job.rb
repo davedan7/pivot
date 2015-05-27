@@ -2,8 +2,8 @@ class Job < ActiveRecord::Base
 
   validates :title,        presence: true, uniqueness: true
   validates :description,  presence: true
-  # validates :posting_cost, presence: true, numericality: { greater_than: 0 }
-  # validates :user_id,      presence: true
+  validates :posting_cost, presence: true, numericality: { greater_than: 0 }
+  validates :user_id,      presence: true
 
   has_many :job_categories
   has_many :categories, through: :job_categories
