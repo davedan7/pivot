@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def business_status_changed?
-    UserNotifier.business_status_changed(current_user).deliver_now if business_status_changed?
+  def business_status_email?
+      UserNotifier.business_status_changed(self).deliver_now if business_status_changed?
   end
 end

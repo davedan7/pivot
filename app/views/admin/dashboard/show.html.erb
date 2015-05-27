@@ -2,8 +2,35 @@
 <h3><%= image_tag current_user.picture.url(:small) %></h3>
 
 <div class="admin-links">
-  <p><%= link_to "All Categories", admin_categories_path %><br></p>
-  <p><%= link_to "New Category", new_admin_category_path %><br></p>
-  <p><%= link_to "All Jobs", admin_jobs_path %><br></p>
-  <p><%= link_to "Add New Job", new_admin_job_path %><br></p>
+  <div class="container">
+    <div class="col-md-8">
+      <p><%= button_to "All Categories", admin_categories_path, method: "get" %>
+      <%= button_to "New Category", new_admin_category_path, method: "get" %>
+      <%= button_to "All Jobs", admin_jobs_path, method: "get" %>
+      <%= button_to "Add New Job", new_admin_job_path, method: "get" %><br></p>
+    </div>
+  </div>
+</div>
+
+
+<h3>Businesses Pending Approval</h3>
+<div class="container">
+  <div class="col-md-4">
+
+  </div>
+  <table>
+    <tr>
+       <td>Business</td>
+       <td>Status</td>
+       <td>Options</td>
+    </tr>
+    <% @pending_businesses.each do |business| %>
+    <tr>
+      <td><%= business.name %></td>
+      <td><%= business.show_status %></td>
+      <td><%= button_to "Approve Business", admin_business_path( business.id, business_status: true), method: 'put', class: "btn btn-primary" %> <%= button_to "Decline  Business", admin_business_path(business, business_status: false), method: 'delete', class: "btn btn-danger" %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
 </div>

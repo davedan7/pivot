@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :jobs, except: [:destroy]
     resources :categories
+    resources :business, only: [:update, :destroy]
   end
 
   namespace :user do
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
     resources :jobs, except: [:destroy]
     resources :administrative_management #, only: [:index, :show]
   end
-  
+
   # namespace :businesses do
   #   resources :administrative_management, only: [:index, :show]
   # end
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
   get "/business/dashboard", to: "businesses/businesses#dashboard"
   get "/business/new", to: "businesses/businesses#new_account", as: :new_business
   post "/business/submit", to: "businesses/businesses#create"
+  # post "/business/update/:id", to: "businesses/businesses#update"
   get "/business/confirmation", to: "businesses/businesses#confirmation", as: :confirm_business_application
 
   get "/login/twitter", to: "sessions#twitter"
