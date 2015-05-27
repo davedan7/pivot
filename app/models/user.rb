@@ -50,10 +50,6 @@ class User < ActiveRecord::Base
     created_at.strftime("%A, %d %b %Y %l:%M %p")
   end
 
-  def self.business_admins(id) # can this be refactored?
-    User.where(employer_id: id)
-  end
-
   def online?
     business_status == true
   end
@@ -69,4 +65,5 @@ class User < ActiveRecord::Base
       "Offline"
     end
   end
+
 end
