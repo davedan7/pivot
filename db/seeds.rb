@@ -71,7 +71,7 @@ class Seed
 
   def create_job_categories
     50.times do
-      JobCategory.create(job_id: rand(1..(Job.all.count-1)), category_id: rand(1..(Category.all.count-1)))
+      JobCategory.create(job_id: rand(1..(Job.all.count)), category_id: rand(1..(Category.all.count)))
     end
   end
 
