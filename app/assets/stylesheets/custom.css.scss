@@ -150,7 +150,7 @@ body {
 }
 
 .container {
-  margin: 20px auto 40px auto;
+  margin: 0px auto 40px auto;
 }
 // body /////////////////////////////////////////
 
@@ -302,6 +302,24 @@ body {
 
 // jobs ///////////////////////////////////////////////
 
+
+
+
+
+// admin ///////////////////////////////////////////////
+.application-dashboard-page  {
+  text-align: center;
+
+  table  {
+    margin: 0 auto;
+  }
+
+
+}
+
+
+
+// admin ///////////////////////////////////////////////
 
 
 
@@ -590,9 +608,9 @@ table td {
   margin-left: 210px;
 }
 
-.filter {
-  margin-left: 180px;
-}
+// .filter {
+//   margin-left: 180px;
+// }
 
 .businesses {
   background-color: black;
