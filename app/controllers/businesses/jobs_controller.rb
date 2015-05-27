@@ -1,4 +1,13 @@
 class Businesses::JobsController < ApplicationController
+  before_action :require_admin, only: [:new, :create, :edit, :update]
+
+  def require_admin
+    redirect_to "/errors/file_not_found" unless correct_priveleges
+  end
+
+  def correct_priveleges
+    current_business? || current_admin? || current_business_admin?
+  end
 
   def index
     @business = User.find_by(slug: params[:business])
@@ -16,8 +25,9 @@ class Businesses::JobsController < ApplicationController
 
   def create
     @business = User.find_by(slug: params[:business])
-    @job = @business.jobs.new(job_params)
+    @job = Job.new(job_params)
     if @job.save
+      @business.jobs << @job
       flash[:success] = "Job posting successfully created!"
       redirect_to business_jobs_path
     else

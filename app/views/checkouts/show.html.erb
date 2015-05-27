@@ -23,6 +23,10 @@
 
       <% if current_user %>
       <%= button_to "Checkout", checkout_confirmation_path, method: :get %>
+      <%= form_for :job_application, url: checkout_confirmation_path do |f| %>
+      <%= f.label "Upload Your Resume" %>
+      <%= f.file_field :resume %>
+      <% end %>
       <% else %>
       <%= button_to "Checkout", new_user_path(origin: {destination: "checkout"}), method: :get %>
       <% end %>

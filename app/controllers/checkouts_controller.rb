@@ -1,6 +1,7 @@
 class CheckoutsController < ApplicationController
 
   def create
+    byebug
     job = Job.find(params[:job_id])
     if job.retired
       flash[:danger] = "Retired job cannot be added to cart"

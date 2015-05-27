@@ -1,0 +1,16 @@
+<h1>Hi <%= @business.name %>!</h1>
+
+<p>Your business status has been changed to <%= @business.show_status %> at Jo.bs.</p>
+<p>If you approve this change no further action is required.</p>
+
+<p>Thanks,</p>
+<p>The Jo.bs Dev Team</p>
+
+<h1>Business Information</h1>
+
+<h3>Applicant: <%= @business.name %> - email: <%= @business.email %></h3>
+  <h4>Applied On: <%= @business.date_registered %></h4>
+    <h4>Current Status: <%= @business.show_status %></h4>
+    <h5>Expect a response to your application in 1-3 business days</h5>
+
+    <h5>Sincerly,</h5><br><h5>Jo.bs</h5>

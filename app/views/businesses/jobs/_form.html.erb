@@ -1,5 +1,5 @@
 <div class="form">
-  <%= form_for [:business, @job] do |f| %>
+  <%= form_for @job, url: {controller: "businesses/jobs", action: "update", id: @job} do |f| %>
     <div>
       <%= f.text_field :title, placeholder: "Job title"  %><br>
     </div><br>
