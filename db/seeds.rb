@@ -30,6 +30,7 @@ class Seed
   end
 
   def create_users
+    User.create(name: "Default User", email: "default@example.com", username: "default", password: "password", role: 0, location: "Denver", description: "Default user for Heroku")
     20.times do
       User.create(name: Faker::Name.name, email: Faker::Internet.email, username: Faker::Internet.user_name, password: "password", role: 0, location: Faker::Address.city)
     end

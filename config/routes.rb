@@ -27,30 +27,26 @@ Rails.application.routes.draw do
 
   namespace :businesses, as: :business, path: '/:business' do
     resources :jobs, except: [:destroy]
-    resources :administrative_management #, only: [:index, :show]
+    resources :administrative_management
   end
 
-  # namespace :businesses do
-  #   resources :administrative_management, only: [:index, :show]
-  # end
   patch "/admin/business/status/:id", to: "admin/business#change_status", as: :admin_business_change_status
-  get "/business/dashboard", to: "businesses/businesses#dashboard"
-  get "/business/new", to: "businesses/businesses#new_account", as: :new_business
-  post "/business/submit", to: "businesses/businesses#create"
-  # post "/business/update/:id", to: "businesses/businesses#update"
-  get "/business/confirmation", to: "businesses/businesses#confirmation", as: :confirm_business_application
+  get "/business/dashboard", to:          "businesses/businesses#dashboard"
+  get "/business/new", to:                "businesses/businesses#new_account", as: :new_business
+  post "/business/submit", to:            "businesses/businesses#create"
+  get "/business/confirmation", to:       "businesses/businesses#confirmation", as: :confirm_business_application
 
-  get "/login/twitter", to: "sessions#twitter"
+  get "/login/twitter", to:         "sessions#twitter"
   get '/auth/:provider/callback' => 'sessions#create'
 
-  get "orders/payment", to:         "orders#payment"
+  get "orders/payment", to:                   "orders#payment"
   get "admin/job_applications/dashboard", to: "admin/job_applications#dashboard"
   get "admin/job_application", to:            "admin/job_applications#show"
   post "admin/job_application/update", to:    "admin/job_applications#update"
 
   get "checkout/summary", to:       "checkouts#summary"
-  post "checkout/confirmation", to:  "checkouts#confirmation"
-  get "checkout/resume", to:  "checkouts#resume", as: :checkout_resume
+  post "checkout/confirmation", to: "checkouts#confirmation"
+  get "checkout/resume", to:        "checkouts#resume", as: :checkout_resume
   post "checkout/remove", to:       "checkouts#remove"
   get "checkout", to:               "checkouts#show"
   get 'checkout', to:               "checkouts#edit"
@@ -63,11 +59,5 @@ Rails.application.routes.draw do
   get "admin/dashboard", to:        "admin/dashboard#show"
   get "/home", to:                  "home#index"
   get '/about', to:                  "home#about"
-
-  # get "/:business/admin_management", to: "businesses/administrative_management#index",   as: :business_administrative_management_index
-  # post "/:business/admin_management", to: "businesses/administrative_management#index",   as: :business_administrative_management
-
-  # get "/:business/admin_management/add", to: "businesses/administrative_management#add", as: :add_business_admin
-  # post "/:business/admin_management/add", to: "businesses/administrative_management#submit", as: :submit_business_admi
 
 end
