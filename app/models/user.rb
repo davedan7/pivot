@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
                                      }, default_url: "Handshake_icon.jpg"
 
 
-  validates_attachment_content_type :picture, content_type: ["image/jpg", "image/jpeg", "image/png"]
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
   has_many :job_applications, dependent: :destroy
   has_many :jobs
