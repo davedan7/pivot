@@ -1,7 +1,12 @@
 class Businesses::AdministrativeManagementController < BusinessesController
 
+  # def index
+  #   @business_admins = User.business_admins(current_user.id)
+  # end
+
   def index
-    @business_admins = User.business_admins(current_user.id)
+    # @business_admins = User.business_admin.wh
+    @business_admins = current_user.employer.business_managers
   end
 
   def add

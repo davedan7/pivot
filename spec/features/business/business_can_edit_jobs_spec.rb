@@ -5,8 +5,15 @@ RSpec.describe "As a business user" do
     business = create(:business_user)
     job = create(:job, title: "Engineer", description: "something", user_id: business.id)
 
-    visit business_job_path(job)
-    click_link "Edit"
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(business)
+
+    visit business_dashboard_path(business)
+    click_button "Manage your Job Postings"
+    expect(current_path).to eq(business_jobs_path(business: business.slug))
+    click_link_or_button "Engineer"
+    expect(current_path).to eq(business_job_path(business: business.slug, id: job.id))
+    save_and_open_page
+    click_link_or_button "Edit"
     fill_in "job[title]", with: "new title"
     click_button "Submit"
 

@@ -16,6 +16,7 @@ FactoryGirl.define do
     password  "password"
     role      1
     business_status true
+    employer_id 1
   end
 
   factory :super_user, class: User do
@@ -34,6 +35,7 @@ FactoryGirl.define do
     location "denver"
     password  "password"
     role      0
+    employer_id 1
   end
 
 end

@@ -5,7 +5,7 @@
   <% @jobs.each do |job| %>
     <div class="col-lg-3 col-md-4 col-sm-6">
       <!-- <%= image_tag User.find(job.user_id).picture.url(:thumb) %> -->
-      <%= job.title %>
+      <%= link_to "#{job.title}", business_job_path(id: job.id)  %>
       <%= job.description %>
       <%= button_to "Apply to Job", checkout_path(job_id: job.id) %>
 

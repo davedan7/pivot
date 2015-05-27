@@ -8,13 +8,22 @@ class ApplicationController < ActionController::Base
   before_action :load_categories
   helper_method :current_user
   helper_method :logged_in?
+  helper_method :current_business_admin?
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
+  def current_business?
+    current_user && current_user.business?
+  end
+
   def current_admin?
     current_user && current_user.admin?
+  end
+
+  def current_business_admin?
+    current_user && current_user.business_admin?
   end
 
   def logged_in?

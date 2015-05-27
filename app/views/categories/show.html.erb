@@ -6,7 +6,7 @@
 
         <% @jobs.each do |job| %>
           <div class="jobs-individual">
-            <h3> <%= link_to job.title, business_jobs_path(job.user_id) %> </h3>
+            <h3> <%= link_to job.title, business_job_path(business: job.user.slug, id: job.id) %> </h3>
             <p> <%= job.description %> </p>
           </div>
         <% end %>

@@ -8,4 +8,8 @@
       <li><%= category.name %></li>
     <% end %>
   </ul>
-<p><%= link_to "Edit", edit_business_job_path(business: current_user.slug, job_id: @job.id) %></p>
+
+
+  <% if current_admin? || current_business_admin? || current_business? %>
+    <p><%= link_to "Edit", edit_business_job_path(business: @job.user.slug) %></p>
+  <% end %>
