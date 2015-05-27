@@ -79,25 +79,25 @@ a, a:focus, a:hover  {
 
 // navbar ///////////////////////////////////////////
 .navbar{
-   background-color: $black;
-   opacity: 1;
-   border-radius: 0px;
-   z-index: 999;
-   margin-bottom: 0px;
+  background-color: $black;
+  opacity: 1;
+  border-radius: 0px;
+  z-index: 999;
+  margin-bottom: 0px;
 
-   a {
-     color: $white;
-   }
+  a {
+    color: $white;
+  }
 
-   a:hover {
-     background-color: $gray-medium;
-   }
+  a:hover {
+    background-color: $gray-medium;
+  }
 
-   li {
-     a:hover{
-     background-color: $gray-medium;
-     }
-   }
+  li {
+    a:hover{
+      background-color: $gray-medium;
+    }
+  }
 }
 
 nav.navbar{
@@ -121,17 +121,10 @@ nav.navbar{
     display: block;
 }
 
-// .navbar li {
-//   color: $gray-medium;
-// }
+.navbar-toggle {
+  border-color: $gray-light;
+}
 
-// .nav.navbar-nav.navbar-right li a {
-//     color: $gray-medium;
-// }
-
-// .nav.navbar-nav.navbar-left li a {
-//     color: $white;
-// }
 // navbar ///////////////////////////////////////////
 
 
@@ -306,18 +299,30 @@ body {
 
 
 
+
+
 // admin ///////////////////////////////////////////////
-.application-dashboard-page  {
+.dashboard-page  {
   text-align: center;
+
+  h1  {
+    color: $blue-dark;
+    margin: 60px 0 20px 0;
+  }
 
   table  {
     margin: 0 auto;
   }
 
+  .admin-links  {
+    margin: 20px auto 40px auto;
+  }
+
+  .button_to  {
+    margin: 5px auto;
+  }
 
 }
-
-
 
 // admin ///////////////////////////////////////////////
 
