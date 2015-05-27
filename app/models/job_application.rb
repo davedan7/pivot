@@ -1,14 +1,5 @@
 class JobApplication < ActiveRecord::Base
-  has_attached_file :avatar, styles: {thumb: '100x100>',
-                                     square: '200x200#',
-                                     medium: '300x300>'},
-                             default_url: "beast2.png",
-                             storage: :s3,
-                             bucket: ENV['bucket'],
-                             s3_credentials: { access_key_id: ENV['AWSAccessKeyId'],
-                                               secret_access_key: ENV['AWSSecretKey'] }
-
- validates_attachment_content_type :resume, :content_type => ['application/pdf', 'application/xlsx']
+  mount_uploader :attachment, AttachmentUploader
 
   belongs_to :user
   belongs_to :job

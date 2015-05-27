@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526201718) do
+ActiveRecord::Schema.define(version: 20150527022153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,14 +38,11 @@ ActiveRecord::Schema.define(version: 20150526201718) do
 
   create_table "job_applications", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.integer  "status",              default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "status",     default: 0
     t.integer  "job_id"
-    t.string   "resume_file_name"
-    t.string   "resume_content_type"
-    t.integer  "resume_file_size"
-    t.datetime "resume_updated_at"
+    t.string   "resume"
   end
 
   add_index "job_applications", ["user_id"], name: "index_job_applications_on_user_id", using: :btree

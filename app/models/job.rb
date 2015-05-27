@@ -40,4 +40,8 @@ class Job < ActiveRecord::Base
       status = true
     end
   end
+
+  # Sets how many jobs are displayed per paginated page
+  self.per_page = 10
+
 end

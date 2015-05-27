@@ -242,6 +242,15 @@ body {
 .jobs-list {
   margin: 0 0 60px 0;
 
+  .pagination_centered  {
+    text-align: center;
+    cursor: default;
+
+    .pagination  {
+      margin: 20px auto 10px auto;
+    }
+  }
+
   .jobs-individual {
     margin: 40px;
     border-bottom: 1px solid $gray-light;
