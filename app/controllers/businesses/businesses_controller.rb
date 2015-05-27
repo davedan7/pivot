@@ -27,6 +27,7 @@ class Businesses::BusinessesController < ApplicationController
 
   private
 
+
     def business_params
       params.require(:user).permit(:name,
                                    :username,

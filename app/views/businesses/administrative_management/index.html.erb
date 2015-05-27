@@ -1,7 +1,27 @@
-<%= link_to "Add New Administrator", add_business_admin_path(business: current_user.slug) %>
 
-<% @business_admins.each do |admin| %>
-  <%= admin.name %><br>
-  <%= admin.title %><br>
-  <%= admin.email %><br>
-<% end %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-8 col-md-offset-2">
+      <%= link_to "Add New Administrator", new_business_administrative_management_path(business: current_user.employer.slug), class: "btn btn-default" %> <br>
+      <table>
+        <tr>
+          <td>Admin Name</td>
+          <td>Admin Title</td>
+          <td>Admin Email</td>
+          <td>Admin Options</td>
+        </tr>
+          <% @business_admins.each do |admin| %>
+            <tr>
+              <td><%= admin.name %></td>
+              <td><%= admin.title %></td>
+              <td><%= admin.email %></td>
+              <td>
+              <%= button_to "Edit", edit_business_administrative_management_path(admin, business: admin.employer.slug), method: "get" %>
+              <%= button_to "Delete", business_administrative_management_path(admin, business: admin.employer.slug), method: "delete" %>
+              </td>
+            </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>
+</div>
