@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      # UserNotifier.send_signup_email(@user).deliver_now
+      UserNotifier.send_signup_email(@user).deliver_now
       flash[:success] = "User has been successfully created!"
       if @cart.contents.empty?
         redirect_to @user
@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      flash.now[:success] = "#{@user.username} successfully updated"
       redirect_to @user
     else
       flash[:danger] = @user.errors.full_messages
