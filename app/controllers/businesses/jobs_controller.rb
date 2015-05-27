@@ -5,10 +5,6 @@ class Businesses::JobsController < ApplicationController
     redirect_to "/errors/file_not_found" unless correct_priveleges
   end
 
-  def correct_priveleges
-    current_business? || current_admin? || current_business_admin?
-  end
-
   def index
     @business = User.find_by(slug: params[:business])
     @jobs = @business.jobs
