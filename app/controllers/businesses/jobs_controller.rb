@@ -1,4 +1,13 @@
 class Businesses::JobsController < ApplicationController
+  before_action :require_admin, only: [:new, :create, :edit, :update]
+
+  def require_admin
+    redirect_to "/errors/file_not_found" unless correct_priveleges
+  end
+
+  def correct_priveleges
+    current_business? || current_admin? || current_business_admin?
+  end
 
   def index
     @business = User.find_by(slug: params[:business])
