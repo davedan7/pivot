@@ -48,7 +48,10 @@ class Seed
 
   def populate_business_employer
     users = User.where(role:1)
-    users.each { |user| user.employer_id = user.id }
+    users.each do |user|
+      user.employer_id = user.id
+      user.save
+    end
   end
 
   def create_business_admins
