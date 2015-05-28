@@ -9,6 +9,7 @@
         <% if current_admin? %>
         <p>Current Status: <%= business.show_status %> <%= button_to "Change Status", admin_business_change_status_path(business), method: 'patch' %></p>
         <p><%= button_to "Edit Business", edit_user_path(business), method: 'get' %></p>
+        <p><%= button_to "Manage Business Administrators", business_administrative_management_index_path(business), method: 'get' %></p>
         <% end %>
       </div>
     </div>

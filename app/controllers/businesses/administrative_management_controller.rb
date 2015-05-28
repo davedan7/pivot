@@ -6,10 +6,12 @@ class Businesses::AdministrativeManagementController < BusinessesController
   end
 
   def index
-    @business_admins = current_user.employer.business_managers
+    @user = User.find params[:business]
+    @business_admins = @user.business_managers
   end
 
   def new
+    @user = User.find params[:business]
     @business_admin = User.new
   end
 
