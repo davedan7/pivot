@@ -1,10 +1,24 @@
-<h1>Are you sure you want to complete this transation?</h1>
+<br>
+<h3>Are you sure you want to apply to the following jobs?</h3>
 
-  <ul>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Company Name</th>
+      <th>Job Title</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @jobs.each do |job| %>
-    <li><%= job.title %></li>
+      <tr>
+        <td><%= job.user.username %></td>
+        <td><%= job.title %></td>
+      </tr>
     <% end %>
-  </ul>
+  </tbody>
+</table>
 
-<%= button_to "YES", job_applications_path(job_application: { user_id: current_user.id}) %>
-<%= button_to "NO", checkout_path, method: 'get' %>
+<div class="text-center">
+  <%= button_to "YES", job_applications_path(job_application: { user_id: current_user.id}), class: 'btn btn-primary' %>
+  <%= button_to "NO", checkout_path, method: 'get', class: 'btn btn-primary'%>
+</div>
