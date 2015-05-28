@@ -1,14 +1,14 @@
 <div class="form">
-  <%= form_for([:admin, @category]) do |f|%>
-    <div>
-      <%= f.text_field :name, placeholder: "Name" %>
-    </div><br>
+ <%= form_for([:admin, @category]) do |f|%>
+   <div>
+     <%= f.text_field :name, placeholder: "Name" %>
+   </div><br>
 
-    <div>
-      <%= f.text_area :description, placeholder: "Description" %>
-    </div><br>
-    <div class="submit">
-      <%= f.submit %>
-    </div>
-  <% end %>
+   <div>
+     <%= f.text_area :description, placeholder: "Description" %>
+   </div><br>
+   <div class="submit">
+     <%= f.submit %>
+   </div>
+ <% end %>
 </div>

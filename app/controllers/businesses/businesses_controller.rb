@@ -11,7 +11,6 @@ class Businesses::BusinessesController < ApplicationController
   def create
     @business = User.new(business_params)
     if @business.save
-      session[:user_id] = @business.id
       @business.update({employer_id: @business.id})
       UserNotifier.business_registration_confirmation(@business).deliver_now
       flash[:success] = "You successfully applied for an account"
