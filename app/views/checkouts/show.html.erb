@@ -16,7 +16,7 @@
 
           <td><%= job.user.username %></td>
           <td><%= job.title %></td>
-          <td><%= button_to "Remove", checkout_remove_path(job_id: job.id)%></td>
+          <td><%= button_to "Remove", checkout_remove_path(job_id: job.id), class: "btn btn-danger"%></td>
         </tr>
       <% end %>
       </table>
@@ -28,7 +28,7 @@
         <%= f.submit "Submit Resume(s)", class: "btn btn-primary" %>
         <% end %>
       <% else %>
-      <%= button_to "Must Login", new_user_path(origin: {destination: "checkout"}), method: :get %>
+      <%= button_to "Must Login", new_user_path(origin: {destination: "checkout"}), method: :get, class: "btn btn-primary" %>
       <% end %>
 
 
