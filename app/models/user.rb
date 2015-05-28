@@ -1,18 +1,18 @@
 class User < ActiveRecord::Base
   has_secure_password
+  
   has_attached_file :picture, styles: {micro: '50x50',
                                        thumb: '100x100',
                                        small: '200x200',
                                        medium: '300x300'
                                      }, default_url: "Handshake_icon.jpg"
 
-
-  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
-
   has_many :job_applications, dependent: :destroy
   has_many :jobs
   has_many :business_managers, class_name: "User",
                                foreign_key: "employer_id"
+
+  has_many :resumes
 
   belongs_to :employer,        class_name: "User"
 
