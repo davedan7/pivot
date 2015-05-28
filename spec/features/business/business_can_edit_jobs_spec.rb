@@ -11,7 +11,7 @@ RSpec.describe "As a business user" do
     click_button "Manage your Job Postings"
     expect(current_path).to eq(business_jobs_path(business: business.slug))
     click_link_or_button "Engineer"
-    expect(current_path).to eq(business_job_path(business: business.slug, id: job.id))
+    expect(current_path).to eq(job_path(id: job.id))
     click_link_or_button "Edit"
     fill_in "job[title]", with: "new title"
     click_button "Submit"

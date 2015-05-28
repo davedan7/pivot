@@ -14,7 +14,7 @@ RSpec.describe "admin jobs" do
       visit admin_dashboard_path
 
       within(".admin-links") do
-        click_link "All Jobs"
+        click_button "All Jobs"
       end
 
       expect(current_path).to eq(admin_jobs_path)
