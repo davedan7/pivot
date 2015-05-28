@@ -1,9 +1,13 @@
 class Businesses::AdministrativeManagementController < BusinessesController
-  before_action :require_business_status
-
-  def require_business_status
-    redirect_to "/errors/file_not_found" unless correct_priveleges
-  end
+  # before_action :require_business_status
+  #
+  # def require_business_status
+  #   redirect_to "/errors/file_not_found" unless correct_priveleges
+  # end
+  #
+  # def correct_priveleges
+  #   current_business? || current_business_admin? || current_admin?
+  # end
 
   def index
     @user = User.find(params[:business].to_s)
@@ -16,6 +20,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
   end
 
   def create
+    @user = User.find(params[:business].to_s)
     @business_admin = User.new(user_params)
     if current_user.business?
       @business_admin.employer_id = current_user.id
@@ -25,7 +30,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
 
     if @business_admin.save
       flash.now[:success] = "Business Admin successfully created."
-      redirect_to business_administrative_management_index_path(@business_admin, business: current_user.employer.slug)
+      redirect_to business_administrative_management_index_path(@business_admin, business: current_user.employer)
     else
       flash.now[:danger] = @business_admin.errors.full_messages.join(", ")
       render :new
@@ -40,7 +45,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
     @business_admin = User.find(params[:id])
     if @business_admin.update(user_params)
       flash.now[:success] = "Business Admin successfully edited."
-      redirect_to business_administrative_management_index_path(business: current_user.slug)
+      redirect_to business_administrative_management_index_path(business: current_user.employer.slug)
     else
       flash.now[:danger] = @business_admin.errors.full_messages.join(", ")
       render :new
@@ -50,7 +55,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
   def destroy
     @business_admin = User.find(params[:id])
     @business_admin.destroy
-    redirect_to business_administrative_management_index_path(business: current_user.employer.slug)
+    redirect_to request.referrer
   end
 
 
