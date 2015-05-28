@@ -7,12 +7,12 @@
       <h3><%= image_tag current_user.picture.url(:small) %></h3>
 
       <div class="admin-links">
-            <%= button_to "All Categories", admin_categories_path, method: "get", class: 'btn btn-md btn-primary' %>
-            <%= button_to "New Category", new_admin_category_path, method: "get", class: 'btn btn-md btn-primary' %>
-            <%= button_to "All Jobs", admin_jobs_path, method: "get", class: 'btn btn-md btn-primary' %>
+            <%= button_to "Manage Jobs", admin_jobs_path, method: "get", class: 'btn btn-md btn-primary' %>
             <%= button_to "Add New Job", new_admin_job_path, method: "get", class: 'btn btn-md btn-primary' %>
-            <%= button_to "Manage Businesses Status", admin_business_index_path, method: "get", class: 'btn btn-md btn-primary' %>
+            <%= button_to "New Category", new_admin_category_path, method: "get", class: 'btn btn-md btn-primary' %>
+            <%= button_to "Manage Categories", admin_categories_path, method: "get", class: 'btn btn-md btn-primary' %>
             <%= button_to "Application Dashboard", admin_job_applications_dashboard_path, method: "get", class: 'btn btn-md btn-primary' %>
+            <%= button_to "Manage Businesses Status", admin_business_index_path, method: "get", class: 'btn btn-md btn-primary' %>
       </div>
 
 
