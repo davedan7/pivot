@@ -23,20 +23,34 @@ $brown-dark: #685642;
 // colors /////////////////////////////////////////
 
 
+
+
+
+// forms /////////////////////////////////////////
+.form  {
+  input[type="checkbox"] {
+    margin: 4px 0 0 10px;
+  }
+
+  .collection {
+    margin: 10px auto;
+  }
+
+}
+
 .form-control  {
   margin: 0 0 15px 0;
 }
 
-.form-styles {
-  label  {
-    // margin: 10px auto 0 auto;
-  }
+// .form-styles {
+//   .btn  {
+//     // text-align: center;
+//     margin: 10px auto;
+//   }
+// }
+// forms /////////////////////////////////////////
 
-  .btn  {
-    // text-align: center;
-    margin: 10px auto;
-  }
-}
+
 
 
 
@@ -232,7 +246,8 @@ body {
 // business ///////////////////////////////////////////
   .individual-business  {
     margin: 50px 0 0 0;
-    min-height: 320px;
+    min-height: 330px;
+    max-height: 330px;
 
     .btn {
       align: bottom;
@@ -303,13 +318,15 @@ body {
 
 
 .thumbnail {
-  min-height: 250px;
+  min-height: 310px;
+  max-height: 310px;
   // width: 300px;
   // margin-left: 33%;
   margin: 30px;
   // opacity: 0.7;
   // background-color: cornsilk;
   text-align: center;
+
 }
 
 // jobs ///////////////////////////////////////////////
@@ -503,12 +520,6 @@ table td {
   width: 75%
 }
 
-.form {
-  align: center;
-  float: left;
-  margin-left: 43%;
-  width: 75%
-}
 
 .order-dashboard-page {
   align: center;
@@ -525,10 +536,11 @@ table td {
   padding: 10px;
 }
 
-.collection {
-  margin-left: -100px;
-  list-style: vertical;
-}
+// .collection {
+//   margin-left: -100px;
+//   list-style: vertical;
+//   padding: 20px;
+// }
 
 .filter {
   padding: 1em;

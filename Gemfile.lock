@@ -298,7 +298,7 @@ DEPENDENCIES
   brakeman
   byebug
   capybara
-  carrierwave
+  carrierwave (~> 0.9)
   coffee-rails (~> 4.1.0)
   database_cleaner
   factory_girl_rails

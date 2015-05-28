@@ -22,13 +22,15 @@
       </table>
 
       <% if current_user %>
-        <%= form_for :resume, url: checkout_confirmation_path, html: { multipart: true } do |f| %>
-        <%= f.label :resume %>
-        <%= f.file_field :resume %>
-        <%= f.submit "Submit Resume(s)", class: "btn btn-primary" %>
+        <% current_user.resumes.each do |resume| %>
+          <tr>
+            <td><%= resume.name %></td>
+            <td><%= link_to "Download Resume", resume.attachment_url %></td>
+          </tr>
         <% end %>
+        <%= button_to "Submit Application(s)", checkout_confirmation_path %>
       <% else %>
-      <%= button_to "Must Login", new_user_path(origin: {destination: "checkout"}), method: :get, class: "btn btn-primary" %>
+      <%= button_to "Submit", new_user_path(origin: {destination: "checkout"}), method: :get %>
       <% end %>
 
 
