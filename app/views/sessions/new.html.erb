@@ -1,25 +1,27 @@
 <div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 form-styles">
 
-  <h1>Login to Jo.bs</h1>
+      <h1>Login to Jo.bs</h1>
 
-    <%= form_for(:session, url: login_path) do |f| %>
+      <%= form_for(:session, url: login_path) do |f| %>
 
-      <div class="field">
-        <%= f.text_field :email, placeholder: 'Email' %>
-      </div><br>
+        <%= f.label :email, 'Email  (required)' %>
+        <%= f.email_field :email, class: 'form-control' %>
 
-      <div class="field">
-        <%= f.password_field :password, placeholder: 'Password' %>
-      </div><br>
+        <%= f.label :password, 'Password  (required)' %>
+        <%= f.password_field :password, class: 'form-control'%>
 
-      <div class="field">
-        <%= f.submit 'Submit'%>
-      </div><br>
+        <div class="text-center">
+          <%= f.submit "Login", class: "btn btn-primary" %>
+        </div>
 
-    <% end %>
+      <% end %>
 
-    <div class="field">
-      <%= link_to "Login with Twitter", login_twitter_path %>
+      <div class="text-center">
+        <%= link_to "Login with Twitter", login_twitter_path, class: "btn btn-primary" %>
+      </div>
+
     </div>
-
+  </div>
 </div>
