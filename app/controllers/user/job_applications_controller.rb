@@ -6,7 +6,8 @@ class User::JobApplicationsController < User::BaseController
       all_applications = JobApplication.all
       @job_applications = all_applications.select { |application| application.job.user.id == current_user.id}
     else
-      @job_applications = current_user.job_applications
+      all_applications = JobApplication.all
+      @job_applications = all_applications.select { |application| application.user_id == current_user.id}
     end
   end
 

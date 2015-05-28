@@ -1,9 +1,4 @@
 class JobApplicationsController < ApplicationController
-  
-  def index
-    @job_applications = JobApplication.all.where(user_id: current_user.id)
-  end
-
   def create
     job_applications = @cart.contents.keys.map do |job_id|
     job_application = JobApplication.new(user_id: params[:job_application][:user_id], job_id: job_id.to_i)
