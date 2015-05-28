@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
   end
 
   def opposite_status
-    if business_status == true
+    if self.business_status == true
       "Offline"
     else
       "Online"
