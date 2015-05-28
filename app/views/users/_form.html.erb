@@ -9,7 +9,7 @@
         <%= f.label :username, 'Username' %>
         <%= f.text_field :username, placeholder: "(required)", class: 'form-control' %>
 
-        <%= f.label :bio, 'Bio' %>
+        <%= f.label :description, 'Bio' %>
         <%= f.text_area :description, placeholder: "Write a short bio for yourself", class: 'form-control' %>
 
         <%= f.label :email, 'Email' %>
@@ -28,7 +28,7 @@
         <%= f.file_field :picture, class: 'form-control' %>
 
         <div class="text-center">
-          <%= f.submit "Update User", class: "btn btn-primary" %>
+          <%= f.submit "Submit User Information", class: "btn btn-primary" %>
         </div>
 
       <% end %>

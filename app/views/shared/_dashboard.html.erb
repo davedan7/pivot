@@ -5,8 +5,8 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <p>
-        Your Name: <%= current_user.name %><br>
-        Personal Information: <%= current_user.description %>
+        Your Display Name: <%= current_user.name %><br>
+        Description: <%= current_user.description %>
       </p>
       <p><%= button_to "Edit Profile", edit_user_path(current_user), method: :get, class: "btn btn-primary" %></p>
       <% if current_business_admin? || current_business? %>

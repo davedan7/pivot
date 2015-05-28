@@ -40,7 +40,8 @@ class Businesses::BusinessesController < ApplicationController
                                    :location,
                                    :description,
                                    :password,
-                                   :business_status
+                                   :business_status,
+                                   :picture
                                    ).merge(role: 1)
     end
 end
