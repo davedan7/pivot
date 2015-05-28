@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   has_secure_password
   has_attached_file :picture, styles: {micro: '50x50',
                                        thumb: '100x100',
