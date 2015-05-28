@@ -13,26 +13,24 @@ RSpec.describe "admin page" do
 
    visit jobs_path
    click_link "job1"
-   first(:button, "Apply to Job").click
+   first(:button, "Add Job to Basket").click
 
    visit jobs_path
    click_link "job2"
-   first(:button, "Apply to Job").click
+   first(:button, "Add Job to Basket").click
 
    visit checkout_path
 
-   click_button "Submit"
+   click_button "Submit Resume(s)"
    click_button "YES"
 
    visit admin_job_applications_dashboard_path
    select("processing", from: "order[filter_status]")
 
    expect(page).to have_content(2)
-   expect(page).to have_css("div.application-dashboard-page")
 
-   within(".admin_status_list") do
      expect(page).to have_content("Received")
      expect(page).to have_content(2)
-    end
+    
   end
 end

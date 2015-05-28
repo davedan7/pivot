@@ -1,7 +1,7 @@
 <div class="user-show">
 
   <%= render "shared/dashboard" %>
-  <%= button_to "Manage your administrators", business_administrative_management_index_path(business: @business.slug), method: "get" %>
-  <%= button_to "Manage your Job Postings", business_jobs_path(business: @business.slug), method: "get" %>
+  <p><%= button_to "Manage your administrators", business_administrative_management_index_path(business: @business.id), method: "get", class: "btn btn-primary" %></p>
+  <p><%= button_to "Manage your Job Postings", business_jobs_path(business: @business.slug), method: "get", class: "btn btn-primary" %></p>
 
 </div>

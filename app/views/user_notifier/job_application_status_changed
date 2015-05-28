@@ -1,0 +1,9 @@
+<h1>Hi <%= User.find(@user).name %>!</h1>
+
+<p>Your application status has been changed to <%= @status %> at Jo.bs.</p>
+
+<p>Thanks,</p>
+<p>The Jo.bs Dev Team</p>
+
+
+    <h5>Sincerly,</h5><br><h5>Jo.bs</h5>

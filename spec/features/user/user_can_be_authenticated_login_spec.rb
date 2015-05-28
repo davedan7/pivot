@@ -13,7 +13,7 @@ RSpec.describe 'user authentication' do
 
       fill_in "Email", with: user.email
       fill_in "Password", with: user.password
-      click_button "Submit"
+      click_button "Login"
       expect(current_path).to eq(user_path(user))
       expect(page).to have_content("#{user.name} Dashboard")
     end
@@ -25,7 +25,7 @@ RSpec.describe 'user authentication' do
 
       fill_in "Email", with: "FakeEmail@example.com"
       fill_in "Password", with: "password"
-      click_button "Submit"
+      click_button "Login"
 
       expect(current_path).to eq(login_path)
       expect(page).to have_content("Invalid Credentials. Please Try Again.")

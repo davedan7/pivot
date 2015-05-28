@@ -13,7 +13,7 @@ RSpec.describe "User view" do
       fill_in "Username", with: "davy"
       fill_in "Email", with: "david@gmail.com"
       fill_in "Location", with: "Denver"
-      fill_in "Password", with: "password"
+      fill_in "user[password]", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Update User"
 
@@ -30,7 +30,7 @@ RSpec.describe "User view" do
       fill_in "Username", with: "davy"
       fill_in "Email", with: "david@gmail.com"
       fill_in "Location", with: "Denver"
-      fill_in "Password", with: "password"
+      fill_in "user[password]", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Update User"
 
@@ -45,9 +45,9 @@ RSpec.describe "User view" do
       fill_in "Username", with: "davy"
       fill_in "Email", with: "david@gmail.com"
       fill_in "Location", with: "Denver"
-      fill_in "Password", with: "password"
+      fill_in "user[password]", with: "password"
       fill_in "Password confirmation", with: "password"
-      click_link_or_button "Create User"
+      click_link_or_button "Update User"
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit user_path(user)
@@ -56,7 +56,7 @@ RSpec.describe "User view" do
       fill_in "Username", with: "davy"
       fill_in "Email", with: "hi@gmail.com"
       fill_in "Location", with: "Denver"
-      fill_in "Password", with: "password"
+      fill_in "user[password]", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Update User"
 
@@ -71,9 +71,9 @@ RSpec.describe "User view" do
       fill_in "Username", with: "davy"
       fill_in "Email", with: "david@gmail.com"
       fill_in "Location", with: "Denver"
-      fill_in "Password", with: "password"
+      fill_in "user[password]", with: "password"
       fill_in "Password confirmation", with: "password"
-      click_link_or_button "Create User"
+      click_link_or_button "Update User"
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit user_path(user)
@@ -82,7 +82,7 @@ RSpec.describe "User view" do
       fill_in "Username", with: "boom"
       fill_in "Email", with: "david@gmail.com"
       fill_in "Location", with: "Denver"
-      fill_in "Password", with: "password"
+      fill_in "user[password]", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Update User"
 

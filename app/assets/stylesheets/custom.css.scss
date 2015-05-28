@@ -23,6 +23,20 @@ $brown-dark: #685642;
 // colors /////////////////////////////////////////
 
 
+.form-control  {
+  margin: 0 0 15px 0;
+}
+
+.form-styles {
+  label  {
+    // margin: 10px auto 0 auto;
+  }
+
+  .btn  {
+    // text-align: center;
+    margin: 10px auto;
+  }
+}
 
 
 
@@ -40,7 +54,8 @@ h1, h2, h3 {
 }
 
 h1  {
-  font-size: 4em;
+  font-size: 3.5em;
+  color: $blue-dark;
 }
 
 h2  {

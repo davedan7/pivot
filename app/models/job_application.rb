@@ -1,5 +1,6 @@
 class JobApplication < ActiveRecord::Base
-  # mount_uploader :attachment, AttachmentUploader
+
+  before_update :check_application_status_changed
 
   belongs_to :user
   belongs_to :job
@@ -8,20 +9,20 @@ class JobApplication < ActiveRecord::Base
   validates :status, presence: true
   validates :job_id, presence: true
 
-  enum status: %w(received processing processed )
+  enum status: %w(received accepted rejected )
 
-  default_scope { order(created_at: :desc)}
+  default_scope { order(created_at: :desc) }
 
   def self.number_currently_received
     received.count
   end
 
-  def self.number_currently_processing
-    processing.count
+  def self.number_currently_accepted
+    accepted.count
   end
 
-  def self.number_currently_processed
-    processed.count
+  def self.number_currently_rejected
+    rejected.count
   end
 
   def date_applied(application_created_at)
@@ -50,5 +51,11 @@ class JobApplication < ActiveRecord::Base
 
   def user
     User.find_by(id: user_id)
+  end
+
+  private
+
+  def check_application_status_changed
+    UserNotifier.job_application_status_changed(self.user_id, show_status).deliver_now if self.status_changed?
   end
 end

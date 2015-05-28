@@ -8,7 +8,7 @@ RSpec.describe "Admin login" do
       visit login_path
       fill_in "Email", with: "janedoe@example.com"
       fill_in "Password", with: "password"
-      click_button "Submit"
+      click_button "Login"
 
       expect(current_path).to eq(admin_dashboard_path)
       expect(page).to have_content("Admin Dashboard - Welcome Jane Doe!")
@@ -23,7 +23,7 @@ RSpec.describe "Admin login" do
       fill_in "Email", with: "JDoe"
       fill_in "Password", with: "password"
 
-        click_link_or_button "Submit"
+        click_link_or_button "Login"
 
       expect(current_path).not_to eq(admin_dashboard_path)
       visit admin_dashboard_path
