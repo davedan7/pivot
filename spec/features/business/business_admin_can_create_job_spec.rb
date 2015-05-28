@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe "Users" do
   context "logged in as business" do
     it "can add jobs" do
+      5.times do |x|
+        User.create(id: x, name: "business", role: 1, username: "user#{x}", email: "user#{x}@example.com", password: "password", location: "Denver")
+      end
       business_admin = create(:business_admin_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(business_admin)
 
