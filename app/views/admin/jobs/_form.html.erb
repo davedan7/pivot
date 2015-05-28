@@ -10,17 +10,18 @@
         <%= form_for([:admin, @job]) do |f| %>
 
           <div class="text-center">
-            <%= f.collection_select(:user_id, @businesses, :id, :username, {:prompt => 'Please select the business that this job will be posted for.'}) %>
+            <%= f.collection_select(:user_id, @businesses, :id, :username,
+                                   {:prompt => 'Please select the business that this job will be posted for.'}) %>
           </div>
 
           <%= f.label :job_title, 'Job title' %>
-          <%= f.text_field :title, placeholder: "Job title", class: 'form-control'  %>
+          <%= f.text_field :title, placeholder: "Job title", class: 'form-control' %>
 
           <%= f.label :description, 'Description' %>
           <%= f.text_area :description, placeholder: "Job description", class: 'form-control' %>
 
           <div class="text-center">
-            <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) %><br>
+            <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) %>
           </div>
 
           <hr>
