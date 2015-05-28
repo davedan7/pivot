@@ -70,6 +70,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def opposite_status
+    if business_status == true
+      "Offline"
+    else
+      "Online"
+    end
+  end
+
   def change_business_status
     if self.business_status == true
       self.business_status = false
