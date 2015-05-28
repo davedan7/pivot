@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :resumes, only: [:index, :new, :create, :destroy]
+  # get 'resumes/index'
+
+  # get 'resumes/new'
+
+  # get 'resumes/create'
+
+  # get 'resumes/destroy'
+
   root to: "home#index"
 
   get 'errors/file_not_found'

@@ -15,6 +15,9 @@
         <%= button_to "Business Admin Management", business_administrative_management_index_path(business: current_user.employer.slug), method: :get  %>
         <%= button_to "Edit my Business", edit_user_path(current_user.employer), method: :get %>
       <% end %>
+      <% if !current_business_admin? && !current_admin? %>
+        <%= button_to "Upload a Resume", new_resume_path, method: :get %>
+      <% end %>
     </div>
   </div>
 </div>

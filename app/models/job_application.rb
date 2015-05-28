@@ -1,5 +1,5 @@
 class JobApplication < ActiveRecord::Base
-  mount_uploader :attachment, AttachmentUploader
+  # mount_uploader :attachment, AttachmentUploader
 
   belongs_to :user
   belongs_to :job
