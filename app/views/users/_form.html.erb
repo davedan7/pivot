@@ -3,32 +3,32 @@
     <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 form-styles">
 
       <%= form_for(@user, url: users_path, html: {multipart: true}) do |f| %>
-        <%= f.label :name, 'Name  (required)' %>
-        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.label :name, 'Name' %>
+        <%= f.text_field :name, placeholder: "(required)", class: 'form-control' %>
 
-        <%= f.label :username, 'Username  (required)' %>
-        <%= f.text_field :username, class: 'form-control' %>
+        <%= f.label :username, 'Username' %>
+        <%= f.text_field :username, placeholder: "(required)", class: 'form-control' %>
 
         <%= f.label :bio, 'Bio' %>
         <%= f.text_area :description, placeholder: "Write a short bio for yourself", class: 'form-control' %>
 
-        <%= f.label :email, 'Email  (required)' %>
-        <%= f.email_field :email, class: 'form-control' %>
+        <%= f.label :email, 'Email' %>
+        <%= f.email_field :email, placeholder: "(required)", class: 'form-control' %>
 
-        <%= f.label :location, 'Location  (required)' %>
-        <%= f.text_field :location, class: 'form-control' %>
+        <%= f.label :location, 'Location' %>
+        <%= f.text_field :location, placeholder: "(required)", class: 'form-control' %>
 
-        <%= f.label :password, 'Password  (required)' %>
-        <%= f.password_field :password, class: 'form-control' %></p>
+        <%= f.label :password, 'Password' %>
+        <%= f.password_field :password, placeholder: "(required)", class: 'form-control' %></p>
 
-        <%= f.label :password_confirmation, 'Password confirmation  (required)' %>
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
+        <%= f.label :password_confirmation, 'Password confirmation' %>
+        <%= f.password_field :password_confirmation, placeholder: "(required)", class: 'form-control' %>
 
         <%= f.label :picture, "Attach a Picture" %>
         <%= f.file_field :picture, class: 'form-control' %>
 
         <div class="text-center">
-          <%= f.submit "Create my account", class: "btn btn-primary" %>
+          <%= f.submit "Update User", class: "btn btn-primary" %>
         </div>
 
       <% end %>

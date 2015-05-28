@@ -13,7 +13,7 @@ RSpec.describe "applying for a job" do
     expect(current_path).to eq('/janetdoes/jobs')
     expect(page).to have_content("engineer")
     click_link_or_button "engineer"
-    click_link_or_button "Apply to Job"
+    click_link_or_button "Add Job to Basket"
     expect(page).to have_content("You have added the job, engineer, to your basket.")
   end
 end
