@@ -7,10 +7,10 @@
       <%= f.collection_select(:user_id, @businesses, :id, :username, {:prompt => 'Please select the business that this job will be posted for.'}) %><br>
       <%= f.text_field :title, placeholder: "Job title", class: 'form-control'  %>
       <%= f.text_area :description, placeholder: "Job description", class: 'form-control' %>
-      <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) %>
+      <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) %><br>
 
 
-      <%= f.label :status %>
+      <%= f.label :job_status %>
       Retired <%= f.radio_button :status, false %>
       Active <%= f.radio_button :status, true  %>
       <%= f.submit "Submit Job", class: "btn btn-primary" %>
