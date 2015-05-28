@@ -20,6 +20,11 @@ class UserNotifier < ApplicationMailer
   def business_status_changed(business)
     @business = business
     mail(to: @business.email, subject: "Online/Offline Status has been changed")
+  end
 
+  def job_application_status_changed(user, status)
+    @user = user
+    @status = status
+    mail(to: User.find(@user).email, subject: "Your Job Application at Jo.bs")
   end
 end

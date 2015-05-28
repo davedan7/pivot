@@ -4,12 +4,11 @@ RSpec.describe "User view" do
   context "with valid attributes" do
     it "can create a new user" do
       visit new_user_path
-
       fill_in "Name", with: "David"
       fill_in "Username", with: "davy"
       fill_in "Email", with: "david@gmail.com"
       fill_in "Location", with: "Denver"
-      fill_in "Password", with: "password"
+      fill_in "user[password]", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Update User"
 
@@ -24,14 +23,14 @@ RSpec.describe "User view" do
       fill_in "Username", with: "davy"
       fill_in "Email", with: "david@gmail.com"
       fill_in "Location", with: "Denver"
-      fill_in "Password", with: "password"
+      fill_in "user[password]", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Update User"
 
       expect(page).to have_content("Sign Up Name is too short")
     end
 
-    it "can not create user with a taken username" do
+    it "can not Create my account with a taken username" do
 
       visit new_user_path
 
@@ -39,7 +38,7 @@ RSpec.describe "User view" do
       fill_in "Username", with: "davy"
       fill_in "Email", with: "david@gmail.com"
       fill_in "Location", with: "Denver"
-      fill_in "Password", with: "password"
+      fill_in "user[password]", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Update User"
 
@@ -49,7 +48,7 @@ RSpec.describe "User view" do
       fill_in "Username", with: "davy"
       fill_in "Email", with: "davidjames@gmail.com"
       fill_in "Location", with: "Denver"
-      fill_in "Password", with: "password"
+      fill_in "user[password]", with: "password"
       fill_in "Password confirmation", with: "password"
       click_link_or_button "Update User"
 

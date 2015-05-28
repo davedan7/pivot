@@ -3,29 +3,24 @@
     <div class="col-md-6 col-md-offset-3">
 
 
-      <!-- <div class="application-dashboard-page"> -->
         <h1 class="job-category-name">Job Application Dashboard</h1>
 
-        <!-- <div class="admin_status_list"> -->
           <h3>Job Application Summary</h3>
           <table>
             <tr>
               <th>Received</th>
-              <th>Processing</th>
-              <th>Processed</th>
+              <th>Accepted</th>
+              <th>Rejected</th>
             </tr>
             <tr>
               <td><%= @job_applications.number_currently_received %></td>
-              <td><%= @job_applications.number_currently_processing %></td>
-              <td><%= @job_applications.number_currently_processed %></td>
+              <td><%= @job_applications.number_currently_accepted %></td>
+              <td><%= @job_applications.number_currently_rejected %></td>
             </tr>
           </table>
           <p><%= render "admin/job_applications/filter" %></p>
-        <!-- </div> -->
         <br>
 
-        <!-- <div class="admin_applications_list"> -->
-          <!-- <div class="center_div"> -->
             <h3>All Job Applications</h3>
             <table id="first_table">
               <tr>
@@ -45,19 +40,15 @@
                     <td><%= job_application.date_created %></td>
                     <td><%= job_application.date_updated %></td>
                     <td class="order_status"><%= job_application.status %></td>
-                    <td><%= link_to "Received", admin_job_application_update_path({job_application_id: job_application.id, status: "applied"}), method: :post %>
-                        <%= link_to "Processing", admin_job_application_update_path({job_application_id: job_application.id, status: "processing"}), method: "post" %>
-                        <%= link_to "Processed", admin_job_application_update_path({job_application_id: job_application.id, status: "processed"}), method: "post" %>
+                    <td><%= link_to "Received", admin_job_application_update_path({job_application_id: job_application.id, status: "received"}), method: :post %>
+                        <%= link_to "Accepted", admin_job_application_update_path({job_application_id: job_application.id, status: "accepted"}), method: "post" %>
+                        <%= link_to "Rejected", admin_job_application_update_path({job_application_id: job_application.id, status: "rejected"}), method: "post" %>
                       </td>
                   </tr>
                 <% end %>
               </div>
 
             </table>
-          <!-- </div> -->
-        <!-- </div> -->
-
-      <!-- </div> -->
 
 
 

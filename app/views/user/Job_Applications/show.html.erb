@@ -1,4 +1,10 @@
-<h1>Application Details</h1>
-    <h3><%= @job_application.job_title %></h3>
-    <h4>Applied: <%= @job_application.date_applied(@job_application.created_at) %></h4>
-    <h4>Current Status: <%= @job_application.show_status %></h4>
+<div class="container dashboard-page">
+  <div class="jobs-list row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Application Details</h1>
+          <h3><%= @job_application.job_title %></h3>
+        <h4>Applied: <%= @job_application.date_applied(@job_application.created_at) %></h4>
+      <h4>Current Status: <%= @job_application.show_status %></h4>
+    </div>
+  </div>
+</div>

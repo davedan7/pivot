@@ -19,7 +19,7 @@ RSpec.describe "Business user status" do
       fill_in "Email", with: business.email
       fill_in "user[description]", with: "We sell Bananas and Banana themed things!"
       fill_in "Location", with: business.location
-      fill_in "Password", with: business.password
+      fill_in "user[password]", with: business.password
       fill_in "Password confirmation", with: business.password
       click_button "Submit"
 
