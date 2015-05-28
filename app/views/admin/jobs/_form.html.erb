@@ -2,19 +2,46 @@
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 form-styles">
 
-      <h4>ALL FIELDS REQUIRED**</h4>
-      <%= form_for([:admin, @job]) do |f| %>
-      <%= f.collection_select(:user_id, @businesses, :id, :username, {:prompt => 'Please select the business that this job will be posted for.'}) %><br>
-      <%= f.text_field :title, placeholder: "Job title", class: 'form-control'  %>
-      <%= f.text_area :description, placeholder: "Job description", class: 'form-control' %>
-      <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) %><br>
+      <div class="text-center">
+        <h4>ALL FIELDS REQUIRED**</h4>
+      </div>
+
+      <div class="form">
+        <%= form_for([:admin, @job]) do |f| %>
+
+          <div class="text-center">
+            <%= f.collection_select(:user_id, @businesses, :id, :username, {:prompt => 'Please select the business that this job will be posted for.'}) %>
+          </div>
+
+          <%= f.label :job_title, 'Job title' %>
+          <%= f.text_field :title, placeholder: "Job title", class: 'form-control'  %>
+
+          <%= f.label :description, 'Description' %>
+          <%= f.text_area :description, placeholder: "Job description", class: 'form-control' %>
+
+          <div class="text-center">
+            <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) %><br>
+          </div>
+
+          <hr>
+
+          <div class="collection text-center">
+            <%= f.label :job_status %>
+            Retired <%= f.radio_button :status, false %> <br>
+            Active <%= f.radio_button :status, true  %>
+          </div>
+
+          <hr>
+
+          <div class="text-center">
+            <%= f.submit "Submit Job", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
 
 
-      <%= f.label :job_status %>
-      Retired <%= f.radio_button :status, false %>
-      Active <%= f.radio_button :status, true  %>
-      <%= f.submit "Submit Job", class: "btn btn-primary" %>
-      <% end %>
+
+
     </div>
   </div>
 </div>
