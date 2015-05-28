@@ -84,7 +84,7 @@ class Seed
   end
 
   def populate_job_applications
-    50.times do
+    100.times do
       JobApplication.create(user_id: rand(1..(User.all.count)), job_id: rand(1..Job.all.count), status: rand(0..2))
     end
     JobApplication.all.each { |application| puts "Application created. User: #{application.user_id}, Job: #{application.job_id}"}
