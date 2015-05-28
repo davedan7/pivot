@@ -1,16 +1,20 @@
 <h1>Job Applications</h1>
 
-<table id="first_table">
+<table class="table table-bordered table-striped">
+  <thead>
     <tr>
-      <th>Job Application</th>
+      <th>Job Title</th>
       <th>Applied</th>
       <th>Status</th>
     </tr>
-  <% @job_applications.each do |application| %>
-    <tr>
-      <td><%= link_to "#{application.job.title}", user_job_application_path(application) %></td>
-      <td><%= application.date_applied(application.created_at) %></td>
-      <td><%= application.status %></td>
-    </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @job_applications.each do |application| %>
+      <tr>
+        <td><%= link_to "#{application.job.title}", user_job_application_path(application) %></td>
+        <td><%= application.date_applied(application.created_at) %></td>
+        <td><%= application.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
