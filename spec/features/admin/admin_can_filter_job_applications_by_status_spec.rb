@@ -28,11 +28,9 @@ RSpec.describe "admin page" do
    select("processing", from: "order[filter_status]")
 
    expect(page).to have_content(2)
-   expect(page).to have_css("div.application-dashboard-page")
 
-   within(".admin_status_list") do
      expect(page).to have_content("Received")
      expect(page).to have_content(2)
-    end
+    
   end
 end
