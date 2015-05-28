@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 form-styles">
 
-      <h1>Login to Jo.bs</h1>
+      <h1>Log In to Jo.bs</h1>
 
       <%= form_for(:session, url: login_path) do |f| %>
 
@@ -12,15 +12,13 @@
         <%= f.label :password, 'Password  (required)' %>
         <%= f.password_field :password, class: 'form-control'%>
 
-        <div class="text-center">
-          <%= f.submit "Login", class: "btn btn-primary" %>
+        <div class="row-fluid">
+          <div class="span4 offset4 text-center">
+            <%= f.submit "Log In", class: "btn btn-primary" %>
+            <%= link_to "Log In with Twitter", login_twitter_path, class: "btn btn-primary" %>
+          </div>
         </div>
-
       <% end %>
-
-      <div class="text-center">
-        <%= link_to "Login with Twitter", login_twitter_path, class: "btn btn-primary" %>
-      </div>
 
     </div>
   </div>
