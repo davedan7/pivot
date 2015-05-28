@@ -4,26 +4,26 @@
     <h1>Create A Business Account</h1>
       <%= form_for @business, url: business_submit_path do |f| %>
           <p>
-          <%= f.label :name, "Business Legal Name (required)" %></p>
-          <%= f.text_field :name, placeholder: "Name", class: "form-control" %></p>
+          <%= f.label :name, "Business Legal Name" %></p>
+          <%= f.text_field :name, placeholder: "Required", class: "form-control" %></p>
 
-          <p><%= f.label :username, "Business Display Name  (required)" %></p>
-          <p><%= f.text_field :username, placeholder: "Username", class: "form-control" %></p>
+          <p><%= f.label :username, "Business Display Name" %></p>
+          <p><%= f.text_field :username, placeholder: "Required", class: "form-control" %></p>
 
           <p><%= f.label :description, "Write a short bio for Business" %></p>
-          <p><%= f.text_area :description, placeholder: "Write a short bio for Business", class: "form-control" %></p>
+          <p><%= f.text_area :description, placeholder: "Write a short bio for Business.... (Suggested)", class: "form-control" %></p>
 
-          <p><%= f.label :email, "Business Email (required)" %></p>
-          <p><%= f.text_field :email, placeholder: "Email", class: "form-control" %></p>
+          <p><%= f.label :email, "Business Email" %></p>
+          <p><%= f.text_field :email, placeholder: "Required", class: "form-control" %></p>
 
           <p><%= f.label :location, "Location  (required)" %></p>
           <p><%= f.text_field :location, placeholder: "Location", class: "form-control" %></p>
 
-          <p><%= f.label :password, "Password  (required)" %></p>
-          <p><%= f.password_field :password, placeholder: "Password", class: "form-control" %></p>
+          <p><%= f.label :password, "Password" %></p>
+          <p><%= f.password_field :password, placeholder: "Required", class: "form-control" %></p>
 
-          <p><%= f.label :password_confirmation, "Password confirmation  (required) " %></p>
-          <p><%= f.password_field :password_confirmation, placeholder: "Password confirmation", class: "form-control" %></p>
+          <p><%= f.label :password_confirmation, "Password confirmation" %></p>
+          <p><%= f.password_field :password_confirmation, placeholder: "Required", class: "form-control" %></p>
 
           <p><%= f.label :picture, "Attach a Picture" %></p>
 
