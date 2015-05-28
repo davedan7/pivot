@@ -2,8 +2,7 @@ class Admin::JobApplicationsController < Admin::BaseController
   
   def dashboard
     @job_applications   = JobApplication.all
-    @statuses = ["submitted", "accepted", "rejected"]
-    render :dashboard
+    @statuses = ["received", "accepted", "rejected"]
   end
 
   def show

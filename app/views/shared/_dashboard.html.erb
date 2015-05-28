@@ -1,6 +1,6 @@
 <h1><%= "#{current_user.name} Dashboard" %></h1>
 
-<%= image_tag current_user.picture.url(:small), class: 'center-block' %>
+<%= image_tag current_user.picture.url(:small), class: 'center-block img img-circle' %>
 <div class="container user-show">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
@@ -15,7 +15,7 @@
         <p><%= button_to "Edit my Business", edit_user_path(current_user.employer), method: :get, class: "btn btn-primary" %></p>
       <% end %>
       <% if !current_business_admin? && !current_admin? && !current_business? %>
-        <%= button_to "Upload a Resume", new_resume_path, method: :get %><br>
+        <%= button_to "Upload a Resume", new_resume_path, method: :get, class: "btn btn-primary" %><br>
         <%= button_to "Application History", user_job_applications_path, method: :get, class: "btn btn-primary" %></p>
       <% end %>
     </div>
