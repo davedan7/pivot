@@ -7,23 +7,6 @@ class User < ActiveRecord::Base
                                        medium: '300x300'
                                      }, default_url: "Handshake_icon.jpg"
 
-  # #NEW / MINE
-  # has_attached_file :document, styles: {micro: '50x50',
-  #                                      thumb: '100x100',
-  #                                      small: '200x200',
-  #                                      medium: '300x300'}, 
-  #                                      default_url: "Handshake_icon.jpg",
-  #                              storage: :s3,
-  #                              bucket: ENV['S3_BUCKET_NAME'],
-  #                              s3_credentials: { access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-  #                                                secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'] }
-
-
-  # validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/ # OLD
-  # validates_attachment :document, :content_type => {:content_type => %w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document)} # NEW / MINE
-  # validates_attachment :document, :content_type => { content_type: "application/pdf"}
-
-
   has_many :job_applications, dependent: :destroy
   has_many :jobs
   has_many :business_managers, class_name: "User",
@@ -84,6 +67,14 @@ class User < ActiveRecord::Base
       "Online"
     else
       "Offline"
+    end
+  end
+
+  def opposite_status
+    if business_status == true
+      "Offline"
+    else
+      "Online"
     end
   end
 

@@ -7,10 +7,10 @@
         <h3><%=link_to "#{business.username}", business_jobs_path(business: business.slug ) %></h3>
         <p><%= business.description %></p><br>
         <% if current_admin? %>
-        <p>Current Status: <%= business.show_status %> <%= button_to "Change Status", admin_business_change_status_path(business), method: 'patch' %></p>
-        <p><%= button_to "Edit Business", edit_user_path(business), method: 'get' %></p>
+        <p><%= button_to "Edit Business", edit_user_path(business), method: 'get', class: "btn btn-primary" %></p>
+        <p>Current Status: <%= business.show_status %> <%= button_to "Change Status to #{business.opposite_status}", admin_business_change_status_path(business), method: 'patch', class: "btn btn-primary" %></p>
         <% else %>
-        <p><%= button_to "See Available Jobs", business_jobs_path(business: business.slug), method: 'get' %></p>
+        <p><%= button_to "See Available Jobs", business_jobs_path(business: business.slug), method: 'get', class: "btn btn-primary" %></p>
         <% end %>
       </div>
     </div>
