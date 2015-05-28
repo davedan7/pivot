@@ -12,7 +12,7 @@ RSpec.describe 'user authentication' do
       visit login_path
 
       fill_in "Email", with: user.email
-      fill_in "Password", with: user.password
+      fill_in "user[password]", with: user.password
       click_button "Submit"
       expect(current_path).to eq(user_path(user))
       expect(page).to have_content("#{user.name} Dashboard")
@@ -24,7 +24,7 @@ RSpec.describe 'user authentication' do
       visit login_path
 
       fill_in "Email", with: "FakeEmail@example.com"
-      fill_in "Password", with: "password"
+      fill_in "user[password]", with: "password"
       click_button "Submit"
 
       expect(current_path).to eq(login_path)
