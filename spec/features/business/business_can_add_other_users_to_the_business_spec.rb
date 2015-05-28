@@ -22,8 +22,8 @@ RSpec.describe "Adding a business administrator" do
       fill_in "Email", with: "michelle@example.com"
       fill_in "Title", with: "Bus ad"
       fill_in "Location", with: "denver"
-      fill_in "Password", with: "password"
-      click_link_or_button "Create User"
+      fill_in "user[password]", with: "password"
+      click_link_or_button "Create my account"
 
 #### new bus admin does not show up on index page in test, working in development though ####
 

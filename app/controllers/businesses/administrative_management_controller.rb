@@ -56,7 +56,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
 
     def user_params
       params.require(:user).permit(:name,
-                                   :email, 
+                                   :email,
                                    :title,
                                    :description,
                                    :username,
