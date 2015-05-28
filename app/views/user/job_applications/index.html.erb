@@ -7,12 +7,10 @@
       <th>Status</th>
     </tr>
   <% @job_applications.each do |application| %>
-    <% if application.job.user.id == current_user.id %>
-      <tr>
-        <td><%= link_to "#{application.id}", user_job_application_path(application) %></td>
-        <td><%= application.date_applied(application.created_at) %></td>
-        <td><%= application.status %></td>
-      </tr>
-    <% end %>
+    <tr>
+      <td><%= link_to "#{application.job.title}", user_job_application_path(application) %></td>
+      <td><%= application.date_applied(application.created_at) %></td>
+      <td><%= application.status %></td>
+    </tr>
   <% end %>
 </table>
