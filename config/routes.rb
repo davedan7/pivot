@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'errors/unprocessable'
   get 'errors/internal_server_error'
 
-  resources :charges
+  # resources :charges
   resources :job_applications,     only: [:create]
   resources :categories, only: [:show, :index]
   resources :jobs, only: [:show, :index]
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   get "/login/twitter", to:         "sessions#twitter"
   get '/auth/:provider/callback' => 'sessions#create'
 
-  get "orders/payment", to:                   "orders#payment"
+  # get "orders/payment", to:                   "orders#payment"
   get "admin/job_applications/dashboard", to: "admin/job_applications#dashboard"
   get "admin/job_application", to:            "admin/job_applications#show"
   post "admin/job_application/update", to:    "admin/job_applications#update"

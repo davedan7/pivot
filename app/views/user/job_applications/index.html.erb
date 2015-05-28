@@ -1,20 +1,25 @@
 <h1>Job Applications</h1>
 
 <table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Job Title</th>
-      <th>Applied</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @job_applications.each do |application| %>
+  <% if @job_applications.empty? %>
+    <h3>You have not applied to any jobs yet, to explore available jobs visit <%= link_to "All Jobs", jobs_path %></h3>
+  <% else %>
+
+    <thead>
       <tr>
-        <td><%= link_to "#{application.job.title}", user_job_application_path(application) %></td>
-        <td><%= application.date_applied(application.created_at) %></td>
-        <td><%= application.status %></td>
+        <th>Job Title</th>
+        <th>Applied</th>
+        <th>Status</th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+    <tbody>
+      <% @job_applications.each do |application| %>
+        <tr>
+          <td><%= link_to "#{application.job.title}", user_job_application_path(application) %></td>
+          <td><%= application.date_applied(application.created_at) %></td>
+          <td><%= application.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
 </table>

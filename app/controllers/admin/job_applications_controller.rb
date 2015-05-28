@@ -1,4 +1,5 @@
 class Admin::JobApplicationsController < Admin::BaseController
+  
   def dashboard
     @job_applications   = JobApplication.all
     @statuses = ["received", "accepted", "rejected"]

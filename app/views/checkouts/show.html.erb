@@ -24,13 +24,15 @@
       <% if current_user %>
         <% current_user.resumes.each do |resume| %>
           <tr>
-            <td><%= resume.name %></td>
-            <td><%= link_to "Download Resume", resume.attachment_url %></td>
+            <td><strong>Resume:</strong> <%= resume.name %></td><br>
+            <%= button_to "Download", resume.attachment_url, method: :get %>
           </tr>
         <% end %>
-        <%= button_to "Submit Application(s)", checkout_confirmation_path %>
+        <br>
+        <div class="text-center">
+        <%= button_to "Submit Application(s)", checkout_confirmation_path, class: "btn btn-primary" %>
       <% else %>
-      <%= button_to "Submit", new_user_path(origin: {destination: "checkout"}), method: :get %>
+        <%= button_to "Submit", new_user_path(origin: {destination: "checkout"}), method: :get %>
       <% end %>
 
 
