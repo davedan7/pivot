@@ -1,14 +1,16 @@
 <div class="form">
   <%= form_for([:admin, @category]) do |f|%>
     <div>
-      <%= f.text_field :name, placeholder: "Name" %>
+      <%= f.label :name, "Category Title (required)" %>
+      <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
     </div><br>
 
     <div>
-      <%= f.text_area :description, placeholder: "Description" %>
+      <%= f.label :description, "Category Description (required)" %>
+      <%= f.text_area :description, placeholder: "Description", class: "form-control" %>
     </div><br>
     <div class="submit">
-      <%= f.submit %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
