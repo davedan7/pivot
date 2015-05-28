@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
   resources :resumes, only: [:index, :new, :create, :destroy]
-  # get 'resumes/index'
-
-  # get 'resumes/new'
-
-  # get 'resumes/create'
-
-  # get 'resumes/destroy'
 
   root to: "home#index"
 
@@ -31,16 +24,6 @@ Rails.application.routes.draw do
   end
 
   namespace :user do
-    resources :job_applications, only: [:index, :show]
-  end
-
-  namespace :businesses, as: :business, path: '/:business' do
-    resources :jobs, except: [:destroy]
-    resources :administrative_management
-  end
-
-  # Business Job Applications Routes
-  namespace :businesses, as: :business, path: '/:business' do
     resources :job_applications, only: [:index, :show]
   end
 
@@ -73,5 +56,11 @@ Rails.application.routes.draw do
   get "admin/dashboard", to:        "admin/dashboard#show"
   get "/home", to:                  "home#index"
   get '/about', to:                  "home#about"
+
+  namespace :businesses, as: :business, path: '/:business' do
+    resources :jobs, except: [:destroy]
+    resources :administrative_management
+    resources :job_applications, only: [:index, :show]
+  end
 
 end

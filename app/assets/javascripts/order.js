@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  var $orders = $('.order');
+  var $orders = $('.job_application');
 
   $('#order_filter_status').on('change', function () {
     var currentStatus = this.value;

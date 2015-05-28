@@ -8,8 +8,31 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
 
+        var data = google.visualization.arrayToDataTable([
+          ['Category', 'Number of Jobs'],
+          ['Ruby',  37],
+          ['JavaScript',     26],
+          ['Front-End',     22],
+          ['Back-End',  12],
+          ['Administrative', 11],
+        ]);
+
+        var options = {
+          title: 'Current Job Trends'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
 
   <body>
 

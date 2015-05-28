@@ -37,25 +37,17 @@ class Seed
   end
 
   def create_businesses
-    User.create(name: "Turing School", email: "turing@example.com", username: "turing", password: "password", role: 1, location: "Denver", description: "We turn muggles into masters of code.")
-    User.create(name: "Pivotuhl", email: "pivotuhl@example.com", username: "pivotal", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart)
-    User.create(name: "SlowRight", email: "slow@example.com", username: "slowright", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart)
-    User.create(name: "Skuukom", email: "skuukom@example.com", username: "skuukom", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart)
+    User.create(name: "Turing School", email: "turing@example.com", username: "turing", password: "password", role: 1, location: "Denver", description: "We turn muggles into masters of code.", picture: File.new("#{Rails.root}/public/assets/turing-logo.png"))
+    User.create(name: "Pivotuhl", email: "pivotuhl@example.com", username: "pivotal", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart, picture: Faker::Company.logo)
+    User.create(name: "SlowRight", email: "slow@example.com", username: "slowright", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart, picture: Faker::Company.logo)
+    User.create(name: "Skuukom", email: "skuukom@example.com", username: "skuukom", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart, picture: Faker::Company.logo)
     10.times do
-      User.create(name: Faker::Company.name, email: Faker::Internet.email, username: Faker::Internet.user_name, password: "password", role: 1, location: Faker::Address.city, description: Faker::Lorem.sentence(4))
-    end
-  end
-
-  def populate_business_employer
-    users = User.where(role:1)
-    users.each do |user|
-      user.employer_id = user.id
-      user.save
+      User.create(name: Faker::Company.name, email: Faker::Internet.email, username: Faker::Internet.user_name, password: "password", role: 1, location: Faker::Address.city, description: Faker::Lorem.sentence(4), picture: Faker::Company.logo)
     end
   end
 
   def create_business_admins
-    User.create(name: "Turing School Admin", email: "admin@turing.com", username: "j3", password: "password", role: 3, location: "Denver", description: "Admin for Turing School", employer: User.find_by(username: 'turing'))
+    User.create(name: "Turing Admin", email: "admin@turing.com", username: "j3", password: "password", role: 3, location: "Denver", description: "Admin for Turing School", employer: User.find_by(username: 'turing'))
     User.create(name: "Pivotuhl Admin", email: "admin@pivotal.com", username: "padmin", password: "password", role: 3, location: "Denver", description: "Admin for Pivotuhl", employer: User.find_by(username: 'pivotal'))
     User.all.each { |user| puts "User #{user.name} created"}
   end
@@ -89,6 +81,15 @@ class Seed
     end
     JobApplication.all.each { |application| puts "Application created. User: #{application.user_id}, Job: #{application.job_id}"}
   end
+
+  def populate_business_employer
+    users = User.where(role:1)
+    users.each do |user|
+      user.employer_id = user.id
+      user.save
+    end
+  end
+
 end
 
 Seed.start

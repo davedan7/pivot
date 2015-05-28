@@ -7,7 +7,7 @@
 
         <h3><%= @job.title %></h3>
 
-        <%= image_tag User.find(@job.user_id).picture.url(:medium) %>
+        <%= image_tag User.find(@job.user_id).picture.url(:medium), class: "img img-circle" %>
 
         <h4>JOB DESCRIPTION:</h4>
         <p> <%= @job.description %> </p>
