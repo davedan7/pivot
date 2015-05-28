@@ -15,7 +15,7 @@ RSpec.describe "As a business user" do
     click_link_or_button "Engineer"
     click_link_or_button "Edit"
     fill_in "job[title]", with: "new title"
-    click_button "Submit"
+    click_button "Submit Job"
 
     expect(page).to have_content("new title")
   end
