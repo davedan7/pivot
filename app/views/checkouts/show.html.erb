@@ -25,7 +25,7 @@
         <%= form_for :resume, url: checkout_confirmation_path, html: { multipart: true } do |f| %>
         <%= f.label :resume %>
         <%= f.file_field :resume %>
-        <%= f.submit "Submit Resume(s)", class: "btn btn-default" %>
+        <%= f.submit "Submit Resume(s)", class: "btn btn-primary" %>
         <% end %>
       <% else %>
       <%= button_to "Must Login", new_user_path(origin: {destination: "checkout"}), method: :get %>
