@@ -9,7 +9,7 @@
         Personal Information: <%= current_user.description %>
       </p>
       <p><%= button_to "Edit Profile", edit_user_path(current_user), method: :get, class: "btn btn-primary" %></p>
-      <p><%= button_to "Application History", user_job_applications_path, method: :get, class: "btn btn-primary" %></p>
+      <p><%= button_to "Application History", business_job_applications_path(business: current_user.slug), method: :get, class: "btn btn-primary" %></p>
       <% if current_business_admin? %>
         <p><%= button_to "Business Admin Management", business_administrative_management_index_path(business: current_user.employer.slug), method: :get, class: "btn btn-primary"  %></p>
         <p><%= button_to "Edit my Business", edit_user_path(current_user.employer), method: :get, class: "btn btn-primary" %></p>

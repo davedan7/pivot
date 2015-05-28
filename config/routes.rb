@@ -39,6 +39,11 @@ Rails.application.routes.draw do
     resources :administrative_management
   end
 
+  # Business Job Applications Routes
+  namespace :businesses, as: :business, path: '/:business' do
+    resources :job_applications, only: [:index]
+  end
+
   patch "/admin/business/status/:id", to: "admin/business#change_status", as: :admin_business_change_status
   get "/business/dashboard", to:          "businesses/businesses#dashboard"
   get "/business/new", to:                "businesses/businesses#new_account", as: :new_business

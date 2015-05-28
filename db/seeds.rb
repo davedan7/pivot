@@ -1,7 +1,3 @@
-# User.create(name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password")
-# User.create(name: "Jeff Casimir", email: "demo+jeff@jumpstartlab.com", username: "j3", password: "password")
-# User.create(name: "Jorge Talez", email: "demo+jorge@jumpstartlab.com", username: "novohispano", password: "password")
-# User.create(name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", username: "josh", password: "password", role: 1)
 class Seed
   # seed orders, users, beer
   def self.start
@@ -21,6 +17,7 @@ class Seed
 
   def populate
     populate_business_employer
+    populate_job_applications
   end
 
 
@@ -30,6 +27,10 @@ class Seed
   end
 
   def create_users
+    User.create(name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", username: 'cellomaster', password: "password", role: 0, location: "Denver", description: "ImaTeacher")
+    User.create(name: "Jeff Casimir", email: "demo+jeff@jumpstartlab.com", username: "j3", password: "password", role: 0, location: "Denver", description: "ImaTeacher")
+    User.create(name: "Jorge Talez", email: "demo+jorge@jumpstartlab.com", username: "novohispano", password: "password", role: 0, location: "Denver", description: "ImaTeacher")
+    User.create(name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", username: "josh", password: "password", role: 0, location: "Denver", description: "ImaTeacher")
     User.create(name: "Default User", email: "default@example.com", username: "default", password: "password", role: 0, location: "Denver", description: "Default user for Heroku")
     20.times do
       User.create(name: Faker::Name.name, email: Faker::Internet.email, username: Faker::Internet.user_name, password: "password", role: 0, location: Faker::Address.city)
@@ -57,6 +58,7 @@ class Seed
   def create_business_admins
     User.create(name: "Turing School Admin", email: "admin@turing.com", username: "j3", password: "password", role: 3, location: "Denver", description: "Admin for Turing School", employer: User.find_by(username: 'turing'))
     User.create(name: "Pivotuhl Admin", email: "admin@pivotal.com", username: "padmin", password: "password", role: 3, location: "Denver", description: "Admin for Pivotuhl", employer: User.find_by(username: 'pivotal'))
+    User.all.each { |user| puts "User #{user.name} created"}
   end
 
   def create_categories
@@ -65,18 +67,28 @@ class Seed
     Category.create(name: "Front-end", description: "Make stuff pretty")
     Category.create(name: "Back-end", description: "Make stuff work")
     Category.create(name: "Administrative", description: "Someone's gotta run shit")
+    Category.all.each { |category| puts "Category #{category.name} created"}
   end
 
   def create_jobs
     50.times do
       Job.create(title: Faker::Name.title, description: Faker::Hacker.say_something_smart, posting_cost: rand(4..10), user_id: rand(1..User.count))
     end
+    Job.all.each { |job| puts "Job #{job.title} created"}
   end
 
   def create_job_categories
     50.times do
       JobCategory.create(job_id: rand(1..(Job.all.count)), category_id: rand(1..(Category.all.count)))
     end
+    JobCategory.all.each { |job_category| puts "Job category created for Job: #{job_category.job_id}, Category: #{job_category.category_id}"}
+  end
+
+  def populate_job_applications
+    50.times do
+      JobApplication.create(user_id: rand(1..(User.all.count)), job_id: rand(1..Job.all.count), status: rand(0..2))
+    end
+    JobApplication.all.each { |application| puts "Application created. User: #{application.user_id}, Job: #{application.job_id}"}
   end
 
 
