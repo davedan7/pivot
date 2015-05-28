@@ -1,5 +1,5 @@
 class JobApplication < ActiveRecord::Base
-  mount_uploader :attachment, AttachmentUploader
+  mount_uploader :resume, AttachmentUploader
 
   belongs_to :user
   belongs_to :job
@@ -10,7 +10,7 @@ class JobApplication < ActiveRecord::Base
 
   enum status: %w(received processing processed )
 
-  default_scope { order(created_at: :desc)}
+  default_scope { order(created_at: :desc) }
 
   def self.number_currently_received
     received.count
