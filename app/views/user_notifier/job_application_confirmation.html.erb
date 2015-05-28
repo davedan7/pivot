@@ -12,7 +12,7 @@ Hi <%= @job_application.user.name %>!
   <h4>ordered: <%= @job_application.date_applied(@job_application.created_at) %></h4>
     <h4>Current Status: <%= @job_application.show_status %></h4>
 
-<table>
+<table class="table-striped">
   <tr>
     <td>Job Title</td>
   </tr>

@@ -86,6 +86,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.not_business
+    where.not(role: 1)
+  end
+
   private
 
   def business_status_email?
