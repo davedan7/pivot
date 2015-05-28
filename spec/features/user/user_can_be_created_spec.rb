@@ -11,7 +11,7 @@ RSpec.describe "User view" do
       fill_in "Location", with: "Denver"
       fill_in "Password", with: "password"
       fill_in "Password confirmation", with: "password"
-      click_link_or_button "Create User"
+      click_link_or_button "Update User"
 
       expect(page).to have_content("davy")
     end
@@ -26,7 +26,7 @@ RSpec.describe "User view" do
       fill_in "Location", with: "Denver"
       fill_in "Password", with: "password"
       fill_in "Password confirmation", with: "password"
-      click_link_or_button "Create User"
+      click_link_or_button "Update User"
 
       expect(page).to have_content("Sign Up Name is too short")
     end
@@ -41,7 +41,7 @@ RSpec.describe "User view" do
       fill_in "Location", with: "Denver"
       fill_in "Password", with: "password"
       fill_in "Password confirmation", with: "password"
-      click_link_or_button "Create User"
+      click_link_or_button "Update User"
 
       visit new_user_path
 
@@ -51,7 +51,7 @@ RSpec.describe "User view" do
       fill_in "Location", with: "Denver"
       fill_in "Password", with: "password"
       fill_in "Password confirmation", with: "password"
-      click_link_or_button "Create User"
+      click_link_or_button "Update User"
 
       expect(page).to have_content("Username has already been taken")
     end

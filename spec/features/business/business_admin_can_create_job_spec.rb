@@ -10,7 +10,7 @@ RSpec.describe "Users" do
 
       fill_in "job[title]", with: "TestTitle"
       fill_in "job[description]", with: "TestDescription"
-      click_link_or_button "Submit"
+      click_link_or_button "Submit Job"
 
       expect(current_path).to eq(business_jobs_path(business: (User.find(business_admin.employer_id)).slug))
       expect(page).to have_content("TestTitle")

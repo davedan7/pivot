@@ -15,24 +15,24 @@ RSpec.describe "Admin" do
 
       visit jobs_path
       click_link "job1"
-      first(:button, "Apply to Job").click
+      first(:button, "Add Job to Basket").click
 
       visit jobs_path
       click_link "job2"
-      first(:button, "Apply to Job").click
+      first(:button, "Add Job to Basket").click
 
       visit checkout_path
 
-      click_button "Submit"
+      click_button "Submit Resume(s)"
       click_button "YES"
 
       visit admin_job_applications_dashboard_path
       expect(page).to have_content("Application Dashboard")
       expect(page).to have_content("Application_id")
       expect(page).to have_content("User_id")
-      expect(page).to have_content("received")
-      expect(page).to have_content("processing")
-      expect(page).to have_content("processed")
+      expect(page).to have_content("Received")
+      expect(page).to have_content("Processing")
+      expect(page).to have_content("Processed")
     end
   end
 end
