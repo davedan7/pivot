@@ -26,7 +26,7 @@
         </div>
 
         <div class="btn center-block">
-          <%= button_to "Apply to Job", checkout_path(job_id: @job.id), class: 'btn btn-md btn-primary' %>
+          <%= button_to "Add Job to Basket", checkout_path(job_id: @job.id), class: 'btn btn-md btn-primary' %>
         </div>
 
         <% if current_admin? || current_business_admin? || current_business? %>
