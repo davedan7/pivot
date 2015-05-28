@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :resumes, only: [:index, :new, :create, :destroy]
+  # get 'resumes/index'
+
+  # get 'resumes/new'
+
+  # get 'resumes/create'
+
+  # get 'resumes/destroy'
+
   root to: "home#index"
 
   get 'errors/file_not_found'
@@ -28,6 +37,11 @@ Rails.application.routes.draw do
   namespace :businesses, as: :business, path: '/:business' do
     resources :jobs, except: [:destroy]
     resources :administrative_management
+  end
+
+  # Business Job Applications Routes
+  namespace :businesses, as: :business, path: '/:business' do
+    resources :job_applications, only: [:index, :show]
   end
 
   patch "/admin/business/status/:id", to: "admin/business#change_status", as: :admin_business_change_status
