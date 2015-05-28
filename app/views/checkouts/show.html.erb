@@ -28,7 +28,7 @@
         <%= f.submit "Submit Resume(s)", class: "btn btn-primary" %>
         <% end %>
       <% else %>
-      <%= button_to "Must Login", new_user_path(origin: {destination: "checkout"}), method: :get %>
+      <%= button_to "Submit", new_user_path(origin: {destination: "checkout"}), method: :get %>
       <% end %>
 
 
