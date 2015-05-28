@@ -8,7 +8,7 @@ class Cart
   end
 
   def add_job(job_id)
-    if contents.include?(job_id)
+    if contents.include?(job_id.to_s)
       @flash_type    = "danger"
       @flash_message = "This job is already in your basket!"
     else
