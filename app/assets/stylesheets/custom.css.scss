@@ -318,8 +318,8 @@ body {
 
 
 .thumbnail {
-  min-height: 310px;
-  max-height: 310px;
+  min-height: 320px;
+  max-height: 330px;
   // width: 300px;
   // margin-left: 33%;
   margin: 30px;
@@ -327,6 +327,9 @@ body {
   // background-color: cornsilk;
   text-align: center;
 
+  img {
+    padding: 10px;
+  }
 }
 
 // jobs ///////////////////////////////////////////////

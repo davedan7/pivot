@@ -4,6 +4,7 @@
   <div class="col-sm-6 col-md-4 col-lg-4 individual-business">
     <div class="thumbnail">
       <div class="caption">
+        <%= image_tag business.picture.url(:micro), class: 'center-block img img-circle' %>
         <h3><%=link_to "#{business.username}", business_jobs_path(business: business.slug ) %></h3>
         <p><%= business.description %></p><br>
         <% if current_admin? %>
