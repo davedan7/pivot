@@ -1,0 +1,32 @@
+<table id="first_table">
+              <tr>
+                <th>Application_id</th>
+                <th>User_id</th>
+                <th>Created_At</th>
+                <th>Last_Updated_At</th>
+                <th>Status</th>
+                <th>Update Status</th>
+                <th>Resume</th>
+              </tr>
+
+              <div class="job_applications">
+                <% @job_applications.each do |job_application| %>
+                  <tr class="job_application" data-status="<%= job_application.status %>">
+                    <td><%= link_to "#{job_application.job.title}", admin_job_application_path({job_application_id: job_application.id}) %></td>
+                    <td><%= job_application.user_id %></td>
+                    <td><%= job_application.date_created %></td>
+                    <td><%= job_application.date_updated %></td>
+                    <td class="order_status"><%= job_application.status %></td>
+                    <td><%= link_to "Received", admin_job_application_update_path({job_application_id: job_application.id, status: "received"}), method: :post %>
+                        <%= link_to "Accepted", admin_job_application_update_path({job_application_id: job_application.id, status: "accepted"}), method: "post" %>
+                        <%= link_to "Rejected", admin_job_application_update_path({job_application_id: job_application.id, status: "rejected"}), method: "post" %>
+                      </td>
+                    <td>
+                      <% if job_application.job.user. %>
+                      <%= link_to "Download Resume", job_application.job.user.resumes.first.attachment_url %></td>
+                    </td>
+                  </tr>
+                <% end %>
+              </div>
+
+            </table>

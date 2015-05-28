@@ -1,6 +1,11 @@
 class ResumesController < ApplicationController
   def index
-    @resumes = Resume.all
+    if current_admin? || current_business? || current_business_admin?
+      @resumes = Resume.all
+    else
+      all_resumes = Resume.all
+      @resumes = all_resumes.select { |resume| resume.user_id == current_user.id}
+    end
   end
 
   def new
