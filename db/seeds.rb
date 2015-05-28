@@ -46,16 +46,8 @@ class Seed
     end
   end
 
-  def populate_business_employer
-    users = User.where(role:1)
-    users.each do |user|
-      user.employer_id = user.id
-      user.save
-    end
-  end
-
   def create_business_admins
-    User.create(name: "Turing School Admin", email: "admin@turing.com", username: "j3", password: "password", role: 3, location: "Denver", description: "Admin for Turing School", employer: User.find_by(username: 'turing'))
+    User.create(name: "Turing Admin", email: "admin@turing.com", username: "j3", password: "password", role: 3, location: "Denver", description: "Admin for Turing School", employer: User.find_by(username: 'turing'))
     User.create(name: "Pivotuhl Admin", email: "admin@pivotal.com", username: "padmin", password: "password", role: 3, location: "Denver", description: "Admin for Pivotuhl", employer: User.find_by(username: 'pivotal'))
     User.all.each { |user| puts "User #{user.name} created"}
   end
@@ -89,6 +81,15 @@ class Seed
     end
     JobApplication.all.each { |application| puts "Application created. User: #{application.user_id}, Job: #{application.job_id}"}
   end
+
+  def populate_business_employer
+    users = User.where(role:1)
+    users.each do |user|
+      user.employer_id = user.id
+      user.save
+    end
+  end
+
 end
 
 Seed.start
