@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   has_secure_password
   
   has_attached_file :picture, styles: {micro: '50x50',
@@ -71,7 +72,7 @@ class User < ActiveRecord::Base
   end
 
   def opposite_status
-    if business_status == true
+    if self.business_status == true
       "Offline"
     else
       "Online"
