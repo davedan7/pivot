@@ -1,34 +1,19 @@
-<div class="admin_job_form">
-  <h1>New Job</h1>
-  <div class="form">
-    <%= form_for @job, url: {controller: "businesses/jobs", action: "create"} do |f| %>
-      <div>
-        <%= f.text_field :title, placeholder: "Job title"  %><br>
-      </div><br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 form-styles">
 
-      <div>
-        <%= f.text_area :description, placeholder: "Job description" %><br>
-      </div><br>
+      <h4>ALL FIELDS REQUIRED**</h4>
+      <%= form_for([:admin, @job]) do |f| %>
+      <%= f.text_field :title, placeholder: "Job title", class: 'form-control'  %>
+      <%= f.text_area :description, placeholder: "Job description", class: 'form-control' %>
+      <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) %><br>
 
-      <div class="collection">
-        <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) %><br>
-      </div><br>
 
-      <div>
-        <%= f.label :status %><br>
-      </div><br>
-
-      <div>
-        Unavailable <%= f.radio_button :status, false  %><br>
-      </div><br>
-
-      <div>
-        Available <%= f.radio_button :status, true  %><br>
-      </div><br>
-
-      <div>
-        <%= f.submit "Submit Job" %>
-      </div><br>
-    <% end %>
+      <%= f.label :status  %>
+      Retired <%= f.radio_button :status, false %>
+      Active <%= f.radio_button :status, true  %><br>
+      <%= f.submit "Submit Job", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>

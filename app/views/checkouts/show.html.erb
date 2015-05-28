@@ -16,7 +16,7 @@
 
           <td><%= job.user.username %></td>
           <td><%= job.title %></td>
-          <td><%= button_to "Remove", checkout_remove_path(job_id: job.id)%></td>
+          <td><%= button_to "Remove", checkout_remove_path(job_id: job.id), class: "btn btn-danger"%></td>
         </tr>
       <% end %>
       </table>
