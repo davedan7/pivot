@@ -4,7 +4,7 @@
 
 
       <h1>Admin Dashboard - Welcome <%= current_user.name %>!</h1>
-      <h3><%= image_tag current_user.picture.url(:small) %></h3>
+      <h3><%= image_tag current_user.picture.url(:small), class: "img img-circle" %></h3>
 
       <div class="admin-links">
             <%= button_to "Manage Jobs", admin_jobs_path, method: "get", class: 'btn btn-md btn-primary' %>
