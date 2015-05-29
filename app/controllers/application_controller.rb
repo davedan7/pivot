@@ -29,8 +29,8 @@ class ApplicationController < ActionController::Base
     current_user && current_user.business_admin?
   end
 
-  def current_owner
-    job.find_by(id: params[:id]).user_id == current_user.employer_id
+  def current_owner?
+    Job.find_by(id: params[:id]).user_id == current_user.employer_id
   end
 
   def logged_in?

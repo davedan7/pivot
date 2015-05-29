@@ -15,6 +15,7 @@ class Businesses::JobsController < ApplicationController
   end
 
   def new
+    @business = User.find_by(slug: params[:business])
     @job = Job.new()
   end
 

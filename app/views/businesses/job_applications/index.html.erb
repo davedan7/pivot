@@ -13,7 +13,7 @@
     <% @job_applications.each do |job_application| %>
       <tr class="job_application" data-status="<%= job_application.status %>">
         <td><%= link_to "#{job_application.job.title}", job_path(id: job_application.job_id) %></td>
-        <td><%= job_application.job.user.name %></td>
+        <td><%= job_application.user.name %></td>
         <td><%= job_application.date_created %></td>
         <td><%= job_application.date_updated %></td>
         <td class="order_status"><%= job_application.status %></td>
@@ -22,7 +22,7 @@
             <%= link_to "Rejected", admin_job_application_update_path({job_application_id: job_application.id, status: "rejected"}), method: "post" %>
           </td>
         <td>
-          <% job_application.job.user.resumes.each do |resume| %>
+          <% job_application.user.resumes.each do |resume| %>
             <%= link_to "Download Resume #{resume.name}", resume.attachment_url %></td>
           <% end %>
         </td>
