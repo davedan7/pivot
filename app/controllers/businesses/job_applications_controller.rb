@@ -1,7 +1,8 @@
 class Businesses::JobApplicationsController < ApplicationController
 
   def index
-    @job_applications = JobApplication.all.where(user_id: current_user.id)
+    all_applications = JobApplication.all
+    @job_applications = all_applications.select { |app| app.job.user.id == current_user.id }
   end
 
 end
