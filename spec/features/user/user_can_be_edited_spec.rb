@@ -9,18 +9,19 @@ RSpec.describe "User view" do
 
       visit user_path(user)
       click_link_or_button "Edit Profile"
-      fill_in "Name", with: "David"
-      fill_in "Username", with: "davy"
-      fill_in "Email", with: "david@gmail.com"
-      fill_in "Location", with: "Denver"
+      save_and_open_page
+      fill_in "user[name]", with: "David"
+      fill_in "user[username]", with: "davy"
+      fill_in "user[email]", with: "david@gmail.com"
+      fill_in "user[location]", with: "Denver"
       fill_in "user[password]", with: "password"
-      fill_in "Password confirmation", with: "password"
+      fill_in "user[password confirmation]", with: "password"
       click_link_or_button "Submit User Information"
 
       expect(page).to have_content("davy")
     end
 
-    it 'cannot bed edit with empty name' do
+    it 'cannot be edited with empty name' do
       user = create(:applicant_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
