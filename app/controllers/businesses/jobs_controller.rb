@@ -38,7 +38,7 @@ class Businesses::JobsController < ApplicationController
   end
 
   def edit
-    @business = User.find_by(id: params[:business].to_i) || @business = User.find_by(slug: params[:business].slug)
+    @business = User.find_by(id: params[:business].to_i) || @business = User.find_by(slug: params[:business])
     @job = @business.jobs.find(params[:id])
     @categories = Category.all
   end
