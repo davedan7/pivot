@@ -9,13 +9,12 @@ RSpec.describe "User view" do
 
       visit user_path(user)
       click_link_or_button "Edit Profile"
-      save_and_open_page
       fill_in "user[name]", with: "David"
       fill_in "user[username]", with: "davy"
       fill_in "user[email]", with: "david@gmail.com"
       fill_in "user[location]", with: "Denver"
       fill_in "user[password]", with: "password"
-      fill_in "user[password confirmation]", with: "password"
+      fill_in "user[password_confirmation]", with: "password"
       click_link_or_button "Submit User Information"
 
       expect(page).to have_content("davy")
