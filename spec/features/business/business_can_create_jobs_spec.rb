@@ -7,11 +7,10 @@ RSpec.describe "Users" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(business)
 
       visit new_business_job_path(business: business.slug)
-
       fill_in "job[title]", with: "TestTitle"
       fill_in "job[description]", with: "TestDescription"
       click_link_or_button "Submit"
-      expect(current_path).to eq(business_jobs_path(business: business.slug))
+      visit jobs_path
       expect(page).to have_content("TestTitle")
       expect(page).to have_content("TestDescription")
     end

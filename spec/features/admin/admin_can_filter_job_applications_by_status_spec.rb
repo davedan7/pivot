@@ -25,12 +25,12 @@ RSpec.describe "admin page" do
    click_button "YES"
 
    visit admin_job_applications_dashboard_path
-   select("processing", from: "order[filter_status]")
+   select("accepted", from: "order[filter_status]")
 
    expect(page).to have_content(2)
 
      expect(page).to have_content("Received")
      expect(page).to have_content(2)
-    
+
   end
 end
