@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
                                        medium: '300x300'},
                                         storage: :s3,
                                         bucket: 'turingpivot',
-                                        s3_credentials: "pivot/config/application.yml",
                                         path: "resources/:id/:style/:basename.:extension",
                                         default_url: "Handshake_icon.jpg"
 
