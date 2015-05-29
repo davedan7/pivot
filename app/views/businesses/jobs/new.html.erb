@@ -5,7 +5,7 @@
       <h1>Create a New Job Listing</h1>
 
       <h4>ALL FIELDS REQUIRED**</h4>
-      <%= form_for @job, url: {:controller => "admin/jobs", :action => 'create', html: {method: 'put'}, business: @business.slug }  do |f| %>
+      <%= form_for @job, url: {:controller => "businesses/jobs", :action => 'create', html: {method: 'put'}, business: @business.slug }  do |f| %>
         <%= f.text_field :title, placeholder: "Job title", class: 'form-control'  %>
         <%= f.text_area :description, placeholder: "Job description", class: 'form-control' %>
         <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) %><br>
