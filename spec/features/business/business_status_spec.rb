@@ -14,11 +14,11 @@ RSpec.describe "Business user status" do
       click_link "Create a Business Account"
 
       expect(current_path).to eq(new_business_path)
-      fill_in "Name", with: business.name
-      fill_in "Username", with: business.username
-      fill_in "Email", with: business.email
+      fill_in "user[name]", with: business.name
+      fill_in "user[username]", with: business.username
+      fill_in "user[email]", with: business.email
       fill_in "user[description]", with: "We sell Bananas and Banana themed things!"
-      fill_in "Location", with: business.location
+      fill_in "user[location]", with: business.location
       fill_in "user[password]", with: business.password
       fill_in "Password confirmation", with: business.password
       click_button "Submit"

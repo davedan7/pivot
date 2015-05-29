@@ -20,10 +20,8 @@ RSpec.describe "Admin jobs" do
       click_link_or_button "Add New Job"
 
       expect(current_path).to eq(new_admin_job_path)
-
       fill_in "Job title", with: "New Job"
-      fill_in "Job description", with: "New Description"
-      fill_in "Posting cost", with: 10
+      fill_in "Description", with: "New Description"
       select "JanetDoes", from: "job[user_id]"
       check "Ruby"
       click_link_or_button "Submit Job"
@@ -50,8 +48,7 @@ RSpec.describe "Admin jobs" do
       expect(current_path).to eq(new_admin_job_path)
 
       fill_in "Job title", with: ""
-      fill_in "Job description", with: "New Description"
-      fill_in "Posting cost", with: 10
+      fill_in "Description", with: "New Description"
       select "JanetDoes", from: "job[user_id]"
       page.check "Ruby"
       click_link_or_button "Submit Job"
@@ -75,8 +72,7 @@ RSpec.describe "Admin jobs" do
       expect(current_path).to eq(new_admin_job_path)
 
       fill_in "Job title", with: "New Job"
-      fill_in "Job description", with: "New Description"
-      fill_in "Posting cost", with: 10
+      fill_in "Description", with: "New Description"
       select "JanetDoes", from: "job[user_id]"
       check "Ruby"
       click_link_or_button "Submit Job"
@@ -87,8 +83,7 @@ RSpec.describe "Admin jobs" do
       expect(current_path).to eq(new_admin_job_path)
 
       fill_in "Job title", with: "New Job"
-      fill_in "Job description", with: "New Description"
-      fill_in "Posting cost", with: 10
+      fill_in "Description", with: "New Description"
       click_link_or_button "Submit Job"
 
       expect(page).to have_content("Title has already been taken")
@@ -110,8 +105,7 @@ RSpec.describe "Admin jobs" do
       expect(current_path).to eq(new_admin_job_path)
 
       fill_in "Job title", with: "New Job"
-      fill_in "Job description", with: "New Description"
-      fill_in "Posting cost", with: 10
+      fill_in "Description", with: "New Description"
       select "JanetDoes", from: "job[user_id]"
       check "Ruby"
       click_link_or_button "Submit Job"
@@ -122,8 +116,7 @@ RSpec.describe "Admin jobs" do
       expect(current_path).to eq(new_admin_job_path)
 
       fill_in "Job title", with: "New Job"
-      fill_in "Job description", with: "New Description"
-      fill_in "Posting cost", with: 10
+      fill_in "Description", with: "New Description"
       click_link_or_button "Submit Job"
 
       expect(page).to have_content("Title has already been taken")

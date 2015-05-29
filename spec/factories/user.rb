@@ -14,9 +14,9 @@ FactoryGirl.define do
     email     "janetdoes@example.com"
     location  "denver"
     password  "password"
-    role      1
-    business_status true
+    role        1
     employer_id 1
+    pending    false
   end
 
   factory :super_user, class: User do
