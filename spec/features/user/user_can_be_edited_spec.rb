@@ -9,7 +9,7 @@ RSpec.describe "User view" do
 
       visit user_path(user)
       click_link_or_button "Edit Profile"
-      save_and_open_page
+      
       fill_in "user[name]", with: "David"
       fill_in "user[username]", with: "davy"
       fill_in "user[email]", with: "david@gmail.com"
