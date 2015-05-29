@@ -35,7 +35,7 @@ RSpec.describe "User view" do
       click_link_or_button "Log In"
       fill_in "Email", with: "david@gmail.com"
       fill_in "Password", with: "password"
-      click_link_or_button "Log In"
+      click_button "Log In"
       expect(page).to have_content("Dashboard")
     end
 
