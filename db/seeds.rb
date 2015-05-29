@@ -64,8 +64,9 @@ class Seed
   end
 
   def create_jobs
+    normal_users = User.where(role: 0)
     50.times do
-      Job.create(title: Faker::Name.title, description: Faker::Hacker.say_something_smart + " " + Faker::Hacker.say_something_smart + " " + Faker::Hacker.say_something_smart + " " + Faker::Hacker.say_something_smart, posting_cost: rand(4..10), user_id: rand(1..User.count))
+      Job.create(title: Faker::Name.title, description: Faker::Hacker.say_something_smart + " " + Faker::Hacker.say_something_smart + " " + Faker::Hacker.say_something_smart + " " + Faker::Hacker.say_something_smart, posting_cost: rand(4..10), user_id: normal_users[rand(0..(normal_users.count-1))].id)
     end
     Job.all.each { |job| puts "Job #{job.title} created: #{job.description}"}
   end
@@ -78,8 +79,9 @@ class Seed
   end
 
   def populate_job_applications
+    businesses = User.where(role:1)
     100.times do
-      JobApplication.create(user_id: rand(1..(User.all.count)), job_id: rand(1..Job.all.count), status: rand(0..2))
+      JobApplication.create(user_id: businesses[rand(0..(businesses.count-1))].id, job_id: rand(1..Job.all.count), status: rand(0..2))
     end
     JobApplication.all.each { |application| puts "Application created. User: #{application.user_id}, Job: #{application.job_id}"}
   end
@@ -90,6 +92,12 @@ class Seed
       user.employer_id = user.id
       user.save
     end
+  end
+
+  private
+
+  def businesses
+    businesses = User.where(role: 2)
   end
 
 end
