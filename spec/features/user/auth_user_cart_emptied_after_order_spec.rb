@@ -13,7 +13,7 @@ RSpec.describe "Cart after Submit Resume(s)" do
       first(:button, "Add Job to Basket").click
       visit checkout_path
       expect(page).to have_content("job1")
-      click_button "Submit Resume(s)"
+      click_button "Submit"
       click_button "YES"
 
       visit checkout_path
@@ -38,7 +38,7 @@ RSpec.describe "Cart after Submit Resume(s)" do
       first(:button, "Add Job to Basket").click
       visit checkout_path
       expect(page).to have_content("job1")
-      click_button "Submit Resume(s)"
+      click_button "Submit"
       click_button "YES"
 
       visit checkout_path

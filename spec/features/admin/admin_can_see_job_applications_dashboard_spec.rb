@@ -23,7 +23,7 @@ RSpec.describe "Admin" do
 
       visit checkout_path
 
-      click_button "Submit Resume(s)"
+      click_button "Submit"
       click_button "YES"
 
       visit admin_job_applications_dashboard_path
@@ -31,8 +31,8 @@ RSpec.describe "Admin" do
       expect(page).to have_content("Application_id")
       expect(page).to have_content("User_id")
       expect(page).to have_content("Received")
-      expect(page).to have_content("Processing")
-      expect(page).to have_content("Processed")
+      expect(page).to have_content("Accepted")
+      expect(page).to have_content("Rejected")
     end
   end
 end
