@@ -6,7 +6,7 @@ require "rails_helper"
 RSpec.describe "Admin jobs" do
 
   context "as an admin" do
-    xit "can create a new job" do
+    it "can create a new job" do
       admin = create(:super_user)
       business = create(:business_user)
       category = create(:category)
@@ -16,7 +16,7 @@ RSpec.describe "Admin jobs" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      new_admin_job_path
+      visit new_admin_job_path
 
       expect(current_path).to eq(new_admin_job_path)
       fill_in "Job title", with: "New Job"
@@ -31,7 +31,7 @@ RSpec.describe "Admin jobs" do
       expect(page).to have_content("New Job")
     end
 
-    xit "cannot create a new job with empty title" do
+    it "cannot create a new job with empty title" do
       admin = create(:super_user)
       business = create(:business_user)
       category = create(:category)
@@ -54,7 +54,7 @@ RSpec.describe "Admin jobs" do
       expect(page).to have_content("Title can't be blank")
     end
 
-    xit "can not create the same job twice" do
+    it "can not create the same job twice" do
       admin = create(:super_user)
       business = create(:business_user)
       category = create(:category)
@@ -85,7 +85,7 @@ RSpec.describe "Admin jobs" do
       expect(page).to have_content("Title has already been taken")
     end
 
-    xit "can not create the same job twice" do
+    it "can not create the same job twice" do
       admin = create(:super_user)
       business = create(:business_user)
       category = create(:category)

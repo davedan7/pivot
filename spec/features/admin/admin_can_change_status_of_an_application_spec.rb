@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Business User" do
   context "when viewing jobs" do
-    xit "can change status of an individual job" do
+    it "can change status of an individual job" do
 
       admin = create(:super_user)
       business = create(:business_user)
@@ -31,10 +31,9 @@ RSpec.describe "Business User" do
       first(:link, 1).click
       expect(page).to have_content("received")
 
-      click_link("Processing")
-#### undefined method attachment_changed? in test and development ####
+      click_link("Rejected")
 
-      expect(page).to have_content("Current Status: processing")
+      expect(page).to have_content("Current Status: rejected")
     end
   end
 end
