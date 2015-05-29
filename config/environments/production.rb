@@ -81,10 +81,10 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
   :storage => :s3,
-    :bucket => ENV['S3_BUCKET_NAME'],
   :s3_credentials => {
-    :access_key_id => ENV['AWSSecretKey'],
-    :secret_access_key => ENV['AWSAccessKeyId']
+    :bucket => ENV['S3_BUCKET_NAME'],
+    :access_key_id => ENV['AWSAccessKeyId'],
+    :secret_access_key => ENV['AWSSecretKey']
   },
   :url =>':s3_domain_url',
    :path => '/:class/:attachment/:id_partition/:style/:filename',
