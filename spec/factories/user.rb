@@ -17,6 +17,7 @@ FactoryGirl.define do
     role        1
     employer_id 1
     pending    false
+    business_status true
   end
 
   factory :super_user, class: User do

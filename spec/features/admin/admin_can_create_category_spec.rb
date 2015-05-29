@@ -53,7 +53,7 @@ RSpec.describe "admin categories" do
       fill_in "Category Title", with: "Ruby"
       fill_in "Category Description", with: "for main course jobs"
       click_button "Submit"
-      expect(page).to have_content("Title has already been taken, Description has already been taken")
+      expect(page).to have_content("Name has already been taken, Description has already been taken")
     end
   end
 

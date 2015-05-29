@@ -13,15 +13,10 @@ RSpec.describe "admin capabilities" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit admin_dashboard_path
-
-      within(".admin-links") do
-        click_button "All Jobs"
-      end
+      visit admin_jobs_path
 
       expect(current_path).to eq(admin_jobs_path)
 
-      # click_link "Job1"
       click_link_or_button "Edit"
 
       page.choose "job[status]", match: :first

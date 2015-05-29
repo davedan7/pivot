@@ -11,11 +11,7 @@ RSpec.describe "admin jobs" do
       admin = create(:super_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit admin_dashboard_path
-
-      within(".admin-links") do
-        click_button "All Jobs"
-      end
+      visit admin_jobs_path
 
       expect(current_path).to eq(admin_jobs_path)
       expect(page).to have_content("Job0")

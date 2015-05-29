@@ -7,10 +7,8 @@ RSpec.describe "applying for a job" do
     job = Job.create(title: "engineer", description: "ruby job", posting_cost: 10, user_id: business.id)
     user = create(:applicant_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    visit businesses_path
-    expect(current_path).to eq(businesses_path)
-    save_and_open_page
-    click_link "JanetDoes"
+
+    visit business_jobs_path(business)
     expect(current_path).to eq('/janetdoes/jobs')
     expect(page).to have_content("engineer")
     click_link_or_button "engineer"
@@ -33,9 +31,7 @@ RSpec.describe "applying for a job" do
     job = Job.create(title: "engineer", description: "ruby job", posting_cost: 10, user_id: business.id)
     user = create(:applicant_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
-    visit businesses_path
-    click_link "JanetDoes"
+    visit business_jobs_path(business)
     expect(current_path).to eq('/janetdoes/jobs')
     expect(page).to have_content("engineer")
     click_link_or_button "engineer"
@@ -55,8 +51,7 @@ RSpec.describe "applying for a job" do
     user = create(:applicant_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit businesses_path
-    click_link "JanetDoes"
+    visit business_jobs_path(business)
     expect(current_path).to eq('/janetdoes/jobs')
     expect(page).to have_content("engineer")
     click_link_or_button "engineer"

@@ -22,6 +22,9 @@
           </div>
         </div>
 
+        <h4>JOB Status:</h4>
+        <%= @job.show_status %>
+
         <% if current_admin? || current_business_admin? || current_business? %>
           <p><%= link_to "Edit", edit_business_job_path(business: @job.user.slug), class: 'btn btn-md btn-primary' %></p>
         <% end %>
