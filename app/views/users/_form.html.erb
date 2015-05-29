@@ -37,7 +37,9 @@
       <hr>
 
 
-      <h3>Already signed up?</h3>
+      <% if !current_user %>
+        <h3>Already signed up?</h3>
+      <% end %>
 
       <div class="text-center">
         <%= button_to "Login", login_path, method: :get, class: "btn btn-primary" %>
