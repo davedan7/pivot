@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+  before_action :require_admin, only: [:destroy]
+
+  def require_admin
+    unless current_business? || current_admin?
+      flash[:danger] = "You do not have the required permissions to delete this account"
+    end
+      redirect_to user_path(current_user)
+  end
 
   def new
     @user = User.new
@@ -45,7 +53,7 @@ class UsersController < ApplicationController
       flash[:success] = "Account has been removed"
       redirect_to root_path
     else
-      flash[:danger] = @user.errors.full_messages
+      flash[:danger] = "You do not have the required permissions to delete this account"
       render @user
     end
   end
