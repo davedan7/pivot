@@ -6,11 +6,11 @@
 
       <%= form_for(:session, url: login_path) do |f| %>
 
-        <%= f.label :email, 'Email' %>
-        <%= f.email_field :email, placeholder: "(required)", class: 'form-control' %>
+        <%= f.label :email, 'Email ' %>
+        <%= f.email_field :email, placeholder: "required", class: 'form-control' %>
 
         <%= f.label :password, 'Password' %>
-        <%= f.password_field :password, placeholder: "(required)", class: 'form-control'%>
+        <%= f.password_field :password, placeholder: "required", class: 'form-control'%>
 
         <div class="row-fluid">
           <div class="span4 offset4 text-center">
