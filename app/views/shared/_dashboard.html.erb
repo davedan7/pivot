@@ -5,10 +5,10 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
 
-      <p>
-        Your Display Name: <%= current_user.name %><br>
-        Description: <%= current_user.description %>
-      </p>
+        <p>
+          Your Display Name: <%= current_user.name %><br>
+          Description: <%= current_user.description %>
+        </p>
 
       <%= button_to "Edit Profile", edit_user_path(current_user), method: :get, class: "btn btn-primary" %>
 

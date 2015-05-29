@@ -4,7 +4,7 @@
 
       <h1>Add New Business Administrator</h1>
 
-      <%= form_for @business_admin, url: {:controller => "administrative_management", :action => 'create', html: {method: 'put'}, business: @business.id }  do |f| %>
+      <%= form_for @business_admin, url: {:controller => "administrative_management", :action => 'create', html: {method: 'put'}, business: @business.slug }  do |f| %>
         <%= f.label :name, 'Name' %>
         <%= f.text_field :name, placeholder: "(required)", class: 'form-control' %>
 

@@ -4,7 +4,9 @@
 
       <h1>Manage Administrators</h1>
 
-      <%= link_to "Add New Administrator", new_business_administrative_management_path(business: @business.slug), class: "btn btn-primary" %>
+      <div class="text-center">
+        <%= link_to "Add New Administrator", new_business_administrative_management_path(business: @business.slug), class: "btn btn-primary" %>        
+      </div>
 
       <table class="table table-bordered table-striped"align="center">
         <tr>
