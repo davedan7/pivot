@@ -22,37 +22,36 @@
         <br>
 
             <h3>All Job Applications</h3>
-            <table class="table table-bordered table-striped"id="first_table">
+
+           </table>
+
+            </div>
+             <table class="table table-bordered table-striped"id="first_table">
               <tr>
-                <th>Application_id</th>
-                <th>User_id</th>
+                <th>Company</th>
+                <th>Job Title</th>
+                <th>Applicant Name</th>
                 <th>Created_At</th>
                 <th>Last_Updated_At</th>
                 <th>Status</th>
                 <th>update Status</th>
               </tr>
-
-              <div class="job_applications">
+              <div class="job_applications text-center">
                 <% @job_applications.each do |job_application| %>
                   <tr class="job_application" data-status="<%= job_application.status %>">
-                    <td><%= link_to "#{job_application.id}", admin_job_application_path({job_application_id: job_application.id}) %></td>
-                    <td><%= job_application.user_id %></td>
+                    <td><%= job_application.job.user.name %></td>
+                    <td><%= link_to "#{job_application.job.title}", admin_job_application_path({job_application_id: job_application.id}) %></td>
+                    <td><%= job_application.user.name %></td>
                     <td><%= job_application.date_created %></td>
                     <td><%= job_application.date_updated %></td>
                     <td class="order_status"><%= job_application.status %></td>
                     <td><%= link_to "Received", admin_job_application_update_path({job_application_id: job_application.id, status: "received"}), method: :post %>
                         <%= link_to "Accepted", admin_job_application_update_path({job_application_id: job_application.id, status: "accepted"}), method: "post" %>
                         <%= link_to "Rejected", admin_job_application_update_path({job_application_id: job_application.id, status: "rejected"}), method: "post" %>
-                      </td>
+                    </td>
                   </tr>
                 <% end %>
               </div>
-
-            </table>
-
-
-
-
     </div>
   </div>
 </div>
