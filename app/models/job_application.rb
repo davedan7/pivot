@@ -13,6 +13,8 @@ class JobApplication < ActiveRecord::Base
 
   default_scope { order(created_at: :desc) }
 
+  # scope :by_business, -> { where(user_id: self.job.user_id) }
+
   def self.number_currently_received
     received.count
   end
