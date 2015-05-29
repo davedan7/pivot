@@ -28,8 +28,8 @@ RSpec.describe "Admin" do
 
       visit admin_job_applications_dashboard_path
       expect(page).to have_content("Application Dashboard")
-      expect(page).to have_content("Application_id")
-      expect(page).to have_content("User_id")
+      expect(page).to have_content("Company")
+      expect(page).to have_content("Applicant Name")
       expect(page).to have_content("Received")
       expect(page).to have_content("Accepted")
       expect(page).to have_content("Rejected")
