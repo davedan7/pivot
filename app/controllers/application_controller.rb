@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_business_admin?
   helper_method :current_admin?
   helper_method :current_business?
+  helper_method :current_owner?
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
@@ -26,6 +27,10 @@ class ApplicationController < ActionController::Base
 
   def current_business_admin?
     current_user && current_user.business_admin?
+  end
+
+  def current_owner
+    job.find_by(id: params[:id]).user_id == current_user.employer_id
   end
 
   def logged_in?

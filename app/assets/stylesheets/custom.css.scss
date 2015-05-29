@@ -152,10 +152,19 @@ nav.navbar{
 
 
 
+// buttons ///////////////////////////////////////////
+.btn  {
+  margin: 5px;
+}
+// buttons ///////////////////////////////////////////
+
+
 
 
 // body /////////////////////////////////////////
+
 body {
+  // height: 100%;
   padding-top: 0px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -163,6 +172,15 @@ body {
   background-size: cover;
   font-family: sans-serif;
 }
+
+// #wrap {
+//   min-height: 100%;
+//   height: auto;
+//   /* Negative indent footer by its height */
+//   margin: 0 auto -60px;
+//   /* Pad bottom by footer height */
+//   padding: 0 0 60px;
+// }
 
 .container {
   margin: 0px auto 40px auto;
@@ -224,12 +242,6 @@ body {
     text-shadow: -1px 1px 0px rgba(149, 173, 210, 1), -2px 2px 0px rgba(149, 173, 210, 1);
   }
 }
-
-// // .carousel-inner > .item > img,
-// .carousel-inner > .item > a > img {
-//     margin: auto;
-//     width:100%;
-// }
 // carousel ///////////////////////////////////////////
 
 
@@ -253,7 +265,6 @@ body {
 
 
 // jobs ///////////////////////////////////////////////
-
 .job-category-name  {
   color: $blue-dark;
   margin: 60px 0 20px 0;
@@ -324,9 +335,7 @@ body {
     padding: 10px;
   }
 }
-
 // jobs ///////////////////////////////////////////////
-
 
 
 
@@ -355,7 +364,6 @@ body {
   }
 
 }
-
 // admin ///////////////////////////////////////////////
 
 
@@ -365,11 +373,12 @@ body {
 
 // footer ///////////////////////////////////////////
 footer {
-}
-
-footer {
+  // position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
   background-color: $white;
-  padding: 60px 0px 60px 0px;
+  padding: 10px 0px 10px 0px;
   line-height: 1.7;
   // margin-top: 45px;
   border-top: 1px solid $gray-medium-light;

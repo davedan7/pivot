@@ -36,13 +36,17 @@
 
   <body>
 
-    <%= render 'layouts/nav' %>
+    <!-- <div id="wrap"> -->
+
+      <%= render 'layouts/nav' %>
 
       <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :class => "alert alert-#{name}" %>
       <% end %>
 
       <%= yield %>
+
+    <!-- </div> -->
 
       <%= render 'layouts/footer' %>
 

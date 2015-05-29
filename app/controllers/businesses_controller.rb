@@ -7,9 +7,9 @@ class BusinessesController < ApplicationController
       @businesses = User.business.online_businesses
     end
   end
-  
-  def correct_priveleges
-    current_business? || current_admin? || current_business_admin?
-  end
+
+  # def correct_priveleges
+  #   current_business? || current_admin? || current_business_admin?
+  # end
 
 end

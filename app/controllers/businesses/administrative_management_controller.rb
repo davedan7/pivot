@@ -1,9 +1,13 @@
 class Businesses::AdministrativeManagementController < BusinessesController
-  before_action :require_business_status
-
-  def require_business_status
-    redirect_to "/errors/file_not_found" unless correct_priveleges
-  end
+  # before_action :require_business_status
+  #
+  # def require_business_status
+  #   redirect_to "/errors/file_not_found" unless correct_priveleges
+  # end
+  #
+  # def correct_priveleges
+  #   current_business? || current_business_admin? || current_admin?
+  # end
 
   def index
     @business = User.find_by(slug: params[:business])
@@ -18,7 +22,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
   def create
     business = User.find_by(slug: params[:business])
     @business_admin = User.new(user_params)
-      @business_admin.employer_id = business.id
+    @business_admin.employer_id = business.id
 
     if @business_admin.save
       flash.now[:success] = "Business Admin successfully created."
@@ -47,7 +51,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
   def destroy
     @business_admin = User.find(params[:id])
     @business_admin.destroy
-    redirect_to business_administrative_management_index_path(business: current_user.employer.slug)
+    redirect_to request.referrer
   end
 
 
