@@ -2,10 +2,12 @@
   <div class="jobs-list row">
     <div class="col-md-6 col-md-offset-3">
 
-
       <div class="jobs-show">
 
-        <h3><%= @job.title %></h3>
+        <!-- Business name -->
+        <h1> <%= @job.user.name %></h1>
+
+        <h3> <%= @job.title %> </h3>
 
         <%= image_tag User.find(@job.user_id).picture.url(:medium), class: "img img-circle" %>
 
@@ -26,11 +28,8 @@
         <div class="btn center-block">
           <%= button_to "Add Job to Basket", checkout_path(job_id: @job.id), class: 'btn btn-md btn-primary' %><br>
 
-        <% if current_admin? %>
-          <div class="btn center-block">
-            <%= link_to "Edit", edit_admin_job_path(@job), class: 'btn btn-md btn-primary' %>
-          </div>
-        <% elsif current_business_admin? || current_business? %>
+
+        <% if current_business? && current_owner? || current_admin? %>
           <%= link_to "Edit", edit_business_job_path(business: @job.user.slug), class: 'btn btn-md btn-primary' %>
         <% end %>
 

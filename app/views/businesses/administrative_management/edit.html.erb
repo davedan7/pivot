@@ -1,57 +1,39 @@
 <div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 form-styles">
 
-  <%= form_for(@business_admin, url: business_administrative_management_path(@business_admin, business: @business_admin.employer.slug)) do |f| %>
-    <div class="field">
-      <p><%= f.label :name %></p>
-      <p><%= f.text_field :name, placeholder: "Name" %></p>
-    </div><br>
+      <h1>Edit Administrators</h1>
 
-    <div class="field">
-      <p><%= f.label :username %></p>
-      <p><%= f.text_field :username, placeholder: "Username" %></p>
-    </div><br>
+      <%= form_for(@business_admin, url: business_administrative_management_path(@business_admin, business: @business_admin.employer.slug)) do |f| %>
+        <%= f.label :name, 'Name' %>
+        <%= f.text_field :name, placeholder: "(required)", class: 'form-control' %>
 
-    <div class="field">
-      <p><%= f.label :description %></p>
-      <p><%= f.text_area :description, placeholder: "Write a short bio for yourself" %></p>
-    </div><br>
+        <%= f.label :username, 'Username' %>
+        <%= f.text_field :username, placeholder: "(required)", class: 'form-control' %>
 
-    <div class="field">
-      <p><%= f.label :title %></p>
-      <p><%= f.text_field :title, placeholder: "Title" %></p>
-    </div><br>
+        <%= f.label :description, 'Bio' %>
+        <%= f.text_area :description, placeholder: "Write a short bio for yourself", class: 'form-control' %>
 
-    <div class="field">
-      <p><%= f.label :email %></p>
-      <p><%= f.text_field :email, placeholder: "Email" %></p>
-    </div><br>
+        <%= f.label :email, 'Email' %>
+        <%= f.email_field :email, placeholder: "(required)", class: 'form-control' %>
 
-    <div class="field">
-      <p><%= f.label :location %></p>
-      <p><%= f.text_field :location, placeholder: "Location" %></p>
-    </div><br>
+        <%= f.label :location, 'Location' %>
+        <%= f.text_field :location, placeholder: "(required)", class: 'form-control' %>
 
-    <div class="field">
-      <p><%= f.label :password %></p>
-      <p><%= f.password_field :password, placeholder: "Password" %></p>
-    </div><br>
+        <%= f.label :password, 'Password' %>
+        <%= f.password_field :password, placeholder: "(required)", class: 'form-control' %></p>
 
-    <div class="field">
-      <p><%= f.label :password_confirmation %></p>
-      <p><%= f.password_field :password_confirmation, placeholder: "Password confirmation" %></p>
-    </div><br>
+        <%= f.label :password_confirmation, 'Password confirmation' %>
+        <%= f.password_field :password_confirmation, placeholder: "(required)", class: 'form-control' %>
 
-    <div class="field">
-      <p><%= f.label :picture, "Attach a Picture" %></p>
-    </div><br>
+        <%= f.label :picture, "Attach a Picture" %>
+        <%= f.file_field :picture, class: 'form-control' %>
 
-    <div class="field">
-      <p><%= f.file_field :picture %></p>
-    </div><br>
+        <div class="text-center">
+          <%= f.submit "Submit User Information", class: "btn btn-primary" %>
+        </div>
+      <% end %>
 
-    <div class="field">
-      <p><%= f.submit %></p>
-    </div><br>
-  <% end %>
-
+    </div>
+  </div>
 </div>

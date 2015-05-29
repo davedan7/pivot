@@ -10,17 +10,17 @@ class Businesses::AdministrativeManagementController < BusinessesController
   # end
 
   def index
-    @user = User.find(params[:business].to_s)
+    @user = User.find(params[:business].to_i)
     @business_admins = @user.business_managers.not_business
   end
 
   def new
-    @user = User.find(params[:business].to_s)
+    @user = User.find(params[:business].to_i)
     @business_admin = User.new
   end
 
   def create
-    @user = User.find(params[:business].to_s)
+    @user = User.find(params[:business].to_i)
     @business_admin = User.new(user_params)
     if current_user.business?
       @business_admin.employer_id = current_user.id
