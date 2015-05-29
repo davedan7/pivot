@@ -6,6 +6,11 @@
         <h1 class="job-category-name">Job Application Dashboard</h1>
 
           <h3>Job Application Summary</h3>
+
+          <div class="pagination_centered">
+            <%= will_paginate @job_applications %>
+          </div>
+
           <table class="table table-bordered table-striped"class="table-striped">
             <tr>
               <th>Received</th>
@@ -13,9 +18,9 @@
               <th>Rejected</th>
             </tr>
             <tr>
-              <td><%= @job_applications.number_currently_received %></td>
-              <td><%= @job_applications.number_currently_accepted %></td>
-              <td><%= @job_applications.number_currently_rejected %></td>
+              <td><%= @job_apps_summary.number_currently_received %></td>
+              <td><%= @job_apps_summary.number_currently_accepted %></td>
+              <td><%= @job_apps_summary.number_currently_rejected %></td>
             </tr>
           </table>
           <p><%= render "admin/job_applications/filter" %></p>

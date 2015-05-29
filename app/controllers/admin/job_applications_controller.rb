@@ -1,7 +1,8 @@
 class Admin::JobApplicationsController < Admin::BaseController
-  
+
   def dashboard
-    @job_applications   = JobApplication.all
+    @job_apps_summary = JobApplication.all
+    @job_applications   = JobApplication.all.paginate(page: params[:page])
     @statuses = ["received", "accepted", "rejected"]
   end
 

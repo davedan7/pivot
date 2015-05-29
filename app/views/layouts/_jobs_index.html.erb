@@ -13,7 +13,7 @@
         <div class="jobs-individual">
 
           <% if logged_in? %>
-            <% if current_admin? %>
+            <% if current_admin?  %>
               <h3> <%= link_to "#{job.title}",job_path(job) %> </h4>
               <p> <%= job.description %> </p>
               <div class="btn center-block">
@@ -30,6 +30,11 @@
               <p> <%= job.description %> </p>
             <% end %>
 
+            <% if current_business_admin? && current_user.employer_id == job.user_id %>
+            <div class="btn center-block">
+              <%= link_to "Edit", edit_business_job_path(current_user.employer_id, job.id), class: 'btn btn-md btn-primary' %>
+            </div>
+            <% end %>
         </div>
 
       <% end %>
