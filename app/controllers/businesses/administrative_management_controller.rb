@@ -6,26 +6,23 @@ class Businesses::AdministrativeManagementController < BusinessesController
   end
 
   def index
-    @user = User.find(params[:business].to_s)
-    @business_admins = @user.business_managers.not_business
+    @business = User.find_by(slug: params[:business])
+    @business_admins = @business.business_managers.not_business
   end
 
   def new
-    @user = User.find(params[:business].to_s)
+    @business = User.find_by(slug: params[:business])
     @business_admin = User.new
   end
 
   def create
+    business = User.find_by(slug: params[:business])
     @business_admin = User.new(user_params)
-    if current_user.business?
-      @business_admin.employer_id = current_user.id
-    else
-      @business_admin.employer_id = current_user.employer_id
-    end
+      @business_admin.employer_id = business.id
 
     if @business_admin.save
       flash.now[:success] = "Business Admin successfully created."
-      redirect_to business_administrative_management_index_path(@business_admin, business: current_user.employer.slug)
+      redirect_to business_administrative_management_index_path(business: business.slug)
     else
       flash.now[:danger] = @business_admin.errors.full_messages.join(", ")
       render :new
@@ -40,7 +37,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
     @business_admin = User.find(params[:id])
     if @business_admin.update(user_params)
       flash.now[:success] = "Business Admin successfully edited."
-      redirect_to business_administrative_management_index_path(business: current_user.slug)
+      redirect_to business_administrative_management_index_path(business: @business_admin.employer.slug)
     else
       flash.now[:danger] = @business_admin.errors.full_messages.join(", ")
       render :new
@@ -63,6 +60,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
                                    :description,
                                    :username,
                                    :location,
+                                   :picture,
                                    :password).merge(role: 3)
     end
 
