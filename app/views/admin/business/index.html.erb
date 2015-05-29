@@ -5,11 +5,13 @@
     <div class="col-sm-6 col-md-4 col-lg-4 individual-business">
       <div class="thumbnail">
         <div class="caption">
-          <h3><%=link_to "#{business.username}", business_jobs_path(business: business.slug ) %></h3>
+          <h3><%=link_to "#{business.username}", business_jobs_path(business: business.slug) %></h3>
           <p><%= business.description %></p><br>
           <% if current_admin? %>
+          <p>Current Status: <%= business.show_status %> </p>
+          <p><%= link_to "Add Job", new_business_job_path(business: business.slug), class: "btn btn-primary" %></p>
           <p><%= button_to "Edit Business", edit_user_path(business), method: 'get', class: "btn btn-primary" %></p>
-          <p>Current Status: <%= business.show_status %> <%= button_to "Change Status to #{business.opposite_status}", admin_business_change_status_path(business), method: 'patch', class: "btn btn-primary" %></p>
+          <p><%= button_to "Change Status to #{business.opposite_status}", admin_business_change_status_path(business), method: 'patch', class: "btn btn-primary" %></p>
           <p><%= button_to "Manage Business Administrators", business_administrative_management_index_path(business: business.slug), method: 'get', class: "btn btn-primary" %></p>
           <% end %>
         </div>

@@ -18,7 +18,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
   def create
     business = User.find_by(slug: params[:business])
     @business_admin = User.new(user_params)
-      @business_admin.employer_id = business.id
+    @business_admin.employer_id = business.id
 
     if @business_admin.save
       flash.now[:success] = "Business Admin successfully created."
