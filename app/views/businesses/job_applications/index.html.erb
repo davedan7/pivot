@@ -1,7 +1,7 @@
 <table class="table table-bordered table-striped"id="first_table">
   <tr>
     <th>Application_id</th>
-    <th>User_id</th>
+    <th>User Name</th>
     <th>Created_At</th>
     <th>Last_Updated_At</th>
     <th>Status</th>
@@ -13,7 +13,7 @@
     <% @job_applications.each do |job_application| %>
       <tr class="job_application" data-status="<%= job_application.status %>">
         <td><%= link_to "#{job_application.job.title}", job_path(id: job_application.job_id) %></td>
-        <td><%= job_application.user_id %></td>
+        <td><%= job_application.job.user.name %></td>
         <td><%= job_application.date_created %></td>
         <td><%= job_application.date_updated %></td>
         <td class="order_status"><%= job_application.status %></td>
