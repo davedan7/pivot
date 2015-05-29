@@ -47,6 +47,8 @@ class Seed
   end
 
   def create_business_admins
+    User.create(name: "SlowRight Admin", email: "admin@slowright.com", username: "sadmin", password: "password", role: 3, location: "Denver", description: "I am teh admin of SlowRight", employer: User.find_by(username: 'slowright'))
+    User.create(name: "David Admin", email: "admin@david.com", username: "davester", password: "password", role: 3, location: "Denver", description: "I am teh admin", employer: User.find_by(username: 'skuukom'))
     User.create(name: "Turing Admin", email: "admin@turing.com", username: "j3", password: "password", role: 3, location: "Denver", description: "Admin for Turing School", employer: User.find_by(username: 'turing'))
     User.create(name: "Pivotuhl Admin", email: "admin@pivotal.com", username: "padmin", password: "password", role: 3, location: "Denver", description: "Admin for Pivotuhl", employer: User.find_by(username: 'pivotal'))
     User.all.each { |user| puts "User #{user.name} created"}
@@ -63,9 +65,9 @@ class Seed
 
   def create_jobs
     50.times do
-      Job.create(title: Faker::Name.title, description: Faker::Hacker.say_something_smart, posting_cost: rand(4..10), user_id: rand(1..User.count))
+      Job.create(title: Faker::Name.title, description: Faker::Hacker.say_something_smart + " " + Faker::Hacker.say_something_smart + " " + Faker::Hacker.say_something_smart + " " + Faker::Hacker.say_something_smart, posting_cost: rand(4..10), user_id: rand(1..User.count))
     end
-    Job.all.each { |job| puts "Job #{job.title} created"}
+    Job.all.each { |job| puts "Job #{job.title} created: #{job.description}"}
   end
 
   def create_job_categories
