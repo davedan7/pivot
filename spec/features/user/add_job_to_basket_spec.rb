@@ -3,14 +3,15 @@ require "rails_helper"
 RSpec.describe "applying for a job" do
 
   it "adds job to basket" do
-    user = User.create(name: "Test Business", email: "test@example.com", username: "test_business", password: "password", role: 1, location: "Denver", description: "Blah blah blah blah", pending: false, business_status: true) 
-    # business = create(:business_user)
+    business = User.create(name: "Test Business", email: "test@example.com", username: "test_business", password: "password", role: 1, location: "Denver", description: "Blah blah blah blah", pending: false, business_status: true)
+    business.employer_id = business.id
+    user = create(:applicant_user)
+
     job = Job.create(title: "engineer", description: "ruby job", posting_cost: 10, user_id: user.id)
-    # user = create(:applicant_user)
+    business.jobs << job
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit business_jobs_path(business)
-    expect(current_path).to eq('/test_business/jobs')
+    visit business_jobs_path(business: business.slug)
     expect(page).to have_content("engineer")
     click_link_or_button "engineer"
     click_link_or_button "Add Job to Basket"
@@ -18,6 +19,8 @@ RSpec.describe "applying for a job" do
   end
 
   it "gives error message when checking out if basket empty" do
+    business = User.create(name: "Test Business", email: "test@example.com", username: "test_business", password: "password", role: 1, location: "Denver", description: "Blah blah blah blah", pending: false, business_status: true)
+    business.employer_id = business.id
     user = create(:applicant_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -28,12 +31,14 @@ RSpec.describe "applying for a job" do
   end
 
   it "can remove job" do
-    business = create(:business_user)
-    job = Job.create(title: "engineer", description: "ruby job", posting_cost: 10, user_id: business.id)
+    business = User.create(name: "Test Business", email: "test@example.com", username: "test_business", password: "password", role: 1, location: "Denver", description: "Blah blah blah blah", pending: false, business_status: true)
+    business.employer_id = business.id
+
+    job = create(:job)
     user = create(:applicant_user)
+    business.jobs << job
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    visit business_jobs_path(business)
-    expect(current_path).to eq('/janetdoes/jobs')
+    visit business_jobs_path(business: business.slug)
     expect(page).to have_content("engineer")
     click_link_or_button "engineer"
     click_link_or_button "Add Job to Basket"
@@ -50,10 +55,10 @@ RSpec.describe "applying for a job" do
     business = create(:business_user)
     job = Job.create(title: "engineer", description: "ruby job", posting_cost: 10, user_id: business.id, status: false)
     user = create(:applicant_user)
+    business.jobs << job
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit business_jobs_path(business)
-    expect(current_path).to eq('/janetdoes/jobs')
+    visit business_jobs_path(business: business.slug)
     expect(page).to have_content("engineer")
     click_link_or_button "engineer"
     click_link_or_button "Add Job to Basket"
