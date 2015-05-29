@@ -8,7 +8,7 @@ RSpec.describe "As a business user" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(business)
 
-    visit business_dashboard_path(business)
+    visit business_dashboard_path(business: business.slug)
 
     click_button "Manage your Job Postings"
     expect(current_path).to eq(business_jobs_path(business: business.slug))
