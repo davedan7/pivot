@@ -10,7 +10,7 @@ class Businesses::AdministrativeManagementController < BusinessesController
   # end
 
   def index
-    byebug
+    
     @business = User.find_by(slug: params[:business])
     @business_admins = @business.business_managers.not_business
   end
