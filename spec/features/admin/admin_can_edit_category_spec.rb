@@ -13,9 +13,9 @@ RSpec.describe "admin can update categories" do
   end
 
     click_button "Edit Category"
-    fill_in "Name", with: "Rubinious"
+    fill_in "Category Title", with: "Rubinious"
     fill_in "Description", with: "master master"
-    click_button "Update Category"
+    click_button "Submit"
 
     expect(page).to have_content("Rubinious")
   end
@@ -32,9 +32,9 @@ RSpec.describe "admin can update categories" do
     end
 
     click_button "Edit Category"
-    fill_in "Name", with: ""
+    fill_in "Category Title", with: ""
     fill_in "Description", with: ""
-    click_button "Update Category"
+    click_button "Submit"
     expect(page).to have_content("Name can't be blank, Description can't be blank")
   end
 
@@ -51,9 +51,9 @@ RSpec.describe "admin can update categories" do
     end
 
     click_button "Edit Category"
-    fill_in "Name", with: "Javascript"
+    fill_in "Category Title", with: "Javascript"
     fill_in "Description", with: "different kinds"
-    click_button "Update Category"
+    click_button "Submit"
     expect(page).to have_content("Name has already been taken, Description has already been taken")
   end
 end

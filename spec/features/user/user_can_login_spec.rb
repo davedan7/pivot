@@ -10,7 +10,7 @@ RSpec.describe "User view" do
       fill_in "Location", with: "Denver"
       fill_in "user[password]", with: "password"
       fill_in "Password confirmation", with: "password"
-      click_link_or_button "Update User"
+      click_link_or_button "Submit User Information"
 
       visit root_path
       click_link_or_button "Logout"
@@ -27,7 +27,7 @@ RSpec.describe "User view" do
       fill_in "user[password]", with: "password"
       fill_in "Password confirmation", with: "password"
 
-      click_link_or_button "Update User"
+      click_link_or_button "Submit User Information"
 
       visit root_path
       click_link_or_button "Logout"
@@ -35,7 +35,7 @@ RSpec.describe "User view" do
       click_link_or_button "Log In"
       fill_in "Email", with: "david@gmail.com"
       fill_in "Password", with: "password"
-      click_link_or_button "Login"
+      click_link_or_button "Log In"
       expect(page).to have_content("Dashboard")
     end
 

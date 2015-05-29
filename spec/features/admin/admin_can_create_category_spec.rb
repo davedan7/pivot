@@ -12,10 +12,9 @@ RSpec.describe "admin categories" do
       click_button "Create Category"
 
       expect(current_path).to eq(new_admin_category_path)
-
-      fill_in "Name", with: "Java"
-      fill_in "Description", with: "hard"
-      click_button "Create Category"
+      fill_in "Category Title", with: "Java"
+      fill_in "Category Description", with: "hard"
+      click_button "Submit"
       expect(page).to have_content("Java")
     end
 
@@ -27,15 +26,15 @@ RSpec.describe "admin categories" do
 
       visit admin_categories_path
       click_button "Create Category"
-      fill_in "Name", with: "Admin"
-      fill_in "Description", with: "hard"
-      click_button "Create Category"
+      fill_in "Category Title", with: "Admin"
+      fill_in "Category Description", with: "hard"
+      click_button "Submit"
 
       visit admin_categories_path
       click_button "Create Category"
-      fill_in "Name", with: "C##}"
-      fill_in "Description", with: "basic"
-      click_button "Create Category"
+      fill_in "Category Title", with: "C##}"
+      fill_in "Category Description", with: "basic"
+      click_button "Submit"
       expect(page).to have_content("C##")
       expect(page).to have_content("basic")
     end
@@ -51,10 +50,10 @@ RSpec.describe "admin categories" do
 
       visit admin_categories_path
       click_button "Create Category"
-      fill_in "Name", with: "Ruby"
-      fill_in "Description", with: "for main course jobs"
-      click_button "Create Category"
-      expect(page).to have_content("Name has already been taken, Description has already been taken")
+      fill_in "Category Title", with: "Ruby"
+      fill_in "Category Description", with: "for main course jobs"
+      click_button "Submit"
+      expect(page).to have_content("Title has already been taken, Description has already been taken")
     end
   end
 
@@ -67,9 +66,9 @@ RSpec.describe "admin categories" do
 
       visit admin_categories_path
       click_button "Create Category"
-      fill_in "Name", with: ""
-      fill_in "Description", with: ""
-      click_button "Create Category"
+      fill_in "Category Title", with: ""
+      fill_in "Category Description", with: ""
+      click_button "Submit"
       expect(page).to have_content("Name can't be blank, Description can't be blank")
     end
   end

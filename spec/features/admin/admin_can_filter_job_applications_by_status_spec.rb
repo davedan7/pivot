@@ -21,7 +21,7 @@ RSpec.describe "admin page" do
 
    visit checkout_path
 
-   click_button "Submit Resume(s)"
+   click_button "Submit"
    click_button "YES"
 
    visit admin_job_applications_dashboard_path

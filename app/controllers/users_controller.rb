@@ -33,11 +33,13 @@ class UsersController < ApplicationController
   end
 
   def edit
+
     @user = User.find_by(id: params[:id])
   end
 
   def update
-    @user = current_user
+# byebug
+    @user = User.find_by(id: params[:id].to_i)
     if @user.update(user_params)
       flash.now[:success] = "#{@user.username} successfully updated"
       redirect_to @user
