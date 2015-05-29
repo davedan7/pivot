@@ -147,6 +147,16 @@ nav.navbar{
   border-color: $gray-light;
 }
 
+
+// @media (min-width: 768px){
+//     .navbar-nav{
+//         float:none;
+//         margin: 0 auto;
+//         display: table;
+//         table-layout: fixed;
+//     }
+// }
+
 // navbar ///////////////////////////////////////////
 
 
@@ -362,7 +372,10 @@ body {
   .button_to  {
     margin: 5px auto;
   }
+}
 
+.user-show {
+  text-align: center;
 }
 // admin ///////////////////////////////////////////////
 
@@ -598,10 +611,6 @@ table td {
 
 .flashes {
   margin-left: 35%;
-}
-
-.user-show {
-  text-align: center;
 }
 
 // .user-show {

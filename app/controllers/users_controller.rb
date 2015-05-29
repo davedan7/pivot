@@ -33,8 +33,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: params[:id].to_i)
   end
 
   def update
@@ -42,7 +41,8 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id].to_i)
     if @user.update(user_params)
       flash.now[:success] = "#{@user.username} successfully updated"
-      redirect_to @user
+      # redirect_to @user
+      render :edit
     else
       flash[:danger] = @user.errors.full_messages
       render :edit

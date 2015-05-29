@@ -3,22 +3,37 @@
 <%= image_tag current_user.picture.url(:small), class: 'center-block img img-circle' %>
 <div class="container user-show">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <p>
-        Your Display Name: <%= current_user.name %><br>
-        Description: <%= current_user.description %>
-      </p>
-      <p><%= button_to "Edit Profile", edit_user_path(current_user), method: :get, class: "btn btn-primary" %></p>
+    <div class="col-md-8 col-md-offset-2">
+
+        <p>
+          Your Display Name: <%= current_user.name %><br>
+          Description: <%= current_user.description %>
+        </p>
+
+      <%= button_to "Edit Profile", edit_user_path(current_user), method: :get, class: "btn btn-primary" %>
+
+      <!-- Business Admins -->
       <% if current_business_admin? || current_business? %>
-        <p><%= button_to "Business Admin Management", business_administrative_management_index_path(business: current_user.employer), method: :get, class: "btn btn-primary"  %></p><br>
-        <p><%= button_to "View Applicants", business_job_applications_path(business: current_user.employer.slug), method: :get, class: "btn btn-primary" %></p>
-        <p><%= button_to "Edit my Business", edit_user_path(current_user.employer), method: :get, class: "btn btn-primary" %></p>
-        <p><%= button_to "Manage your Job Postings", business_jobs_path(business: current_user.employer.slug), method: "get", class: "btn btn-primary" %></p>
+        <div class="row-fluid">
+          <div class="span4 offset4 text-center">
+            <%= link_to "Business Admin Management", business_administrative_management_index_path(business: current_user.employer.slug), method: :get, class: "btn btn-primary" %>
+            <%= link_to "View Applicants", business_job_applications_path(business: current_user.slug), method: :get, class: "btn btn-primary" %>
+            <%= link_to "Edit my Business", edit_user_path(current_user.employer), method: :get, class: "btn btn-primary" %>
+            <%= link_to "Manage your Job Postings", business_jobs_path(business: current_user.employer.slug), method: "get", class: "btn btn-primary" %></p>
+          </div>
+        </div>
       <% end %>
+
+      <!-- Job Applicants -->
       <% if !current_business_admin? && !current_admin? && !current_business? %>
-        <%= button_to "Upload a Resume", new_resume_path, method: :get, class: "btn btn-primary" %><br>
-        <%= button_to "Application History", user_job_applications_path, method: :get, class: "btn btn-primary" %></p>
+        <div class="row-fluid">
+          <div class="span4 offset4 text-center">
+            <%= link_to "Upload a Resume", new_resume_path, method: :get, class: "btn btn-primary" %>
+            <%= link_to "Application History", user_job_applications_path, method: :get, class: "btn btn-primary" %>
+          </div>
+        </div>
       <% end %>
+
     </div>
   </div>
 </div>
