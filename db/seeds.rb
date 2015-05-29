@@ -37,12 +37,12 @@ class Seed
   end
 
   def create_businesses
-    User.create(name: "Turing School", email: "turing@example.com", username: "turing", password: "password", role: 1, location: "Denver", description: "We turn muggles into masters of code.", picture: File.new("#{Rails.root}/public/assets/turing-logo.png"), pending: false)
-    User.create(name: "Pivotuhl", email: "pivotuhl@example.com", username: "pivotal", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart, picture: Faker::Company.logo)
-    User.create(name: "SlowRight", email: "slow@example.com", username: "slowright", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart, picture: Faker::Company.logo)
-    User.create(name: "Skuukom", email: "skuukom@example.com", username: "skuukom", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart, picture: Faker::Company.logo)
+    User.create(name: "Turing School", email: "turing@example.com", username: "turing", password: "password", role: 1, location: "Denver", description: "We turn muggles into masters of code.", picture: File.new("#{Rails.root}/public/assets/turing-logo.png"), pending: false, business_status: true)
+    User.create(name: "Pivotuhl", email: "pivotuhl@example.com", username: "pivotal", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart, picture: Faker::Company.logo, business_status: true)
+    User.create(name: "SlowRight", email: "slow@example.com", username: "slowright", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart, picture: Faker::Company.logo, business_status: true)
+    User.create(name: "Skuukom", email: "skuukom@example.com", username: "skuukom", password: "password", role: 1, location: "Denver", description: Faker::Hacker.say_something_smart, picture: Faker::Company.logo, business_status: true)
     20.times do
-      User.create(name: Faker::Company.name, email: Faker::Internet.email, username: Faker::Internet.user_name, password: "password", role: 1, location: Faker::Address.city, description: Faker::Lorem.sentence(4), picture: Faker::Company.logo, pending: false)
+      User.create(name: Faker::Company.name, email: Faker::Internet.email, username: Faker::Internet.user_name, password: "password", role: 1, location: Faker::Address.city, description: Faker::Lorem.sentence(4), picture: Faker::Company.logo, pending: false, business_status: true)
     end
   end
 
