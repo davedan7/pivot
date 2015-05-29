@@ -4,7 +4,7 @@ class Admin::JobsController < Admin::BaseController
   end
 
   def show
-    @job = Job.find(params[:id])
+    @job = Job.find_by(id: params[:id].to_i)
   end
 
   def new
@@ -15,6 +15,7 @@ class Admin::JobsController < Admin::BaseController
 
   def create
     @job = Job.new(job_params)
+    @job.user_id = User.find_by(slug: params[:business]).id
     if @job.save
       categories = params[:job][:category_ids].reject(&:empty?)
       categories.each do |id|
