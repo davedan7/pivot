@@ -16,16 +16,6 @@ ActiveRecord::Schema.define(version: 20150528152840) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "applications", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "status",     default: 0
-    t.integer  "jobs_id"
-  end
-
-  add_index "applications", ["user_id"], name: "index_applications_on_user_id", using: :btree
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -69,17 +59,6 @@ ActiveRecord::Schema.define(version: 20150528152840) do
 
   add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
-  create_table "order_items", force: :cascade do |t|
-    t.integer  "item_id"
-    t.integer  "order_id"
-    t.integer  "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
-
   create_table "resumes", force: :cascade do |t|
     t.string   "name"
     t.string   "attachment"
@@ -114,6 +93,5 @@ ActiveRecord::Schema.define(version: 20150528152840) do
   add_foreign_key "job_applications", "users"
   add_foreign_key "job_categories", "categories"
   add_foreign_key "job_categories", "jobs"
-  add_foreign_key "order_items", "applications", column: "order_id"
   add_foreign_key "resumes", "users"
 end

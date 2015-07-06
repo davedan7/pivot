@@ -20,7 +20,7 @@ default: &default
 
 development:
   <<: *default
-  database: hipster_bytes_development
+  database: jo_bs_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -54,7 +54,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: hipster_bytes_test
+  database: jo_bs_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -72,11 +72,12 @@ test:
 #
 # You can use this database configuration with:
 #
+
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
   <<: *default
-  database: hipster_bytes_production
-  username: hipster_bytes
-  password: <%= ENV['HIPSTER_BYTES_DATABASE_PASSWORD'] %>
+  database: jo_bs_production
+  username: jo_bs
+  password: <%= ENV['JO_BS_DATABASE_PASSWORD'] %>

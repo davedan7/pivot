@@ -8,8 +8,4 @@ class BusinessesController < ApplicationController
     end
   end
 
-  # def correct_priveleges
-  #   current_business? || current_admin? || current_business_admin?
-  # end
-
 end
