@@ -2,13 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "business admin" do
   it "cannot delete business" do
+    business = create(:business_user)
     business_user = create(:business_admin_user)
+    business_user.employer = business
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(business_user)
 
-    visit user_path(business_user)
+    visit user_path(id: business_user.id)
 
-    click_link_or_button "Delete Account"
+    expect(page).to_not have_content("Delete Account")
 
-    expect(page).to have_content("You do not have the required permissions to delete this account")
+
   end
 end

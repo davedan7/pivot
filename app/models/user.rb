@@ -5,8 +5,11 @@ class User < ActiveRecord::Base
   has_attached_file :picture, styles: {micro: '50x50',
                                        thumb: '100x100',
                                        small: '200x200',
-                                       medium: '300x300'
-                                     }, default_url: "Handshake_icon.jpg"
+                                       medium: '300x300'},
+                                        storage: :s3,
+                                        bucket: 'turingpivot',
+                                        path: "resources/:id/:style/:basename.:extension",
+                                        default_url: "Handshake_icon.jpg"
 
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
@@ -38,12 +41,13 @@ class User < ActiveRecord::Base
   before_update :business_status_email?
 
   def self.find_or_create_by_auth(auth_data)
-    user = User.find_or_create_by(id: auth_data['uid'][1..3])
+    user = User.find_or_create_by(username: auth_data['info']['nickname'])
     if user.name != auth_data["info"]["name"]
       user.name     = auth_data["info"]["name"]
       user.username = auth_data["info"]["nickname"]
       user.email    = "temp_email#{auth_data['uid']}@example.com"
       user.password = "temporarypassword"
+      user.location = auth_data["info"]["location"]
       user.save
     end
     user

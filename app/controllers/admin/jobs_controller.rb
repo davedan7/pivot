@@ -1,6 +1,6 @@
 class Admin::JobsController < Admin::BaseController
   def index
-    @jobs = Job.paginate(page: params[:page])
+    @jobs = Job.all.paginate(page: params[:page])
   end
 
   def show
@@ -15,7 +15,7 @@ class Admin::JobsController < Admin::BaseController
 
   def create
     @job = Job.new(job_params)
-    @job.user_id = User.find_by(slug: params[:business]).id
+    # @job.user_id = User.find_by(slug: params[:business]).id
     if @job.save
       categories = params[:job][:category_ids].reject(&:empty?)
       categories.each do |id|

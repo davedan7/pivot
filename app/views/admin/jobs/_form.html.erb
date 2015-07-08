@@ -10,6 +10,7 @@
         <%= form_for([:admin, @job]) do |f| %>
 
           <div class="text-center">
+            <%= f.label :business, "Business:" %>
             <%= f.collection_select(:user_id, @businesses, :id, :username,
                                    {:prompt => 'Please select the business that this job will be posted for.'}) %>
           </div>

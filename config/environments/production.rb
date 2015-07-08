@@ -83,8 +83,8 @@ Rails.application.configure do
   :storage => :s3,
   :s3_credentials => {
     :bucket => ENV['S3_BUCKET_NAME'],
-    :access_key_id => ENV['AWSSecretKey'],
-    :secret_access_key => ENV['AWSAccessKeyId']
+    :access_key_id => ENV['AWSAccessKeyId'],
+    :secret_access_key => ENV['AWSSecretKey']
   },
   :url =>':s3_domain_url',
    :path => '/:class/:attachment/:id_partition/:style/:filename',

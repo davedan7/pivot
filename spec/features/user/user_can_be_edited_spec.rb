@@ -4,7 +4,7 @@ RSpec.describe "User view" do
   context 'with valid attributes' do
 
     it 'can edit a user' do
-      user = create(:applicant_user)
+      user = User.create(name: "hal", username: "hallo", email: "hal@examp.com", password: "pass", location: "here")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit user_path(user)
@@ -15,6 +15,7 @@ RSpec.describe "User view" do
       fill_in "user[location]", with: "Denver"
       fill_in "user[password]", with: "password"
       fill_in "user[password_confirmation]", with: "password"
+
       click_link_or_button "Submit User Information"
 
       expect(page).to have_content("davy")
