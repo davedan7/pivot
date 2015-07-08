@@ -1,21 +1,3 @@
-class Seed
-  def self.start
-    new.generate
-    new.populate
-  end
-
-  def generate
-    create_admins
-    create_users
-    create_businesses
-    create_business_admins
-    create_categories
-    create_jobs
-    create_job_categories
-  end
-
-  def populate
-    populate_business_employer
     populate_job_applications
   end
 
