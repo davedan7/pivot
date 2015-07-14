@@ -1,4 +1,4 @@
-#Jo.bs
+# Jo.bs
 
 ## The Pivot
 ### A Project for Turing School of Software and Design
